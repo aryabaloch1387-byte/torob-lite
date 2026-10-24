@@ -81,6 +81,58 @@ header {
   color: white;
   border: 1px solid rgba(255,255,255,0.2);
 }
+
+/* VIP Footer */
+.footer {
+  margin-top: 40px;
+  padding: 40px 25px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255,255,255,0.25);
+  color: white;
+  text-align: center;
+}
+
+.footer-content h2 {
+  margin: 0;
+  font-size: 28px;
+  text-shadow: 0 0 15px rgba(255,255,255,0.4);
+}
+
+.footer-content p {
+  margin: 10px 0;
+  font-size: 15px;
+  opacity: 0.9;
+}
+
+.footer-links {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.25);
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+.copy {
+  margin-top: 25px;
+  font-size: 13px;
+  opacity: 0.7;
+}
 </style>
 </head>
 
@@ -102,6 +154,22 @@ header {
   <div class="card">سرعت بالا با Cloudflare</div>
   <div class="card">کاملاً موبایل‌پسند</div>
 </section>
+
+<footer class="footer">
+  <div class="footer-content">
+    <h2>TorobLite</h2>
+    <p>سرویس‌های حرفه‌ای با طراحی VIP و سرعت بالا</p>
+
+    <div class="footer-links">
+      <a href="#">خانه</a>
+      <a href="#">درباره ما</a>
+      <a href="#">خدمات</a>
+      <a href="#">تماس با ما</a>
+    </div>
+
+    <p class="copy">© 2026 TorobLite — All Rights Reserved</p>
+  </div>
+</footer>
 
 </body>
 </html>
