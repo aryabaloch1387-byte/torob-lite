@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>جزئیات کالا</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="productBox"></div>
+
+<script src="app.js"></script>
+<script>
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+loadProduct(id);
+</script>
+
+</body>
+</html>
