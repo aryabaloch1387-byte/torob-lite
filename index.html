@@ -26,6 +26,49 @@ header {
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,0.2);
   color: white;
+  z-index: 1000;
+}
+
+.menu-btn {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 70%;
+  height: 100%;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(15px);
+  padding: 40px 25px;
+  transition: 0.4s;
+  z-index: 2000;
+  border-left: 1px solid rgba(255,255,255,0.3);
+}
+
+.mobile-menu.open {
+  right: 0;
+}
+
+.mobile-menu a {
+  display: block;
+  margin: 20px 0;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  transition: 0.3s;
+}
+
+.mobile-menu a:hover {
+  background: rgba(255,255,255,0.35);
 }
 
 /* Hero Section */
@@ -140,8 +183,15 @@ header {
 
 <header>
   <div>TorobLite</div>
-  <div>منو</div>
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
 </header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#">خانه</a>
+  <a href="#">درباره ما</a>
+  <a href="#">خدمات</a>
+  <a href="#">تماس با ما</a>
+</div>
 
 <section class="hero">
   <h1>سایت VIP شما</h1>
@@ -170,6 +220,12 @@ header {
     <p class="copy">© 2026 TorobLite — All Rights Reserved</p>
   </div>
 </footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("open");
+}
+</script>
 
 </body>
 </html>
