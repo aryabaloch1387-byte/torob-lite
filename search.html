@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>نتایج جستجو</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>نتایج جستجو</h2>
+<div id="results"></div>
+
+<script src="app.js"></script>
+<script>
+const params = new URLSearchParams(window.location.search);
+const query = params.get("q");
+searchProducts(query);
+</script>
+
+</body>
+</html>
