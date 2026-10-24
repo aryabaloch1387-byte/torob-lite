@@ -1,0 +1,23 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "گوشی سامسونگ A54",
+      "image": "https://via.placeholder.com/200",
+      "category": "موبایل",
+      "offers": [
+        { "shop": "دیجی‌کالا", "price": 14500000, "url": "https://digikala.com" },
+        { "shop": "ایمالز", "price": 14200000, "url": "https://emalls.ir" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "لپ‌تاپ لنوو i5",
+      "image": "https://via.placeholder.com/200",
+      "category": "لپ‌تاپ",
+      "offers": [
+        { "shop": "لیون‌کامپیوتر", "price": 28500000, "url": "https://lioncomputer.com" }
+      ]
+    }
+  ]
+}
