@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TorobLite</title>
+<title>TorobLite VIP SPA</title>
+
+<!-- GSAP برای انیمیشن حرفه‌ای -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
 <style>
 body {
@@ -11,9 +14,11 @@ body {
   font-family: 'Poppins', sans-serif;
   background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1400&q=80') no-repeat center/cover;
   backdrop-filter: blur(8px);
+  color: white;
+  scroll-behavior: smooth;
 }
 
-/* Glass Header */
+/* Header */
 header {
   position: fixed;
   top: 0;
@@ -25,65 +30,40 @@ header {
   background: rgba(255,255,255,0.15);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,0.2);
-  color: white;
   z-index: 1000;
 }
 
-.menu-btn {
-  font-size: 25px;
-  cursor: pointer;
+.nav-links {
+  display: flex;
+  gap: 15px;
 }
 
-/* Mobile Menu */
-.mobile-menu {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 70%;
-  height: 100%;
-  background: rgba(255,255,255,0.18);
-  backdrop-filter: blur(15px);
-  padding: 40px 25px;
-  transition: 0.4s;
-  z-index: 2000;
-  border-left: 1px solid rgba(255,255,255,0.3);
-}
-
-.mobile-menu.open {
-  right: 0;
-}
-
-.mobile-menu a {
-  display: block;
-  margin: 20px 0;
-  font-size: 20px;
-  color: white;
-  text-decoration: none;
-  padding: 10px 15px;
+.nav-links button {
   background: rgba(255,255,255,0.15);
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.25);
-  backdrop-filter: blur(8px);
-  transition: 0.3s;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 10px;
+  color: white;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 13px;
 }
 
-.mobile-menu a:hover {
-  background: rgba(255,255,255,0.35);
+/* Sections base */
+section {
+  padding: 80px 25px 60px;
 }
 
-/* Hero Section */
+/* Hero */
 .hero {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 25px;
-  color: white;
   text-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 .hero h1 {
-  font-size: 45px;
+  font-size: 40px;
   margin: 0;
 }
 
@@ -99,82 +79,97 @@ header {
   backdrop-filter: blur(10px);
   border-radius: 12px;
   border: 1px solid rgba(255,255,255,0.3);
-  color: white;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
-  transition: 0.3s;
 }
 
-.btn:hover {
-  background: rgba(255,255,255,0.4);
+/* Glass blocks */
+.glass-block {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 25px;
+  margin-bottom: 20px;
 }
 
-/* Cards */
-.cards {
-  padding: 60px 25px;
+/* Products */
+.products-grid {
   display: grid;
   gap: 20px;
 }
 
-.card {
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(10px);
+.product-card {
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.25);
   padding: 20px;
-  border-radius: 15px;
-  color: white;
-  border: 1px solid rgba(255,255,255,0.2);
 }
 
-/* VIP Footer */
+/* Dashboard */
+.dashboard-grid {
+  display: grid;
+  gap: 20px;
+}
+
+/* Forms */
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(0,0,0,0.2);
+  color: white;
+}
+
+/* Login Modal */
+.login-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+}
+
+.login-box {
+  width: 90%;
+  max-width: 350px;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(15px);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 25px;
+}
+
+/* Footer */
 .footer {
-  margin-top: 40px;
-  padding: 40px 25px;
+  padding: 30px 25px;
   background: rgba(255,255,255,0.12);
   backdrop-filter: blur(12px);
   border-top: 1px solid rgba(255,255,255,0.25);
-  color: white;
   text-align: center;
-}
-
-.footer-content h2 {
-  margin: 0;
-  font-size: 28px;
-  text-shadow: 0 0 15px rgba(255,255,255,0.4);
-}
-
-.footer-content p {
-  margin: 10px 0;
-  font-size: 15px;
-  opacity: 0.9;
+  margin-top: 40px;
 }
 
 .footer-links {
-  margin: 20px 0;
   display: flex;
   justify-content: center;
-  gap: 25px;
+  gap: 20px;
+  margin: 15px 0;
 }
 
 .footer-links a {
   color: white;
   text-decoration: none;
-  font-size: 16px;
-  padding: 8px 12px;
+  font-size: 14px;
+  padding: 6px 10px;
   border-radius: 10px;
   background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(8px);
   border: 1px solid rgba(255,255,255,0.25);
-  transition: 0.3s;
-}
-
-.footer-links a:hover {
-  background: rgba(255,255,255,0.35);
-}
-
-.copy {
-  margin-top: 25px;
-  font-size: 13px;
-  opacity: 0.7;
 }
 </style>
 </head>
@@ -183,47 +178,204 @@ header {
 
 <header>
   <div>TorobLite</div>
-  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  <div class="nav-links">
+    <button onclick="showSection('hero')">خانه</button>
+    <button onclick="showSection('products')">فروش محصول</button>
+    <button onclick="showSection('orders')">فرم سفارش</button>
+    <button onclick="showSection('dashboard')">داشبورد</button>
+    <button onclick="showSection('about')">درباره ما</button>
+    <button onclick="showSection('contact')">تماس</button>
+    <button onclick="openLogin()">لاگین</button>
+  </div>
 </header>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#">خانه</a>
-  <a href="#">درباره ما</a>
-  <a href="#">خدمات</a>
-  <a href="#">تماس با ما</a>
+<!-- Login Modal -->
+<div class="login-modal" id="loginModal">
+  <div class="login-box">
+    <h2>ورود VIP</h2>
+    <p>برای ورود به داشبورد مدیریتی، اطلاعات زیر را وارد کنید.</p>
+    <input id="loginUser" placeholder="نام کاربری">
+    <input id="loginPass" type="password" placeholder="رمز عبور">
+    <button class="btn" onclick="doLogin()">ورود</button>
+    <button class="btn" style="margin-top:10px;background:rgba(255,0,0,0.4)" onclick="closeLogin()">بستن</button>
+    <p id="loginStatus" style="margin-top:10px;font-size:13px;"></p>
+  </div>
 </div>
 
-<section class="hero">
-  <h1>سایت VIP شما</h1>
-  <p>طراحی شیشه‌ای، مدرن و فوق‌العاده جذاب</p>
-  <button class="btn">شروع کن</button>
+<!-- Hero -->
+<section class="hero" id="hero">
+  <h1>TorobLite VIP</h1>
+  <p>سایت شیشه‌ای، مدرن، با داشبورد، فروش محصول و فرم سفارش.</p>
+  <button class="btn" onclick="showSection('products')">برو به محصولات</button>
 </section>
 
-<section class="cards">
-  <div class="card">ظاهر شیشه‌ای حرفه‌ای</div>
-  <div class="card">سرعت بالا با Cloudflare</div>
-  <div class="card">کاملاً موبایل‌پسند</div>
-</section>
-
-<footer class="footer">
-  <div class="footer-content">
-    <h2>TorobLite</h2>
-    <p>سرویس‌های حرفه‌ای با طراحی VIP و سرعت بالا</p>
-
-    <div class="footer-links">
-      <a href="#">خانه</a>
-      <a href="#">درباره ما</a>
-      <a href="#">خدمات</a>
-      <a href="#">تماس با ما</a>
+<!-- Products (فروش محصول) -->
+<section id="products">
+  <h2>فروش محصول VIP</h2>
+  <div class="products-grid">
+    <div class="product-card">
+      <h3>محصول VIP ۱</h3>
+      <p>توضیحات کوتاه محصول اول.</p>
+      <p>قیمت: ۲۵۰٬۰۰۰ تومان</p>
+      <button class="btn" onclick="selectProduct('محصول VIP ۱')">انتخاب محصول</button>
     </div>
-
-    <p class="copy">© 2026 TorobLite — All Rights Reserved</p>
+    <div class="product-card">
+      <h3>محصول VIP ۲</h3>
+      <p>توضیحات کوتاه محصول دوم.</p>
+      <p>قیمت: ۳۵۰٬۰۰۰ تومان</p>
+      <button class="btn" onclick="selectProduct('محصول VIP ۲')">انتخاب محصول</button>
+    </div>
   </div>
+</section>
+
+<!-- Orders (فرم سفارش) -->
+<section id="orders">
+  <h2>فرم سفارش</h2>
+  <div class="glass-block">
+    <label>نام کامل</label>
+    <input id="orderName" placeholder="نام و نام خانوادگی">
+    <label>شماره تماس</label>
+    <input id="orderPhone" placeholder="شماره موبایل">
+    <label>محصول انتخاب‌شده</label>
+    <input id="orderProduct" placeholder="محصول" readonly>
+    <label>توضیحات</label>
+    <textarea id="orderNote" rows="3" placeholder="توضیحات سفارش"></textarea>
+    <button class="btn" onclick="sendOrder()">ارسال سفارش</button>
+    <p id="orderStatus" style="margin-top:10px;font-size:13px;"></p>
+  </div>
+</section>
+
+<!-- Dashboard (داشبورد مدیریتی) -->
+<section id="dashboard" style="display:none;">
+  <h2>داشبورد مدیریتی شیشه‌ای</h2>
+  <div class="dashboard-grid">
+    <div class="glass-block">
+      <h3>سفارش‌های اخیر</h3>
+      <p id="dashboardOrders">هنوز سفارشی ثبت نشده.</p>
+    </div>
+    <div class="glass-block">
+      <h3>اتصال به API</h3>
+      <p>نمونهٔ درخواست:</p>
+      <button class="btn" onclick="testAPI()">ارسال درخواست تست</button>
+      <p id="apiStatus" style="margin-top:10px;font-size:13px;"></p>
+    </div>
+    <div class="glass-block">
+      <h3>اتصال به دیتابیس (آماده‌سازی)</h3>
+      <p>در پروژه واقعی، این بخش به دیتابیس وصل می‌شود (MongoDB / SQL / Firebase).</p>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <h2>درباره ما</h2>
+  <div class="glass-block">
+    <p>
+      TorobLite یک سرویس طراحی VIP است که ظاهر شیشه‌ای، سرعت بالا و تجربه کاربری حرفه‌ای
+      را برای کسب‌وکارهای آنلاین فراهم می‌کند.
+    </p>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <h2>تماس با ما</h2>
+  <div class="glass-block">
+    <p>برای ارتباط با ما:</p>
+    <a href="mailto:info@toroblite.ir">ایمیل: info@toroblite.ir</a><br>
+    <a href="tel:+989000000000">شماره تماس: 09000000000</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div>TorobLite — سایت VIP شیشه‌ای با داشبورد و فرم سفارش</div>
+  <div class="footer-links">
+    <a href="#hero">خانه</a>
+    <a href="#products">محصولات</a>
+    <a href="#orders">سفارش</a>
+    <a href="#dashboard">داشبورد</a>
+  </div>
+  <div>© 2026 TorobLite — All Rights Reserved</div>
 </footer>
 
 <script>
-function toggleMenu() {
-  document.getElementById("mobileMenu").classList.toggle("open");
+// GSAP انیمیشن اولیه
+gsap.from(".hero h1", { y: -30, opacity: 0, duration: 1 });
+gsap.from(".hero p", { y: 30, opacity: 0, duration: 1, delay: 0.3 });
+
+// مدیریت نمایش بخش‌ها (SPA ساده)
+function showSection(id) {
+  const sections = ["hero","products","orders","dashboard","about","contact"];
+  sections.forEach(s => {
+    document.getElementById(s).style.display = (s === id) ? "block" : (s === "hero" ? "flex" : "none");
+  });
+}
+
+// Login modal
+function openLogin() {
+  document.getElementById("loginModal").style.display = "flex";
+}
+function closeLogin() {
+  document.getElementById("loginModal").style.display = "none";
+}
+
+// Login ساده (دمو)
+let isLoggedIn = false;
+function doLogin() {
+  const user = document.getElementById("loginUser").value;
+  const pass = document.getElementById("loginPass").value;
+  const status = document.getElementById("loginStatus");
+  if (user && pass) {
+    isLoggedIn = true;
+    status.textContent = "ورود موفق! داشبورد فعال شد.";
+    showSection("dashboard");
+    closeLogin();
+  } else {
+    status.textContent = "لطفاً نام کاربری و رمز را وارد کنید.";
+  }
+}
+
+// انتخاب محصول برای فرم سفارش
+function selectProduct(name) {
+  document.getElementById("orderProduct").value = name;
+  showSection("orders");
+}
+
+// ارسال سفارش (نمونه اتصال به API)
+let orders = [];
+function sendOrder() {
+  const name = document.getElementById("orderName").value;
+  const phone = document.getElementById("orderPhone").value;
+  const product = document.getElementById("orderProduct").value;
+  const note = document.getElementById("orderNote").value;
+  const status = document.getElementById("orderStatus");
+
+  if (!name || !phone || !product) {
+    status.textContent = "لطفاً همه فیلدهای لازم را پر کنید.";
+    return;
+  }
+
+  const order = { name, phone, product, note, time: new Date().toLocaleString() };
+  orders.push(order);
+  status.textContent = "سفارش ثبت شد (دمو).";
+
+  // نمایش در داشبورد
+  const dash = document.getElementById("dashboardOrders");
+  dash.textContent = orders.map(o => `${o.time} - ${o.name} - ${o.product}`).join(" | ");
+
+  // نمونهٔ ارسال به API (در پروژه واقعی URL را عوض کن)
+  // fetch("https://example.com/api/orders", {
+  //   method: "POST",
+  //   headers: { "Content-Type": "application/json" },
+  //   body: JSON.stringify(order)
+  // });
+}
+
+// تست API (دمو)
+function testAPI() {
+  const status = document.getElementById("apiStatus");
+  status.textContent = "درخواست تست ارسال شد (دمو). در پروژه واقعی به سرور وصل می‌شود.";
 }
 </script>
 
