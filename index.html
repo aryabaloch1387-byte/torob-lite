@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TorobLite VIP SPA</title>
 
-<!-- GSAP برای انیمیشن حرفه‌ای -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
 <style>
@@ -18,7 +17,6 @@ body {
   scroll-behavior: smooth;
 }
 
-/* Header */
 header {
   position: fixed;
   top: 0;
@@ -48,12 +46,10 @@ header {
   font-size: 13px;
 }
 
-/* Sections base */
 section {
   padding: 80px 25px 60px;
 }
 
-/* Hero */
 .hero {
   height: 100vh;
   display: flex;
@@ -83,7 +79,6 @@ section {
   cursor: pointer;
 }
 
-/* Glass blocks */
 .glass-block {
   background: rgba(255,255,255,0.15);
   backdrop-filter: blur(12px);
@@ -93,7 +88,6 @@ section {
   margin-bottom: 20px;
 }
 
-/* Products */
 .products-grid {
   display: grid;
   gap: 20px;
@@ -107,13 +101,11 @@ section {
   padding: 20px;
 }
 
-/* Dashboard */
 .dashboard-grid {
   display: grid;
   gap: 20px;
 }
 
-/* Forms */
 input, select, textarea {
   width: 100%;
   padding: 10px;
@@ -124,7 +116,6 @@ input, select, textarea {
   color: white;
 }
 
-/* Login Modal */
 .login-modal {
   position: fixed;
   inset: 0;
@@ -145,7 +136,6 @@ input, select, textarea {
   padding: 25px;
 }
 
-/* Footer */
 .footer {
   padding: 30px 25px;
   background: rgba(255,255,255,0.12);
@@ -185,11 +175,14 @@ input, select, textarea {
     <button onclick="showSection('dashboard')">داشبورد</button>
     <button onclick="showSection('about')">درباره ما</button>
     <button onclick="showSection('contact')">تماس</button>
+
+    <!-- لینک ورود فروشنده -->
+    <button onclick="window.location.href='seller.html'">ورود فروشنده</button>
+
     <button onclick="openLogin()">لاگین</button>
   </div>
 </header>
 
-<!-- Login Modal -->
 <div class="login-modal" id="loginModal">
   <div class="login-box">
     <h2>ورود VIP</h2>
@@ -202,14 +195,12 @@ input, select, textarea {
   </div>
 </div>
 
-<!-- Hero -->
 <section class="hero" id="hero">
   <h1>TorobLite VIP</h1>
   <p>سایت شیشه‌ای، مدرن، با داشبورد، فروش محصول و فرم سفارش.</p>
   <button class="btn" onclick="showSection('products')">برو به محصولات</button>
 </section>
 
-<!-- Products (فروش محصول) -->
 <section id="products">
   <h2>فروش محصول VIP</h2>
   <div class="products-grid">
@@ -228,7 +219,6 @@ input, select, textarea {
   </div>
 </section>
 
-<!-- Orders (فرم سفارش) -->
 <section id="orders">
   <h2>فرم سفارش</h2>
   <div class="glass-block">
@@ -245,7 +235,6 @@ input, select, textarea {
   </div>
 </section>
 
-<!-- Dashboard (داشبورد مدیریتی) -->
 <section id="dashboard" style="display:none;">
   <h2>داشبورد مدیریتی شیشه‌ای</h2>
   <div class="dashboard-grid">
@@ -261,12 +250,11 @@ input, select, textarea {
     </div>
     <div class="glass-block">
       <h3>اتصال به دیتابیس (آماده‌سازی)</h3>
-      <p>در پروژه واقعی، این بخش به دیتابیس وصل می‌شود (MongoDB / SQL / Firebase).</p>
+      <p>در پروژه واقعی، این بخش به دیتابیس وصل می‌شود.</p>
     </div>
   </div>
 </section>
 
-<!-- About -->
 <section id="about">
   <h2>درباره ما</h2>
   <div class="glass-block">
@@ -277,7 +265,6 @@ input, select, textarea {
   </div>
 </section>
 
-<!-- Contact -->
 <section id="contact">
   <h2>تماس با ما</h2>
   <div class="glass-block">
@@ -287,7 +274,6 @@ input, select, textarea {
   </div>
 </section>
 
-<!-- Footer -->
 <footer class="footer">
   <div>TorobLite — سایت VIP شیشه‌ای با داشبورد و فرم سفارش</div>
   <div class="footer-links">
@@ -300,11 +286,9 @@ input, select, textarea {
 </footer>
 
 <script>
-// GSAP انیمیشن اولیه
 gsap.from(".hero h1", { y: -30, opacity: 0, duration: 1 });
 gsap.from(".hero p", { y: 30, opacity: 0, duration: 1, delay: 0.3 });
 
-// مدیریت نمایش بخش‌ها (SPA ساده)
 function showSection(id) {
   const sections = ["hero","products","orders","dashboard","about","contact"];
   sections.forEach(s => {
@@ -312,7 +296,6 @@ function showSection(id) {
   });
 }
 
-// Login modal
 function openLogin() {
   document.getElementById("loginModal").style.display = "flex";
 }
@@ -320,7 +303,6 @@ function closeLogin() {
   document.getElementById("loginModal").style.display = "none";
 }
 
-// Login ساده (دمو)
 let isLoggedIn = false;
 function doLogin() {
   const user = document.getElementById("loginUser").value;
@@ -336,13 +318,11 @@ function doLogin() {
   }
 }
 
-// انتخاب محصول برای فرم سفارش
 function selectProduct(name) {
   document.getElementById("orderProduct").value = name;
   showSection("orders");
 }
 
-// ارسال سفارش (نمونه اتصال به API)
 let orders = [];
 function sendOrder() {
   const name = document.getElementById("orderName").value;
@@ -358,24 +338,15 @@ function sendOrder() {
 
   const order = { name, phone, product, note, time: new Date().toLocaleString() };
   orders.push(order);
-  status.textContent = "سفارش ثبت شد (دمو).";
+  status.textContent = "سفارش ثبت شد.";
 
-  // نمایش در داشبورد
   const dash = document.getElementById("dashboardOrders");
   dash.textContent = orders.map(o => `${o.time} - ${o.name} - ${o.product}`).join(" | ");
-
-  // نمونهٔ ارسال به API (در پروژه واقعی URL را عوض کن)
-  // fetch("https://example.com/api/orders", {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify(order)
-  // });
 }
 
-// تست API (دمو)
 function testAPI() {
   const status = document.getElementById("apiStatus");
-  status.textContent = "درخواست تست ارسال شد (دمو). در پروژه واقعی به سرور وصل می‌شود.";
+  status.textContent = "درخواست تست ارسال شد.";
 }
 </script>
 
