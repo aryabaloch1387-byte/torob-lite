@@ -5,9 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>پنل فروشنده TorobLite</title>
 
-<!-- GSAP -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
 <style>
 body {
   margin: 0;
@@ -26,7 +23,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255,255,255,0.15);
+  background: rgba(0,0,0,0.45);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,0.2);
   z-index: 1000;
@@ -35,7 +32,7 @@ header {
 header a {
   color: white;
   text-decoration: none;
-  background: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.12);
   padding: 6px 12px;
   border-radius: 10px;
   border: 1px solid rgba(255,255,255,0.3);
@@ -44,51 +41,58 @@ header a {
 
 /* Container */
 .container {
-  padding: 100px 25px 40px;
+  padding: 100px 20px 40px;
 }
 
 /* Glass block */
 .glass {
-  background: rgba(255,255,255,0.18);
-  backdrop-filter: blur(12px);
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(14px);
   border-radius: 18px;
   border: 1px solid rgba(255,255,255,0.25);
-  padding: 25px;
-  margin-bottom: 25px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Titles */
+h2 {
+  margin-top: 0;
 }
 
 /* Inputs */
 input, textarea {
   width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border-radius: 12px;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 10px;
   border: 1px solid rgba(255,255,255,0.35);
-  background: rgba(0,0,0,0.25);
+  background: rgba(0,0,0,0.35);
   color: white;
+  font-size: 14px;
 }
 
 /* Button */
 .btn {
   width: 100%;
-  padding: 12px;
-  margin-top: 15px;
-  background: rgba(255,255,255,0.25);
-  border: 1px solid rgba(255,255,255,0.3);
-  border-radius: 12px;
+  padding: 11px;
+  margin-top: 12px;
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 10px;
   cursor: pointer;
   color: white;
-  font-size: 16px;
+  font-size: 15px;
 }
 
-/* Product list */
+/* Product card */
 .product-card {
-  background: rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.6);
   backdrop-filter: blur(12px);
-  border-radius: 16px;
+  border-radius: 14px;
   border: 1px solid rgba(255,255,255,0.25);
-  padding: 20px;
-  margin-bottom: 15px;
+  padding: 15px;
+  margin-bottom: 10px;
+  font-size: 14px;
 }
 </style>
 </head>
@@ -102,20 +106,20 @@ input, textarea {
 
 <div class="container">
 
-  <!-- ثبت‌نام / ورود -->
+  <!-- ورود ساده -->
   <div class="glass" id="loginBox">
     <h2>ورود فروشنده</h2>
-    <p>برای ورود به پنل فروشنده، شماره موبایل را وارد کنید.</p>
+    <p>فقط شماره موبایل خود را وارد کنید تا وارد پنل شوید.</p>
     <input id="sellerPhone" placeholder="شماره موبایل">
-    <button class="btn" onclick="loginSeller()">ورود</button>
-    <p id="loginStatus" style="margin-top:10px;font-size:13px;"></p>
+    <button class="btn" onclick="loginSeller()">ورود به پنل</button>
+    <p id="loginStatus" style="margin-top:8px;font-size:13px;"></p>
   </div>
 
   <!-- داشبورد -->
   <div class="glass" id="dashboard" style="display:none;">
     <h2>داشبورد فروشنده</h2>
     <button class="btn" onclick="showAddProduct()">افزودن محصول جدید</button>
-    <button class="btn" onclick="showProducts()">محصولات من</button>
+    <button class="btn" onclick="showProducts()">مشاهده محصولات</button>
     <button class="btn" onclick="showSettings()">تنظیمات فروشگاه</button>
   </div>
 
@@ -123,19 +127,18 @@ input, textarea {
   <div class="glass" id="addProduct" style="display:none;">
     <h2>افزودن محصول</h2>
     <input id="pName" placeholder="نام محصول">
-    <input id="pPrice" placeholder="قیمت">
-    <input id="pImage" type="file">
-    <textarea id="pDesc" placeholder="توضیحات محصول"></textarea>
+    <input id="pPrice" placeholder="قیمت (تومان)">
+    <textarea id="pDesc" placeholder="توضیحات کوتاه محصول"></textarea>
     <button class="btn" onclick="saveProduct()">ثبت محصول</button>
-    <button class="btn" onclick="backDashboard()">بازگشت</button>
-    <p id="addStatus" style="margin-top:10px;font-size:13px;"></p>
+    <button class="btn" onclick="backDashboard()">بازگشت به داشبورد</button>
+    <p id="addStatus" style="margin-top:8px;font-size:13px;"></p>
   </div>
 
   <!-- لیست محصولات -->
   <div class="glass" id="productList" style="display:none;">
     <h2>محصولات من</h2>
     <div id="productsContainer"></div>
-    <button class="btn" onclick="backDashboard()">بازگشت</button>
+    <button class="btn" onclick="backDashboard()">بازگشت به داشبورد</button>
   </div>
 
   <!-- تنظیمات فروشگاه -->
@@ -147,8 +150,8 @@ input, textarea {
     <input id="sWhatsApp" placeholder="لینک واتساپ">
     <input id="sInsta" placeholder="آیدی اینستاگرام">
     <button class="btn" onclick="saveSettings()">ذخیره تنظیمات</button>
-    <button class="btn" onclick="backDashboard()">بازگشت</button>
-    <p id="setStatus" style="margin-top:10px;font-size:13px;"></p>
+    <button class="btn" onclick="backDashboard()">بازگشت به داشبورد</button>
+    <p id="setStatus" style="margin-top:8px;font-size:13px;"></p>
   </div>
 
 </div>
@@ -162,12 +165,12 @@ function loginSeller() {
   const status = document.getElementById("loginStatus");
 
   if (!phone) {
-    status.textContent = "شماره موبایل را وارد کنید.";
+    status.textContent = "لطفاً شماره موبایل را وارد کنید.";
     return;
   }
 
   sellerLogged = true;
-  status.textContent = "ورود موفق!";
+  status.textContent = "ورود موفق! شما وارد پنل شدید.";
   document.getElementById("loginBox").style.display = "none";
   document.getElementById("dashboard").style.display = "block";
 }
@@ -184,12 +187,17 @@ function showProducts() {
   const container = document.getElementById("productsContainer");
   container.innerHTML = "";
 
+  if (products.length === 0) {
+    container.innerHTML = "<p>هنوز محصولی ثبت نشده.</p>";
+    return;
+  }
+
   products.forEach(p => {
     container.innerHTML += `
       <div class="product-card">
-        <h3>${p.name}</h3>
-        <p>قیمت: ${p.price}</p>
-        <p>${p.desc}</p>
+        <strong>${p.name}</strong><br>
+        قیمت: ${p.price} تومان<br>
+        <span>${p.desc}</span>
       </div>
     `;
   });
@@ -207,17 +215,20 @@ function saveProduct() {
   const status = document.getElementById("addStatus");
 
   if (!name || !price) {
-    status.textContent = "نام و قیمت محصول لازم است.";
+    status.textContent = "نام و قیمت محصول الزامی است.";
     return;
   }
 
   products.push({ name, price, desc });
-  status.textContent = "محصول ثبت شد!";
+  status.textContent = "محصول با موفقیت ثبت شد.";
+  document.getElementById("pName").value = "";
+  document.getElementById("pPrice").value = "";
+  document.getElementById("pDesc").value = "";
 }
 
 function saveSettings() {
   const status = document.getElementById("setStatus");
-  status.textContent = "تنظیمات ذخیره شد!";
+  status.textContent = "تنظیمات فروشگاه ذخیره شد (دمو).";
 }
 
 function backDashboard() {
