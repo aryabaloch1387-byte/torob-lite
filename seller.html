@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>پنل فروشنده TorobLite</title>
+
+<style>
+    body {
+        font-family: sans-serif;
+        background: #f5f7fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 90%;
+        margin: auto;
+        padding-top: 20px;
+    }
+
+    .card {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px #0001;
+        margin-bottom: 20px;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #00d4ff;
+        border: none;
+        border-radius: 8px;
+        margin-top: 15px;
+        font-size: 16px;
+        color: #fff;
+    }
+
+    .hidden { display: none; }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- صفحه ورود -->
+    <div id="loginPage" class="card">
+        <h3>ورود فروشنده</h3>
+        <input type="text" id="phone" placeholder="شماره موبایل">
+        <button onclick="login()">دریافت کد تأیید</button>
+    </div>
+
+    <!-- داشبورد -->
+    <div id="dashboard" class="card hidden">
+        <h3>داشبورد فروشنده</h3>
+        <button onclick="showAddProduct()">افزودن محصول جدید</button>
+        <button onclick="showProducts()">محصولات من</button>
+        <button onclick="showSettings()">تنظیمات فروشگاه</button>
+    </div>
+
+    <!-- افزودن محصول -->
+    <div id="addProduct" class="card hidden">
+        <h3>افزودن محصول</h3>
+        <input type="text" placeholder="نام محصول">
+        <input type="number" placeholder="قیمت">
+        <input type="file">
+        <textarea placeholder="توضیحات"></textarea>
+        <button>ثبت محصول</button>
+        <button onclick="backToDashboard()">بازگشت</button>
+    </div>
+
+    <!-- لیست محصولات -->
+    <div id="productList" class="card hidden">
+        <h3>محصولات من</h3>
+        <p>اینجا محصولات نمایش داده می‌شود...</p>
+        <button onclick="backToDashboard()">بازگشت</button>
+    </div>
+
+    <!-- تنظیمات فروشگاه -->
+    <div id="settings" class="card hidden">
+        <h3>تنظیمات فروشگاه</h3>
+        <input type="text" placeholder="نام فروشگاه">
+        <input type="text" placeholder="آدرس (اختیاری)">
+        <input type="text" placeholder="شماره تماس">
+        <input type="text" placeholder="لینک واتساپ">
+        <input type="text" placeholder="آیدی اینستاگرام">
+        <button>ذخیره تنظیمات</button>
+        <button onclick="backToDashboard()">بازگشت</button>
+    </div>
+
+</div>
+
+<script>
+function login() {
+    document.getElementById("loginPage").classList.add("hidden");
+    document.getElementById("dashboard").classList.remove("hidden");
+}
+
+function showAddProduct() {
+    hideAll();
+    document.getElementById("addProduct").classList.remove("hidden");
+}
+
+function showProducts() {
+    hideAll();
+    document.getElementById("productList").classList.remove("hidden");
+}
+
+function showSettings() {
+    hideAll();
+    document.getElementById("settings").classList.remove("hidden");
+}
+
+function backToDashboard() {
+    hideAll();
+    document.getElementById("dashboard").classList.remove("hidden");
+}
+
+function hideAll() {
+    document.getElementById("dashboard").classList.add("hidden");
+    document.getElementById("addProduct").classList.add("hidden");
+    document.getElementById("productList").classList.add("hidden");
+    document.getElementById("settings").classList.add("hidden");
+}
+</script>
+
+</body>
+</html>
