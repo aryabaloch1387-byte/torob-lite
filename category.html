@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دسته‌بندی‌ها | TorobLite VIP</title>
+
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/iransansx@v1.0.0/dist/font-face.css" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  background: #f5f5f5;
+  font-family: 'IRANSansX', sans-serif;
+  color: #333;
+}
+
+/* هدر */
+header {
+  background: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+header .logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #444;
+}
+
+header a {
+  text-decoration: none;
+  color: #444;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* محتوا */
+.container {
+  padding: 100px 20px 40px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* باکس دسته‌بندی */
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.cat-item {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.cat-item:hover {
+  background: #f0f0f0;
+}
+
+/* فوتر */
+footer {
+  margin-top: 40px;
+  background: #fff;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #e0e0e0;
+  color: #777;
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">TorobLite VIP</div>
+  <a href="index.html">بازگشت</a>
+</header>
+
+<div class="container">
+
+  <div class="title">دسته‌بندی‌ها</div>
+
+  <div class="cat-grid">
+    <a class="cat-item" href="products.html?cat=mobile">موبایل و تبلت</a>
+    <a class="cat-item" href="products.html?cat=laptop">لپ‌تاپ و کامپیوتر</a>
+    <a class="cat-item" href="products.html?cat=home">لوازم خانگی</a>
+    <a class="cat-item" href="products.html?cat=fashion">پوشاک و مد</a>
+    <a class="cat-item" href="products.html?cat=beauty">زیبایی و سلامت</a>
+    <a class="cat-item" href="products.html?cat=sport">ورزشی و سرگرمی</a>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 TorobLite — All Rights Reserved
+</footer>
+
+</body>
+</html>
