@@ -54,11 +54,6 @@ header a {
   margin-bottom: 20px;
 }
 
-/* Titles */
-h2 {
-  margin-top: 0;
-}
-
 /* Inputs */
 input, textarea {
   width: 100%;
@@ -106,12 +101,12 @@ input, textarea {
 
 <div class="container">
 
-  <!-- ورود ساده -->
+  <!-- ورود -->
   <div class="glass" id="loginBox">
     <h2>ورود فروشنده</h2>
-    <p>فقط شماره موبایل خود را وارد کنید تا وارد پنل شوید.</p>
-    <input id="sellerPhone" placeholder="شماره موبایل">
-    <button class="btn" onclick="loginSeller()">ورود به پنل</button>
+    <p>شماره موبایل خود را وارد کنید:</p>
+    <input id="sellerPhone" placeholder="+98xxxxxxxxxx">
+    <button class="btn" onclick="loginSeller()">ارسال کد تایید</button>
     <p id="loginStatus" style="margin-top:8px;font-size:13px;"></p>
   </div>
 
@@ -128,9 +123,9 @@ input, textarea {
     <h2>افزودن محصول</h2>
     <input id="pName" placeholder="نام محصول">
     <input id="pPrice" placeholder="قیمت (تومان)">
-    <textarea id="pDesc" placeholder="توضیحات کوتاه محصول"></textarea>
+    <textarea id="pDesc" placeholder="توضیحات محصول"></textarea>
     <button class="btn" onclick="saveProduct()">ثبت محصول</button>
-    <button class="btn" onclick="backDashboard()">بازگشت به داشبورد</button>
+    <button class="btn" onclick="backDashboard()">بازگشت</button>
     <p id="addStatus" style="margin-top:8px;font-size:13px;"></p>
   </div>
 
@@ -138,76 +133,88 @@ input, textarea {
   <div class="glass" id="productList" style="display:none;">
     <h2>محصولات من</h2>
     <div id="productsContainer"></div>
-    <button class="btn" onclick="backDashboard()">بازگشت به داشبورد</button>
+    <button class="btn" onclick="backDashboard()">بازگشت</button>
   </div>
 
-  <!-- تنظیمات فروشگاه -->
+  <!-- تنظیمات -->
   <div class="glass" id="settings" style="display:none;">
     <h2>تنظیمات فروشگاه</h2>
     <input id="sName" placeholder="نام فروشگاه">
-    <input id="sAddress" placeholder="آدرس (اختیاری)">
+    <input id="sAddress" placeholder="آدرس">
     <input id="sPhone" placeholder="شماره تماس">
-    <input id="sWhatsApp" placeholder="لینک واتساپ">
-    <input id="sInsta" placeholder="آیدی اینستاگرام">
-    <button class="btn" onclick="saveSettings()">ذخیره تنظیمات</button>
-    <button class="btn" onclick="backDashboard()">بازگشت به داشبورد</button>
+    <input id="sWhatsApp" placeholder="واتساپ">
+    <input id="sInsta" placeholder="اینستاگرام">
+    <button class="btn" onclick="saveSettings()">ذخیره</button>
+    <button class="btn" onclick="backDashboard()">بازگشت</button>
     <p id="setStatus" style="margin-top:8px;font-size:13px;"></p>
   </div>
 
 </div>
 
-<script>
-let sellerLogged = false;
-let products = [];
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
 
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyCS_RnFJHdoHxcdCuhG6MKjS1ZeOeEiJ2s",
+  authDomain: "toroblite.firebaseapp.com",
+  projectId: "toroblite",
+  storageBucket: "toroblite.firebasestorage.app",
+  messagingSenderId: "117804583618",
+  appId: "1:117804583618:web:4d84234cc0a0c22388c95b"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+/* ورود با OTP */
 function loginSeller() {
   const phone = document.getElementById("sellerPhone").value;
   const status = document.getElementById("loginStatus");
 
   if (!phone) {
-    status.textContent = "لطفاً شماره موبایل را وارد کنید.";
+    status.textContent = "شماره موبایل را وارد کنید.";
     return;
   }
 
-  sellerLogged = true;
-  status.textContent = "ورود موفق! شما وارد پنل شدید.";
-  document.getElementById("loginBox").style.display = "none";
-  document.getElementById("dashboard").style.display = "block";
-}
-
-function showAddProduct() {
-  hideAll();
-  document.getElementById("addProduct").style.display = "block";
-}
-
-function showProducts() {
-  hideAll();
-  document.getElementById("productList").style.display = "block";
-
-  const container = document.getElementById("productsContainer");
-  container.innerHTML = "";
-
-  if (products.length === 0) {
-    container.innerHTML = "<p>هنوز محصولی ثبت نشده.</p>";
-    return;
-  }
-
-  products.forEach(p => {
-    container.innerHTML += `
-      <div class="product-card">
-        <strong>${p.name}</strong><br>
-        قیمت: ${p.price} تومان<br>
-        <span>${p.desc}</span>
-      </div>
-    `;
+  window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('loginBox', {
+    size: 'invisible'
   });
+
+  auth.signInWithPhoneNumber(phone, window.recaptchaVerifier)
+    .then(confirmationResult => {
+      window.confirmationResult = confirmationResult;
+      status.innerHTML = `
+        کد تایید ارسال شد.<br>
+        <input id="otpCode" placeholder="کد تایید">
+        <button class="btn" onclick="verifyOTP()">تایید کد</button>
+      `;
+    })
+    .catch(err => {
+      status.textContent = "خطا: " + err.message;
+    });
 }
 
-function showSettings() {
-  hideAll();
-  document.getElementById("settings").style.display = "block";
+function verifyOTP() {
+  const code = document.getElementById("otpCode").value;
+  const status = document.getElementById("loginStatus");
+
+  confirmationResult.confirm(code)
+    .then(result => {
+      status.textContent = "ورود موفق!";
+      document.getElementById("loginBox").style.display = "none";
+      document.getElementById("dashboard").style.display = "block";
+    })
+    .catch(err => {
+      status.textContent = "کد اشتباه است.";
+    });
 }
 
+/* افزودن محصول */
 function saveProduct() {
   const name = document.getElementById("pName").value;
   const price = document.getElementById("pPrice").value;
@@ -215,31 +222,87 @@ function saveProduct() {
   const status = document.getElementById("addStatus");
 
   if (!name || !price) {
-    status.textContent = "نام و قیمت محصول الزامی است.";
+    status.textContent = "نام و قیمت لازم است.";
     return;
   }
 
-  products.push({ name, price, desc });
-  status.textContent = "محصول با موفقیت ثبت شد.";
-  document.getElementById("pName").value = "";
-  document.getElementById("pPrice").value = "";
-  document.getElementById("pDesc").value = "";
+  db.collection("products").add({
+    name,
+    price,
+    desc,
+    seller: auth.currentUser.phoneNumber,
+    createdAt: Date.now()
+  }).then(() => {
+    status.textContent = "محصول ثبت شد.";
+  });
 }
 
+/* نمایش محصولات */
+function showProducts() {
+  hideAll();
+  document.getElementById("productList").style.display = "block";
+
+  const container = document.getElementById("productsContainer");
+  container.innerHTML = "در حال بارگذاری...";
+
+  db.collection("products")
+    .where("seller", "==", auth.currentUser.phoneNumber)
+    .get()
+    .then(snapshot => {
+      container.innerHTML = "";
+      if (snapshot.empty) {
+        container.innerHTML = "<p>محصولی ثبت نشده.</p>";
+        return;
+      }
+
+      snapshot.forEach(doc => {
+        const p = doc.data();
+        container.innerHTML += `
+          <div class="product-card">
+            <strong>${p.name}</strong><br>
+            قیمت: ${p.price} تومان<br>
+            ${p.desc}
+          </div>
+        `;
+      });
+    });
+}
+
+/* تنظیمات فروشگاه */
 function saveSettings() {
   const status = document.getElementById("setStatus");
-  status.textContent = "تنظیمات فروشگاه ذخیره شد (دمو).";
+
+  db.collection("stores").doc(auth.currentUser.phoneNumber).set({
+    name: document.getElementById("sName").value,
+    address: document.getElementById("sAddress").value,
+    phone: document.getElementById("sPhone").value,
+    whatsapp: document.getElementById("sWhatsApp").value,
+    insta: document.getElementById("sInsta").value
+  }).then(() => {
+    status.textContent = "تنظیمات ذخیره شد.";
+  });
+}
+
+/* مدیریت نمایش */
+function hideAll() {
+  document.getElementById("addProduct").style.display = "none";
+  document.getElementById("productList").style.display = "none";
+  document.getElementById("settings").style.display = "none";
+}
+
+function showAddProduct() {
+  hideAll();
+  document.getElementById("addProduct").style.display = "block";
+}
+
+function showSettings() {
+  hideAll();
+  document.getElementById("settings").style.display = "block";
 }
 
 function backDashboard() {
   hideAll();
   document.getElementById("dashboard").style.display = "block";
-}
-
-function hideAll() {
-  document.getElementById("addProduct").style.display = "none";
-  document.getElementById("productList").style.display = "none";
-  document.getElementById("settings").style.display = "none";
 }
 </script>
 
