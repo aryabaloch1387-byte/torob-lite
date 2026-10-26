@@ -3,163 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TorobLite VIP SPA</title>
+<title>TorobLite VIP</title>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/iransansx@v1.0.0/dist/font-face.css" rel="stylesheet">
 
 <style>
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1400&q=80') no-repeat center/cover;
-  backdrop-filter: blur(8px);
-  color: white;
-  scroll-behavior: smooth;
+  background: #f5f5f5;
+  font-family: 'IRANSansX', sans-serif;
+  color: #333;
 }
 
+/* هدر حرفه‌ای */
 header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 15px 25px;
+  background: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,0.2);
+  position: fixed;
+  top: 0;
+  width: 100%;
   z-index: 1000;
 }
 
-.nav-links {
-  display: flex;
-  gap: 15px;
+header .logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #444;
 }
 
-.nav-links button {
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.3);
-  border-radius: 10px;
-  color: white;
-  padding: 6px 12px;
-  cursor: pointer;
-  font-size: 13px;
-}
-
-section {
-  padding: 80px 25px 60px;
+header nav a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: #444;
+  font-size: 15px;
+  font-weight: 500;
 }
 
 .hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-shadow: 0 0 20px rgba(0,0,0,0.5);
+  margin-top: 80px;
+  background: #fff;
+  padding: 30px 20px;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .hero h1 {
-  font-size: 40px;
-  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 
 .hero p {
-  font-size: 18px;
-  margin-top: 10px;
+  font-size: 15px;
+  color: #666;
 }
 
-.btn {
-  margin-top: 25px;
-  padding: 12px 25px;
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.3);
-  font-size: 16px;
-  cursor: pointer;
+.btn-main {
+  background: #ff3b3b;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 15px;
+  display: inline-block;
+  margin-top: 15px;
 }
 
-.glass-block {
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(12px);
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.25);
-  padding: 25px;
-  margin-bottom: 20px;
-}
-
-.products-grid {
-  display: grid;
-  gap: 20px;
-}
-
-.product-card {
-  background: rgba(255,255,255,0.18);
-  backdrop-filter: blur(12px);
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.25);
+/* دسته‌بندی‌ها */
+.categories {
   padding: 20px;
 }
 
-.dashboard-grid {
+.cat-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.cat-grid {
   display: grid;
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
 }
 
-input, select, textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 8px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.4);
-  background: rgba(0,0,0,0.2);
-  color: white;
-}
-
-.login-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 3000;
-}
-
-.login-box {
-  width: 90%;
-  max-width: 350px;
-  background: rgba(255,255,255,0.18);
-  backdrop-filter: blur(15px);
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.3);
-  padding: 25px;
-}
-
-.footer {
-  padding: 30px 25px;
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(255,255,255,0.25);
+.cat-item {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* فوتر */
+footer {
   margin-top: 40px;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin: 15px 0;
-}
-
-.footer-links a {
-  color: white;
-  text-decoration: none;
+  background: #fff;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #e0e0e0;
+  color: #777;
   font-size: 14px;
-  padding: 6px 10px;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.25);
 }
 </style>
 </head>
@@ -167,188 +118,36 @@ input, select, textarea {
 <body>
 
 <header>
-  <div>TorobLite</div>
-  <div class="nav-links">
-    <button onclick="showSection('hero')">خانه</button>
-    <button onclick="showSection('products')">فروش محصول</button>
-    <button onclick="showSection('orders')">فرم سفارش</button>
-    <button onclick="showSection('dashboard')">داشبورد</button>
-    <button onclick="showSection('about')">درباره ما</button>
-    <button onclick="showSection('contact')">تماس</button>
-
-    <!-- لینک ورود فروشنده -->
-    <button onclick="window.location.href='seller.html'">ورود فروشنده</button>
-
-    <button onclick="openLogin()">لاگین</button>
-  </div>
+  <div class="logo">TorobLite VIP</div>
+  <nav>
+    <a href="products.html">محصولات</a>
+    <a href="order.html">سفارش</a>
+    <a href="seller.html">داشبورد فروشنده</a>
+  </nav>
 </header>
 
-<div class="login-modal" id="loginModal">
-  <div class="login-box">
-    <h2>ورود VIP</h2>
-    <p>برای ورود به داشبورد مدیریتی، اطلاعات زیر را وارد کنید.</p>
-    <input id="loginUser" placeholder="نام کاربری">
-    <input id="loginPass" type="password" placeholder="رمز عبور">
-    <button class="btn" onclick="doLogin()">ورود</button>
-    <button class="btn" style="margin-top:10px;background:rgba(255,0,0,0.4)" onclick="closeLogin()">بستن</button>
-    <p id="loginStatus" style="margin-top:10px;font-size:13px;"></p>
+<div class="hero">
+  <h1>TorobLite VIP</h1>
+  <p>سایت معتبر، تمیز، حرفه‌ای با دسته‌بندی و ظاهر استاندارد فروشگاهی</p>
+  <a class="btn-main" href="products.html">مشاهده محصولات</a>
+</div>
+
+<div class="categories">
+  <div class="cat-title">دسته‌بندی‌ها</div>
+
+  <div class="cat-grid">
+    <div class="cat-item">موبایل و تبلت</div>
+    <div class="cat-item">لپ‌تاپ و کامپیوتر</div>
+    <div class="cat-item">لوازم خانگی</div>
+    <div class="cat-item">پوشاک و مد</div>
+    <div class="cat-item">زیبایی و سلامت</div>
+    <div class="cat-item">ورزشی و سرگرمی</div>
   </div>
 </div>
 
-<section class="hero" id="hero">
-  <h1>TorobLite VIP</h1>
-  <p>سایت شیشه‌ای، مدرن، با داشبورد، فروش محصول و فرم سفارش.</p>
-  <button class="btn" onclick="showSection('products')">برو به محصولات</button>
-</section>
-
-<section id="products">
-  <h2>فروش محصول VIP</h2>
-  <div class="products-grid">
-    <div class="product-card">
-      <h3>محصول VIP ۱</h3>
-      <p>توضیحات کوتاه محصول اول.</p>
-      <p>قیمت: ۲۵۰٬۰۰۰ تومان</p>
-      <button class="btn" onclick="selectProduct('محصول VIP ۱')">انتخاب محصول</button>
-    </div>
-    <div class="product-card">
-      <h3>محصول VIP ۲</h3>
-      <p>توضیحات کوتاه محصول دوم.</p>
-      <p>قیمت: ۳۵۰٬۰۰۰ تومان</p>
-      <button class="btn" onclick="selectProduct('محصول VIP ۲')">انتخاب محصول</button>
-    </div>
-  </div>
-</section>
-
-<section id="orders">
-  <h2>فرم سفارش</h2>
-  <div class="glass-block">
-    <label>نام کامل</label>
-    <input id="orderName" placeholder="نام و نام خانوادگی">
-    <label>شماره تماس</label>
-    <input id="orderPhone" placeholder="شماره موبایل">
-    <label>محصول انتخاب‌شده</label>
-    <input id="orderProduct" placeholder="محصول" readonly>
-    <label>توضیحات</label>
-    <textarea id="orderNote" rows="3" placeholder="توضیحات سفارش"></textarea>
-    <button class="btn" onclick="sendOrder()">ارسال سفارش</button>
-    <p id="orderStatus" style="margin-top:10px;font-size:13px;"></p>
-  </div>
-</section>
-
-<section id="dashboard" style="display:none;">
-  <h2>داشبورد مدیریتی شیشه‌ای</h2>
-  <div class="dashboard-grid">
-    <div class="glass-block">
-      <h3>سفارش‌های اخیر</h3>
-      <p id="dashboardOrders">هنوز سفارشی ثبت نشده.</p>
-    </div>
-    <div class="glass-block">
-      <h3>اتصال به API</h3>
-      <p>نمونهٔ درخواست:</p>
-      <button class="btn" onclick="testAPI()">ارسال درخواست تست</button>
-      <p id="apiStatus" style="margin-top:10px;font-size:13px;"></p>
-    </div>
-    <div class="glass-block">
-      <h3>اتصال به دیتابیس (آماده‌سازی)</h3>
-      <p>در پروژه واقعی، این بخش به دیتابیس وصل می‌شود.</p>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <h2>درباره ما</h2>
-  <div class="glass-block">
-    <p>
-      TorobLite یک سرویس طراحی VIP است که ظاهر شیشه‌ای، سرعت بالا و تجربه کاربری حرفه‌ای
-      را برای کسب‌وکارهای آنلاین فراهم می‌کند.
-    </p>
-  </div>
-</section>
-
-<section id="contact">
-  <h2>تماس با ما</h2>
-  <div class="glass-block">
-    <p>برای ارتباط با ما:</p>
-    <a href="mailto:info@toroblite.ir">ایمیل: info@toroblite.ir</a><br>
-    <a href="tel:+989000000000">شماره تماس: 09000000000</a>
-  </div>
-</section>
-
-<footer class="footer">
-  <div>TorobLite — سایت VIP شیشه‌ای با داشبورد و فرم سفارش</div>
-  <div class="footer-links">
-    <a href="#hero">خانه</a>
-    <a href="#products">محصولات</a>
-    <a href="#orders">سفارش</a>
-    <a href="#dashboard">داشبورد</a>
-  </div>
-  <div>© 2026 TorobLite — All Rights Reserved</div>
+<footer>
+  © 2026 TorobLite — All Rights Reserved
 </footer>
-
-<script>
-gsap.from(".hero h1", { y: -30, opacity: 0, duration: 1 });
-gsap.from(".hero p", { y: 30, opacity: 0, duration: 1, delay: 0.3 });
-
-function showSection(id) {
-  const sections = ["hero","products","orders","dashboard","about","contact"];
-  sections.forEach(s => {
-    document.getElementById(s).style.display = (s === id) ? "block" : (s === "hero" ? "flex" : "none");
-  });
-}
-
-function openLogin() {
-  document.getElementById("loginModal").style.display = "flex";
-}
-function closeLogin() {
-  document.getElementById("loginModal").style.display = "none";
-}
-
-let isLoggedIn = false;
-function doLogin() {
-  const user = document.getElementById("loginUser").value;
-  const pass = document.getElementById("loginPass").value;
-  const status = document.getElementById("loginStatus");
-  if (user && pass) {
-    isLoggedIn = true;
-    status.textContent = "ورود موفق! داشبورد فعال شد.";
-    showSection("dashboard");
-    closeLogin();
-  } else {
-    status.textContent = "لطفاً نام کاربری و رمز را وارد کنید.";
-  }
-}
-
-function selectProduct(name) {
-  document.getElementById("orderProduct").value = name;
-  showSection("orders");
-}
-
-let orders = [];
-function sendOrder() {
-  const name = document.getElementById("orderName").value;
-  const phone = document.getElementById("orderPhone").value;
-  const product = document.getElementById("orderProduct").value;
-  const note = document.getElementById("orderNote").value;
-  const status = document.getElementById("orderStatus");
-
-  if (!name || !phone || !product) {
-    status.textContent = "لطفاً همه فیلدهای لازم را پر کنید.";
-    return;
-  }
-
-  const order = { name, phone, product, note, time: new Date().toLocaleString() };
-  orders.push(order);
-  status.textContent = "سفارش ثبت شد.";
-
-  const dash = document.getElementById("dashboardOrders");
-  dash.textContent = orders.map(o => `${o.time} - ${o.name} - ${o.product}`).join(" | ");
-}
-
-function testAPI() {
-  const status = document.getElementById("apiStatus");
-  status.textContent = "درخواست تست ارسال شد.";
-}
-</script>
 
 </body>
 </html>
