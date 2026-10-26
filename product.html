@@ -1,19 +1,174 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-    <meta charset="UTF-8">
-    <title>جزئیات کالا</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>محصولات | TorobLite VIP</title>
+
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/iransansx@v1.0.0/dist/font-face.css" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  background: #f5f5f5;
+  font-family: 'IRANSansX', sans-serif;
+  color: #333;
+}
+
+/* هدر */
+header {
+  background: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+header .logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #444;
+}
+
+header a {
+  text-decoration: none;
+  color: #444;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* محتوا */
+.container {
+  padding: 100px 20px 40px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+/* کارت محصول */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.product-card:hover {
+  background: #f0f0f0;
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.product-card .name {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.product-card .price {
+  color: #ff3b3b;
+  font-weight: 700;
+  margin-top: 5px;
+}
+
+/* فوتر */
+footer {
+  margin-top: 40px;
+  background: #fff;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #e0e0e0;
+  color: #777;
+  font-size: 14px;
+}
+</style>
 </head>
+
 <body>
 
-<div id="productBox"></div>
+<header>
+  <div class="logo">TorobLite VIP</div>
+  <a href="index.html">بازگشت</a>
+</header>
 
-<script src="app.js"></script>
+<div class="container">
+
+  <div class="title">محصولات</div>
+  <div class="subtitle" id="catName">در حال بارگذاری دسته…</div>
+
+  <div class="product-grid" id="productList">
+    <!-- محصولات اینجا قرار می‌گیرند -->
+  </div>
+
+</div>
+
+<footer>
+  © 2026 TorobLite — All Rights Reserved
+</footer>
+
 <script>
 const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
-loadProduct(id);
+const cat = params.get("cat");
+
+const catNames = {
+  mobile: "موبایل و تبلت",
+  laptop: "لپ‌تاپ و کامپیوتر",
+  home: "لوازم خانگی",
+  fashion: "پوشاک و مد",
+  beauty: "زیبایی و سلامت",
+  sport: "ورزشی و سرگرمی"
+};
+
+document.getElementById("catName").textContent = catNames[cat] || "همه محصولات";
+
+const products = [
+  {name: "گوشی سامسونگ A14", price: "7,800,000", img: "https://via.placeholder.com/300"},
+  {name: "لپ‌تاپ لنوو i5", price: "22,500,000", img: "https://via.placeholder.com/300"},
+  {name: "جاروبرقی پاناسونیک", price: "4,200,000", img: "https://via.placeholder.com/300"},
+  {name: "کفش اسپرت نایک", price: "1,300,000", img: "https://via.placeholder.com/300"},
+  {name: "کرم آبرسان نیوا", price: "180,000", img: "https://via.placeholder.com/300"},
+  {name: "توپ فوتبال آدیداس", price: "350,000", img: "https://via.placeholder.com/300"}
+];
+
+const list = document.getElementById("productList");
+
+products.forEach(p => {
+  list.innerHTML += `
+    <div class="product-card">
+      <img src="${p.img}">
+      <div class="name">${p.name}</div>
+      <div class="price">${p.price} تومان</div>
+    </div>
+  `;
+});
 </script>
 
 </body>
