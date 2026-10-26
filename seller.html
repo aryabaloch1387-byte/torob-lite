@@ -103,6 +103,9 @@ input, textarea {
     <p id="loginStatus" style="margin-top:8px;font-size:13px;"></p>
   </div>
 
+  <!-- Recaptcha container -->
+  <div id="recaptcha-container"></div>
+
   <div class="glass" id="dashboard" style="display:none;">
     <h2>داشبورد فروشنده</h2>
     <button class="btn" onclick="showAddProduct()">افزودن محصول جدید</button>
@@ -161,7 +164,7 @@ function loginSeller() {
     return;
   }
 
-  window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('loginBox', {
+  window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
     size: 'invisible'
   });
 
