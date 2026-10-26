@@ -14,7 +14,6 @@ body {
   color: white;
 }
 
-/* Header */
 header {
   position: fixed;
   top: 0;
@@ -39,12 +38,10 @@ header a {
   font-size: 13px;
 }
 
-/* Container */
 .container {
   padding: 100px 20px 40px;
 }
 
-/* Glass block */
 .glass {
   background: rgba(0,0,0,0.55);
   backdrop-filter: blur(14px);
@@ -54,7 +51,6 @@ header a {
   margin-bottom: 20px;
 }
 
-/* Inputs */
 input, textarea {
   width: 100%;
   padding: 10px;
@@ -66,7 +62,6 @@ input, textarea {
   font-size: 14px;
 }
 
-/* Button */
 .btn {
   width: 100%;
   padding: 11px;
@@ -79,7 +74,6 @@ input, textarea {
   font-size: 15px;
 }
 
-/* Product card */
 .product-card {
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(12px);
@@ -101,7 +95,6 @@ input, textarea {
 
 <div class="container">
 
-  <!-- ورود -->
   <div class="glass" id="loginBox">
     <h2>ورود فروشنده</h2>
     <p>شماره موبایل خود را وارد کنید:</p>
@@ -110,7 +103,6 @@ input, textarea {
     <p id="loginStatus" style="margin-top:8px;font-size:13px;"></p>
   </div>
 
-  <!-- داشبورد -->
   <div class="glass" id="dashboard" style="display:none;">
     <h2>داشبورد فروشنده</h2>
     <button class="btn" onclick="showAddProduct()">افزودن محصول جدید</button>
@@ -118,7 +110,6 @@ input, textarea {
     <button class="btn" onclick="showSettings()">تنظیمات فروشگاه</button>
   </div>
 
-  <!-- افزودن محصول -->
   <div class="glass" id="addProduct" style="display:none;">
     <h2>افزودن محصول</h2>
     <input id="pName" placeholder="نام محصول">
@@ -129,14 +120,12 @@ input, textarea {
     <p id="addStatus" style="margin-top:8px;font-size:13px;"></p>
   </div>
 
-  <!-- لیست محصولات -->
   <div class="glass" id="productList" style="display:none;">
     <h2>محصولات من</h2>
     <div id="productsContainer"></div>
     <button class="btn" onclick="backDashboard()">بازگشت</button>
   </div>
 
-  <!-- تنظیمات -->
   <div class="glass" id="settings" style="display:none;">
     <h2>تنظیمات فروشگاه</h2>
     <input id="sName" placeholder="نام فروشگاه">
@@ -151,27 +140,18 @@ input, textarea {
 
 </div>
 
-<!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
 
-<script>
-const firebaseConfig = {
-  apiKey: "AIzaSyCS_RnFJHdoHxcdCuhG6MKjS1ZeOeEiJ2s",
-  authDomain: "toroblite.firebaseapp.com",
-  projectId: "toroblite",
-  storageBucket: "toroblite.firebasestorage.app",
-  messagingSenderId: "117804583618",
-  appId: "1:117804583618:web:4d84234cc0a0c22388c95b"
-};
+<script src="firebase-config.js"></script>
 
+<script>
 firebase.initializeApp(firebaseConfig);
 
 const auth = firebase.auth();
 const db = firebase.firestore();
 
-/* ورود با OTP */
 function loginSeller() {
   const phone = document.getElementById("sellerPhone").value;
   const status = document.getElementById("loginStatus");
@@ -214,7 +194,6 @@ function verifyOTP() {
     });
 }
 
-/* افزودن محصول */
 function saveProduct() {
   const name = document.getElementById("pName").value;
   const price = document.getElementById("pPrice").value;
@@ -237,7 +216,6 @@ function saveProduct() {
   });
 }
 
-/* نمایش محصولات */
 function showProducts() {
   hideAll();
   document.getElementById("productList").style.display = "block";
@@ -268,7 +246,6 @@ function showProducts() {
     });
 }
 
-/* تنظیمات فروشگاه */
 function saveSettings() {
   const status = document.getElementById("setStatus");
 
@@ -283,7 +260,6 @@ function saveSettings() {
   });
 }
 
-/* مدیریت نمایش */
 function hideAll() {
   document.getElementById("addProduct").style.display = "none";
   document.getElementById("productList").style.display = "none";
