@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ثبت سفارش | TorobLite VIP</title>
+
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/iransansx@v1.0.0/dist/font-face.css" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  background: #f5f5f5;
+  font-family: 'IRANSansX', sans-serif;
+  color: #333;
+}
+
+/* هدر */
+header {
+  background: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+header .logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #444;
+}
+
+header a {
+  text-decoration: none;
+  color: #444;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* محتوا */
+.container {
+  padding: 100px 20px 40px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+/* فرم */
+.form-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  font-family: 'IRANSansX';
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: #ff3b3b;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* فوتر */
+footer {
+  margin-top: 40px;
+  background: #fff;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #e0e0e0;
+  color: #777;
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">TorobLite VIP</div>
+  <a href="index.html">بازگشت</a>
+</header>
+
+<div class="container">
+
+  <div class="title">ثبت سفارش</div>
+  <div class="subtitle">اطلاعات خود را وارد کنید تا سفارش شما ثبت شود</div>
+
+  <div class="form-box">
+
+    <input id="name" placeholder="نام و نام خانوادگی">
+    <input id="phone" placeholder="شماره تماس">
+    <input id="address" placeholder="آدرس کامل">
+    <select id="product">
+      <option value="">انتخاب محصول</option>
+      <option>گوشی سامسونگ A14</option>
+      <option>لپ‌تاپ لنوو i5</option>
+      <option>جاروبرقی پاناسونیک</option>
+      <option>کفش اسپرت نایک</option>
+      <option>کرم آبرسان نیوا</option>
+      <option>توپ فوتبال آدیداس</option>
+    </select>
+
+    <textarea id="desc" placeholder="توضیحات سفارش (اختیاری)"></textarea>
+
+    <button class="btn" onclick="submitOrder()">ثبت سفارش</button>
+
+    <p id="status" style="margin-top:10px;color:#555;font-size:14px;"></p>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 TorobLite — All Rights Reserved
+</footer>
+
+<script>
+function submitOrder() {
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+  const product = document.getElementById("product").value;
+  const desc = document.getElementById("desc").value;
+  const status = document.getElementById("status");
+
+  if (!name || !phone || !address || !product) {
+    status.textContent = "لطفاً تمام فیلدهای ضروری را پر کنید.";
+    return;
+  }
+
+  status.textContent = "سفارش شما با موفقیت ثبت شد.";
+}
+</script>
+
+</body>
+</html>
