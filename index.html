@@ -15,7 +15,7 @@ body {
   color: #333;
 }
 
-/* هدر حرفه‌ای */
+/* هدر */
 header {
   background: #ffffff;
   border-bottom: 1px solid #e0e0e0;
@@ -43,6 +43,7 @@ header nav a {
   font-weight: 500;
 }
 
+/* هیرو */
 .hero {
   margin-top: 80px;
   background: #fff;
@@ -100,6 +101,11 @@ header nav a {
   font-size: 15px;
   font-weight: 500;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+.cat-item:hover {
+  background: #f0f0f0;
 }
 
 /* فوتر */
@@ -120,6 +126,7 @@ footer {
 <header>
   <div class="logo">TorobLite VIP</div>
   <nav>
+    <a href="category.html">دسته‌بندی‌ها</a>
     <a href="products.html">محصولات</a>
     <a href="order.html">سفارش</a>
     <a href="seller.html">داشبورد فروشنده</a>
@@ -136,12 +143,12 @@ footer {
   <div class="cat-title">دسته‌بندی‌ها</div>
 
   <div class="cat-grid">
-    <div class="cat-item">موبایل و تبلت</div>
-    <div class="cat-item">لپ‌تاپ و کامپیوتر</div>
-    <div class="cat-item">لوازم خانگی</div>
-    <div class="cat-item">پوشاک و مد</div>
-    <div class="cat-item">زیبایی و سلامت</div>
-    <div class="cat-item">ورزشی و سرگرمی</div>
+    <a class="cat-item" href="products.html?cat=mobile">موبایل و تبلت</a>
+    <a class="cat-item" href="products.html?cat=laptop">لپ‌تاپ و کامپیوتر</a>
+    <a class="cat-item" href="products.html?cat=home">لوازم خانگی</a>
+    <a class="cat-item" href="products.html?cat=fashion">پوشاک و مد</a>
+    <a class="cat-item" href="products.html?cat=beauty">زیبایی و سلامت</a>
+    <a class="cat-item" href="products.html?cat=sport">ورزشی و سرگرمی</a>
   </div>
 </div>
 
