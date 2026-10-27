@@ -2,275 +2,936 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f7f8fb">
-<title>محصولات و مقایسه قیمت | ترب لایت</title>
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/iransansx@v1.0.0/dist/font-face.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f8fc">
+  <meta name="description" content="محصولات را جست‌وجو کنید و قیمت فروشگاه‌ها را در ترب لایت مقایسه کنید.">
+  <title>محصولات و مقایسه قیمت | TorobLite</title>
 
-<style>
-*{box-sizing:border-box}
-:root{--red:#ed3545;--ink:#20232b;--muted:#747986;--line:#e8ebf1;--bg:#f7f8fb}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:IRANSansX,Tahoma,sans-serif;line-height:1.8}
-a{text-decoration:none;color:inherit}
-button,input,select{font:inherit}
-header{background:white;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
-.top{max-width:1100px;margin:auto;padding:15px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.logo{font-weight:900;font-size:21px;color:var(--red)}
-.back{font-size:13px;color:#555}
-main{max-width:1100px;margin:auto;padding:30px 18px 50px}
-h1{font-size:25px;margin:0 0 4px}
-.sub{font-size:13px;color:var(--muted);margin:0 0 22px}
-.search{display:flex;gap:8px;background:white;padding:8px;border:1px solid var(--line);border-radius:15px;margin-bottom:15px}
-.search input{min-width:0;flex:1;border:0;outline:0;padding:8px;font-size:14px}
-button,.search button{border:0;background:var(--red);color:white;border-radius:10px;padding:10px 17px;cursor:pointer}
-.filters{display:flex;gap:9px;margin-bottom:18px}
-select{min-width:0;flex:1;background:white;border:1px solid var(--line);padding:11px;border-radius:11px;color:var(--ink)}
-.notice{background:#fff8e8;border:1px solid #f2dfad;color:#745719;border-radius:12px;padding:12px 14px;font-size:12px;margin-bottom:22px}
-.summary{font-size:13px;color:var(--muted);margin-bottom:13px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.card{background:white;border:1px solid var(--line);border-radius:18px;padding:18px;min-width:0;box-shadow:0 5px 20px #20232b06}
-.product-head{display:flex;align-items:center;gap:14px;margin-bottom:15px}
-.photo{width:78px;height:78px;flex-shrink:0;border-radius:15px;background:#fff0f1;display:grid;place-items:center;font-size:34px;overflow:hidden}
-.photo img{width:100%;height:100%;object-fit:contain}
-.product-name{font-size:15px;font-weight:800;line-height:1.8;overflow-wrap:anywhere}
-.category{font-size:11px;color:var(--muted)}
-.offers-title{font-size:12px;font-weight:700;border-top:1px solid var(--line);padding-top:12px;margin-bottom:8px}
-.offer{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid #f0f1f5}
-.offer:last-child{border-bottom:0}
-.shop{font-size:12px;color:#555;overflow-wrap:anywhere}
-.price{font-weight:900;font-size:13px;white-space:nowrap}
-.buy{display:inline-block;background:#fff0f1;color:var(--red);font-size:11px;font-weight:700;border-radius:8px;padding:6px 10px;margin-top:5px}
-.empty,.error{background:white;border:1px solid var(--line);border-radius:18px;padding:35px 18px;text-align:center;color:var(--muted)}
-.empty strong,.error strong{display:block;color:var(--ink);font-size:18px;margin-bottom:8px}
-.hidden{display:none}
-footer{text-align:center;padding:22px;background:white;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
-@media(max-width:600px){
- main{padding:23px 13px 35px}
- h1{font-size:22px}
- .grid{grid-template-columns:1fr;gap:12px}
- .card{padding:15px}
- .photo{width:68px;height:68px}
- .top{padding:12px 14px}
-}
-</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #e84b36;
+      --primary-dark: #cf3928;
+      --text: #182230;
+      --muted: #687386;
+      --line: #e8edf3;
+      --bg: #f6f8fc;
+      --green: #16834a;
+      --white: #fff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Vazirmatn", Tahoma, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      max-width: 1150px;
+      min-height: 72px;
+      margin: auto;
+      padding: 12px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      color: var(--primary);
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -.8px;
+    }
+
+    .logo span { color: var(--text); }
+
+    .nav-link {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .nav-link:hover { color: var(--primary); }
+
+    main {
+      max-width: 1150px;
+      margin: auto;
+      padding: 30px 22px 55px;
+    }
+
+    .intro { margin-bottom: 23px; }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: clamp(25px, 3vw, 32px);
+      font-weight: 800;
+      letter-spacing: -.5px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+      line-height: 2.1;
+    }
+
+    .search-panel {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 19px;
+      padding: 15px;
+      margin-bottom: 17px;
+      box-shadow: 0 8px 28px rgba(24,34,48,.035);
+    }
+
+    .search-form {
+      display: flex;
+      gap: 10px;
+    }
+
+    .search-input {
+      min-width: 0;
+      flex: 1;
+      height: 50px;
+      padding: 0 16px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      outline: none;
+      background: #fafbfc;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .search-input:focus,
+    .filter:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(232,75,54,.08);
+    }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 7px;
+      min-height: 45px;
+      border: 0;
+      border-radius: 12px;
+      background: var(--primary);
+      color: white;
+      padding: 10px 20px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .filter {
+      flex: 1;
+      min-width: 0;
+      height: 45px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: white;
+      color: var(--text);
+      outline: none;
+      font-size: 13px;
+    }
+
+    .notice {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      background: #fff8e8;
+      color: #805b12;
+      border: 1px solid #f4e8c8;
+      border-radius: 14px;
+      padding: 13px 16px;
+      margin: 18px 0 22px;
+      font-size: 12px;
+      line-height: 2.1;
+    }
+
+    .notice-icon {
+      font-size: 19px;
+      flex-shrink: 0;
+    }
+
+    .results-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+
+    .results-title {
+      margin: 0;
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .results-count {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .product-card {
+      min-width: 0;
+      overflow: hidden;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: 0 6px 24px rgba(24,34,48,.035);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(24,34,48,.07);
+    }
+
+    .product-main {
+      display: grid;
+      grid-template-columns: 125px minmax(0, 1fr);
+      gap: 17px;
+      padding: 20px;
+      align-items: center;
+    }
+
+    .image-box {
+      width: 125px;
+      height: 125px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border: 1px solid #edf0f5;
+      border-radius: 16px;
+      background: linear-gradient(145deg, #fafbfd, #f3f5f9);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 100%;
+      padding: 8px;
+      object-fit: contain;
+    }
+
+    .image-fallback {
+      font-size: 42px;
+    }
+
+    .category-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 30px;
+      background: #fff0ec;
+      color: #c63c29;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .product-name {
+      margin: 8px 0 5px;
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.9;
+      overflow-wrap: anywhere;
+    }
+
+    .product-name a:hover { color: var(--primary); }
+
+    .product-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .offer-area {
+      border-top: 1px solid var(--line);
+      padding: 15px 20px 18px;
+    }
+
+    .offer-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .offer-count {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .offer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 0;
+      border-bottom: 1px solid #f0f2f6;
+    }
+
+    .offer-row:last-of-type { border-bottom: 0; }
+
+    .shop-name {
+      font-size: 12px;
+      font-weight: 600;
+      overflow-wrap: anywhere;
+    }
+
+    .price {
+      margin-top: 3px;
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .lowest {
+      display: inline-block;
+      color: var(--green);
+      background: #eaf8ef;
+      border-radius: 6px;
+      padding: 1px 6px;
+      margin-right: 4px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .no-price {
+      color: var(--muted);
+      font-size: 12px;
+      padding: 8px 0;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 9px;
+      margin-top: 13px;
+    }
+
+    .detail-button,
+    .store-button {
+      flex: 1;
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-radius: 11px;
+      padding: 9px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      transition: .2s ease;
+    }
+
+    .detail-button {
+      background: #fff0ec;
+      color: var(--primary);
+    }
+
+    .detail-button:hover { background: #ffe2db; }
+
+    .store-button {
+      background: var(--primary);
+      color: white;
+    }
+
+    .store-button:hover { background: var(--primary-dark); }
+
+    .empty-state {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 42px 20px;
+      text-align: center;
+      grid-column: 1 / -1;
+    }
+
+    .empty-icon { font-size: 40px; }
+
+    .empty-state h2 {
+      margin: 10px 0 5px;
+      font-size: 20px;
+    }
+
+    .empty-state p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .retry-button {
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .hidden { display: none !important; }
+
+    footer {
+      padding: 26px 18px;
+      border-top: 1px solid var(--line);
+      background: white;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-logo {
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    @media (max-width: 760px) {
+      main { padding: 24px 14px 38px; }
+      .grid { grid-template-columns: 1fr; gap: 13px; }
+      .product-main { grid-template-columns: 105px minmax(0,1fr); }
+      .image-box { width: 105px; height: 105px; }
+    }
+
+    @media (max-width: 420px) {
+      .nav { padding: 11px 14px; }
+      .logo { font-size: 22px; }
+      .nav-link { font-size: 11px; }
+      .search-panel { padding: 11px; }
+      .search-form { gap: 7px; }
+      .search-input { padding: 0 10px; font-size: 12px; }
+      .search-form .button { padding: 9px 12px; }
+      .filters { flex-direction: column; }
+      .filter { flex: none; width: 100%; }
+      .product-main { grid-template-columns: 85px minmax(0,1fr); gap: 12px; padding: 15px; }
+      .image-box { width: 85px; height: 95px; }
+      .product-name { font-size: 15px; }
+      .offer-area { padding: 13px 15px 15px; }
+      .price { font-size: 12px; }
+      .card-actions { gap: 7px; }
+      .detail-button, .store-button { font-size: 11px; padding: 8px 6px; }
+    }
+  </style>
 </head>
+
 <body>
+  <header class="topbar">
+    <nav class="nav">
+      <a class="logo" href="index.html">Torob<span>Lite</span></a>
+      <a class="nav-link" href="index.html">← بازگشت به صفحه اصلی</a>
+    </nav>
+  </header>
 
-<header>
-  <div class="top">
-    <a class="logo" href="index.html">ترب لایت</a>
-    <a class="back" href="index.html">بازگشت به صفحه اصلی ←</a>
-  </div>
-</header>
+  <main>
+    <section class="intro">
+      <h1 id="page-heading">محصولات</h1>
+      <p class="subtitle">محصول موردنظرت را پیدا کن و قیمت‌های ثبت‌شده فروشگاه‌ها را مقایسه کن.</p>
+    </section>
 
-<main>
-  <h1 id="heading">محصولات</h1>
-  <p class="sub">محصولات ثبت‌شده را جست‌وجو کن و قیمت‌های موجود را مقایسه کن.</p>
+    <section class="search-panel">
+      <form class="search-form" id="search-form">
+        <input
+          class="search-input"
+          id="query"
+          type="search"
+          placeholder="مثلاً گوشی سامسونگ یا لپ‌تاپ لنوو..."
+          aria-label="جست‌وجوی نام محصول"
+        >
+        <button class="button" type="submit">جست‌وجو</button>
+      </form>
 
-  <form class="search" id="searchForm">
-    <input id="query" type="search" placeholder="نام محصول را بنویس..." aria-label="جست‌وجوی محصول">
-    <button type="submit">جست‌وجو</button>
-  </form>
+      <div class="filters">
+        <select class="filter" id="category" aria-label="انتخاب دسته‌بندی">
+          <option value="">همه دسته‌ها</option>
+          <option value="mobile">موبایل و تبلت</option>
+          <option value="laptop">لپ‌تاپ و کامپیوتر</option>
+          <option value="home">لوازم خانگی</option>
+          <option value="fashion">پوشاک و مد</option>
+          <option value="beauty">زیبایی و سلامت</option>
+          <option value="sport">ورزش و سرگرمی</option>
+        </select>
 
-  <div class="filters">
-    <select id="category" aria-label="فیلتر دسته‌بندی">
-      <option value="">همه دسته‌ها</option>
-      <option value="mobile">موبایل و تبلت</option>
-      <option value="laptop">لپ‌تاپ و کامپیوتر</option>
-      <option value="home">لوازم خانگی</option>
-      <option value="fashion">پوشاک و مد</option>
-      <option value="beauty">زیبایی و سلامت</option>
-      <option value="sport">ورزش و سرگرمی</option>
-    </select>
-  </div>
+        <select class="filter" id="sort" aria-label="مرتب‌سازی محصولات">
+          <option value="default">مرتب‌سازی پیش‌فرض</option>
+          <option value="price">ارزان‌ترین قیمت</option>
+          <option value="name">نام محصول</option>
+        </select>
+      </div>
+    </section>
 
-  <div class="notice">
-    توجه: اطلاعات فعلی آزمایشی است و قیمت‌ها به‌صورت زنده بررسی نمی‌شوند.
-    قبل از خرید، قیمت و موجودی را در وب‌سایت فروشنده تأیید کن.
-  </div>
+    <div class="notice">
+      <span class="notice-icon">ⓘ</span>
+      <div>
+        <strong>توجه به قیمت‌ها</strong>
+        اطلاعات فعلی نمونه است و قیمت‌ها به‌صورت زنده تأیید نمی‌شوند. قبل از خرید، قیمت و موجودی را در وب‌سایت فروشنده بررسی کن.
+      </div>
+    </div>
 
-  <div id="summary" class="summary">در حال بارگذاری محصولات...</div>
-  <section id="products" class="grid" aria-live="polite"></section>
-  <section id="message" class="empty hidden"></section>
-</main>
+    <section>
+      <div class="results-bar">
+        <h2 class="results-title" id="results-title">همه محصولات</h2>
+        <span class="results-count" id="summary">در حال بارگذاری...</span>
+      </div>
 
-<footer>© 2026 ترب لایت — انتخاب آگاهانه‌تر</footer>
+      <div class="grid" id="products" aria-live="polite"></div>
+    </section>
+  </main>
 
-<script>
-const $ = id => document.getElementById(id);
+  <footer>
+    <div><span class="footer-logo">TorobLite</span> — انتخاب آگاهانه‌تر</div>
+    <div>© 2026 TorobLite</div>
+  </footer>
 
-const categoryNames = {
-  mobile: "موبایل و تبلت",
-  laptop: "لپ‌تاپ و کامپیوتر",
-  home: "لوازم خانگی",
-  fashion: "پوشاک و مد",
-  beauty: "زیبایی و سلامت",
-  sport: "ورزش و سرگرمی"
-};
+  <script>
+    const $ = id => document.getElementById(id);
 
-const params = new URLSearchParams(location.search);
-$("query").value = params.get("q") || "";
-$("category").value = params.get("cat") || "";
+    const categoryNames = {
+      mobile: "موبایل و تبلت",
+      laptop: "لپ‌تاپ و کامپیوتر",
+      home: "لوازم خانگی",
+      fashion: "پوشاک و مد",
+      beauty: "زیبایی و سلامت",
+      sport: "ورزش و سرگرمی"
+    };
 
-function categoryMatches(product, selected) {
-  if (!selected) return true;
-  const value = String(product.category || "").toLowerCase();
-  if (selected === "mobile") return value.includes("موبایل") || value.includes("تبلت");
-  if (selected === "laptop") return value.includes("لپ‌تاپ") || value.includes("لپ تاپ") || value.includes("کامپیوتر");
-  if (selected === "home") return value.includes("خانگی");
-  if (selected === "fashion") return value.includes("پوشاک") || value.includes("مد");
-  if (selected === "beauty") return value.includes("زیبایی") || value.includes("سلامت");
-  if (selected === "sport") return value.includes("ورزش") || value.includes("سرگرمی");
-  return false;
-}
+    const params = new URLSearchParams(location.search);
 
-function formatPrice(price) {
-  const n = Number(price);
-  if (!Number.isFinite(n) || n <= 0) return "قیمت ثبت نشده";
-  return n.toLocaleString("fa-IR") + " تومان";
-}
+    $("query").value = params.get("q") || "";
 
-function makeCard(product) {
-  const card = document.createElement("article");
-  card.className = "card";
+    if (categoryNames[params.get("cat")]) {
+      $("category").value = params.get("cat");
+    }
 
-  const head = document.createElement("div");
-  head.className = "product-head";
+    let allProducts = [];
 
-  const photo = document.createElement("div");
-  photo.className = "photo";
-  photo.textContent = "🛍️";
+    function normalize(value) {
+      return String(value || "")
+        .toLocaleLowerCase("fa")
+        .replace(/ي/g, "ی")
+        .replace(/ك/g, "ک")
+        .replace(/‌/g, " ")
+        .trim();
+    }
 
-  if (product.image && !product.image.includes("via.placeholder.com")) {
-    const img = document.createElement("img");
-    img.src = product.image;
-    img.alt = product.name || "تصویر محصول";
-    img.onerror = () => { img.remove(); photo.textContent = "🛍️"; };
-    photo.textContent = "";
-    photo.appendChild(img);
-  }
+    function categoryMatches(product, selected) {
+      if (!selected) return true;
 
-  const details = document.createElement("div");
-  const name = document.createElement("div");
-  name.className = "product-name";
-  name.textContent = product.name || "محصول بدون نام";
+      const value = normalize(product.category);
 
-  const category = document.createElement("div");
-  category.className = "category";
-  category.textContent = product.category || "دسته‌بندی نامشخص";
+      if (selected === "mobile") {
+        return value.includes("موبایل") ||
+          value.includes("تبلت") ||
+          value.includes("گوشی");
+      }
 
-  details.append(name, category);
-  head.append(photo, details);
-  card.appendChild(head);
+      if (selected === "laptop") {
+        return value.includes("لپ تاپ") ||
+          value.includes("لپتاپ") ||
+          value.includes("کامپیوتر");
+      }
 
-  const offersTitle = document.createElement("div");
-  offersTitle.className = "offers-title";
-  offersTitle.textContent = "قیمت‌های ثبت‌شده در فایل داده";
-  card.appendChild(offersTitle);
+      if (selected === "home") {
+        return value.includes("خانگی") ||
+          value.includes("لوازم خانه");
+      }
 
-  const offers = Array.isArray(product.offers) ? product.offers : [];
-  const validOffers = offers.filter(o => Number(o.price) > 0);
+      if (selected === "fashion") {
+        return value.includes("پوشاک") ||
+          value.includes("مد");
+      }
 
-  if (!validOffers.length) {
-    const noOffer = document.createElement("div");
-    noOffer.className = "shop";
-    noOffer.textContent = "برای این محصول قیمتی ثبت نشده است.";
-    card.appendChild(noOffer);
-  } else {
-    validOffers.sort((a,b) => Number(a.price) - Number(b.price));
+      if (selected === "beauty") {
+        return value.includes("زیبایی") ||
+          value.includes("سلامت");
+      }
 
-    validOffers.forEach(offer => {
-      const row = document.createElement("div");
-      row.className = "offer";
+      if (selected === "sport") {
+        return value.includes("ورزش") ||
+          value.includes("سرگرمی");
+      }
 
-      const info = document.createElement("div");
-      const shop = document.createElement("div");
-      shop.className = "shop";
-      shop.textContent = offer.shop || "فروشگاه";
+      return false;
+    }
 
-      const price = document.createElement("div");
-      price.className = "price";
-      price.textContent = formatPrice(offer.price);
-      info.append(shop, price);
+    function formatPrice(value) {
+      const price = Number(value);
 
+      if (!Number.isFinite(price) || price <= 0) {
+        return "قیمت ثبت نشده";
+      }
+
+      return price.toLocaleString("fa-IR") + " تومان";
+    }
+
+    function safeUrl(value) {
+      try {
+        const url = new URL(value);
+
+        if (url.protocol === "https:" || url.protocol === "http:") {
+          return url.href;
+        }
+      } catch (_) {}
+
+      return null;
+    }
+
+    function makeLink(text, className, href) {
       const link = document.createElement("a");
-      link.className = "buy";
-      link.textContent = "بررسی فروشگاه";
-      link.href = offer.url || "#";
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      if (!offer.url || !/^https?:\/\//i.test(offer.url)) {
-        link.removeAttribute("target");
-        link.href = "#";
-        link.addEventListener("click", e => {
-          e.preventDefault();
-          alert("لینک فروشگاه برای این پیشنهاد ثبت نشده است.");
+      link.className = className;
+      link.textContent = text;
+      link.href = href;
+      return link;
+    }
+
+    function makeCard(product) {
+      const card = document.createElement("article");
+      card.className = "product-card";
+
+      const productUrl = "product.html?id=" +
+        encodeURIComponent(String(product.id));
+
+      const main = document.createElement("div");
+      main.className = "product-main";
+
+      const imageBox = document.createElement("div");
+      imageBox.className = "image-box";
+
+      const imageUrl = safeUrl(product.image || "");
+
+      if (imageUrl && !imageUrl.includes("via.placeholder.com")) {
+        const img = document.createElement("img");
+        img.className = "product-image";
+        img.src = imageUrl;
+        img.alt = product.name || "تصویر محصول";
+        img.loading = "lazy";
+
+        img.addEventListener("error", () => {
+          imageBox.replaceChildren();
+          const fallback = document.createElement("span");
+          fallback.className = "image-fallback";
+          fallback.textContent = "🛍️";
+          imageBox.append(fallback);
+        });
+
+        imageBox.append(img);
+      } else {
+        const fallback = document.createElement("span");
+        fallback.className = "image-fallback";
+        fallback.textContent = "🛍️";
+        imageBox.append(fallback);
+      }
+
+      const details = document.createElement("div");
+
+      const category = document.createElement("span");
+      category.className = "category-tag";
+      category.textContent = product.category || "محصول";
+
+      const name = document.createElement("h3");
+      name.className = "product-name";
+
+      const nameLink = makeLink(
+        product.name || "محصول بدون نام",
+        "",
+        productUrl
+      );
+
+      name.append(nameLink);
+
+      const meta = document.createElement("div");
+      meta.className = "product-meta";
+
+      const offers = Array.isArray(product.offers)
+        ? product.offers.filter(offer =>
+            Number.isFinite(Number(offer.price)) && Number(offer.price) > 0
+          )
+        : [];
+
+      meta.textContent = offers.length.toLocaleString("fa-IR") +
+        " فروشگاه دارای قیمت ثبت‌شده";
+
+      details.append(category, name, meta);
+      main.append(imageBox, details);
+      card.append(main);
+
+      const offerArea = document.createElement("div");
+      offerArea.className = "offer-area";
+
+      const offerHeading = document.createElement("div");
+      offerHeading.className = "offer-heading";
+
+      const heading = document.createElement("span");
+      heading.textContent = "قیمت فروشگاه‌ها";
+
+      const count = document.createElement("span");
+      count.className = "offer-count";
+      count.textContent = offers.length.toLocaleString("fa-IR") + " پیشنهاد";
+
+      offerHeading.append(heading, count);
+      offerArea.append(offerHeading);
+
+      offers.sort((a, b) => Number(a.price) - Number(b.price));
+
+      if (offers.length === 0) {
+        const noPrice = document.createElement("div");
+        noPrice.className = "no-price";
+        noPrice.textContent = "هنوز قیمت فروشگاهی برای این محصول ثبت نشده است.";
+        offerArea.append(noPrice);
+      } else {
+        offers.slice(0, 2).forEach((offer, index) => {
+          const row = document.createElement("div");
+          row.className = "offer-row";
+
+          const info = document.createElement("div");
+
+          const shop = document.createElement("div");
+          shop.className = "shop-name";
+          shop.textContent = offer.shop || "فروشگاه";
+
+          if (index === 0 && offers.length > 1) {
+            const badge = document.createElement("span");
+            badge.className = "lowest";
+            badge.textContent = "کمترین قیمت ثبت‌شده";
+            shop.append(" ", badge);
+          }
+
+          const price = document.createElement("div");
+          price.className = "price";
+          price.textContent = formatPrice(offer.price);
+
+          info.append(shop, price);
+          row.append(info);
+          offerArea.append(row);
         });
       }
 
-      row.append(info, link);
-      card.appendChild(row);
-    });
-  }
+      const actions = document.createElement("div");
+      actions.className = "card-actions";
 
-  return card;
-}
+      actions.append(
+        makeLink("جزئیات محصول ←", "detail-button", productUrl)
+      );
 
-async function renderProducts() {
-  $("products").replaceChildren();
-  $("message").classList.add("hidden");
-  $("summary").textContent = "در حال بارگذاری محصولات...";
+      if (offers.length > 0) {
+        const firstUrl = safeUrl(offers[0].url || "");
 
-  try {
-    const response = await fetch("./data.json", { cache: "no-store" });
-    if (!response.ok) throw new Error("data.json unavailable");
+        if (firstUrl) {
+          const store = makeLink(
+            "مشاهده فروشگاه ↗",
+            "store-button",
+            firstUrl
+          );
+          store.target = "_blank";
+          store.rel = "noopener noreferrer";
+          actions.append(store);
+        }
+      }
 
-    const data = await response.json();
-    if (!Array.isArray(data.products)) throw new Error("Invalid product data");
+      offerArea.append(actions);
+      card.append(offerArea);
 
-    const q = $("query").value.trim().toLocaleLowerCase("fa");
-    const cat = $("category").value;
-
-    const results = data.products.filter(product => {
-      const matchesQuery = String(product.name || "")
-        .toLocaleLowerCase("fa").includes(q);
-      return matchesQuery && categoryMatches(product, cat);
-    });
-
-    $("heading").textContent = cat && categoryNames[cat]
-      ? categoryNames[cat] : "محصولات";
-
-    $("summary").textContent =
-      results.length.toLocaleString("fa-IR") + " محصول در داده‌های فعلی پیدا شد";
-
-    if (!results.length) {
-      $("message").classList.remove("hidden");
-      $("message").innerHTML =
-        "<strong>محصولی پیدا نشد</strong><span>عبارت جست‌وجو یا دسته‌بندی را تغییر بده. برای این دسته هنوز محصولی در فایل داده ثبت نشده است.</span>";
-      return;
+      return card;
     }
 
-    results.forEach(product => $("products").appendChild(makeCard(product)));
-  } catch (error) {
-    $("summary").textContent = "";
-    $("message").classList.remove("hidden");
-    $("message").innerHTML =
-      "<strong>بارگذاری محصولات انجام نشد</strong><span>فایل data.json پیدا نشد یا اطلاعات آن معتبر نیست. نام و محل فایل را در GitHub بررسی کن.</span>";
-  }
-}
+    function updateAddress() {
+      const next = new URLSearchParams();
 
-$("searchForm").addEventListener("submit", event => {
-  event.preventDefault();
-  const next = new URLSearchParams();
-  if ($("query").value.trim()) next.set("q", $("query").value.trim());
-  if ($("category").value) next.set("cat", $("category").value);
-  history.replaceState(null, "", location.pathname + (next.size ? "?" + next.toString() : ""));
-  renderProducts();
-});
+      if ($("query").value.trim()) {
+        next.set("q", $("query").value.trim());
+      }
 
-$("category").addEventListener("change", renderProducts);
-renderProducts();
-</script>
+      if ($("category").value) {
+        next.set("cat", $("category").value);
+      }
+
+      const queryString = next.toString();
+
+      history.replaceState(
+        null,
+        "",
+        location.pathname + (queryString ? "?" + queryString : "")
+      );
+    }
+
+    function renderProducts() {
+      const container = $("products");
+      container.replaceChildren();
+
+      const query = normalize($("query").value);
+      const selectedCategory = $("category").value;
+      const sort = $("sort").value;
+
+      let results = allProducts.filter(product => {
+        const searchable = normalize(
+          (product.name || "") + " " + (product.category || "")
+        );
+
+        return searchable.includes(query) &&
+          categoryMatches(product, selectedCategory);
+      });
+
+      if (sort === "name") {
+        results.sort((a, b) =>
+          normalize(a.name).localeCompare(normalize(b.name), "fa")
+        );
+      }
+
+      if (sort === "price") {
+        results.sort((a, b) => {
+          const getLowest = product => {
+            const prices = (Array.isArray(product.offers) ? product.offers : [])
+              .map(offer => Number(offer.price))
+              .filter(price => Number.isFinite(price) && price > 0);
+
+            return prices.length ? Math.min(...prices) : Infinity;
+          };
+
+          return getLowest(a) - getLowest(b);
+        });
+      }
+
+      $("results-title").textContent = selectedCategory
+        ? categoryNames[selectedCategory] || "محصولات"
+        : query ? "نتایج جست‌وجو" : "همه محصولات";
+
+      $("summary").textContent =
+        results.length.toLocaleString("fa-IR") + " محصول";
+
+      if (!results.length) {
+        const empty = document.createElement("div");
+        empty.className = "empty-state";
+
+        const icon = document.createElement("div");
+        icon.className = "empty-icon";
+        icon.textContent = "🔎";
+
+        const title = document.createElement("h2");
+        title.textContent = "محصولی پیدا نشد";
+
+        const description = document.createElement("p");
+        description.textContent =
+          "عبارت جست‌وجو یا دسته‌بندی را تغییر بده. ممکن است هنوز محصولی برای این دسته ثبت نشده باشد.";
+
+        const clear = document.createElement("button");
+        clear.className = "button";
+        clear.type = "button";
+        clear.textContent = "نمایش همه محصولات";
+
+        clear.addEventListener("click", () => {
+          $("query").value = "";
+          $("category").value = "";
+          $("sort").value = "default";
+          updateAddress();
+          renderProducts();
+        });
+
+        empty.append(icon, title, description, clear);
+        container.append(empty);
+        return;
+      }
+
+      results.forEach(product => {
+        container.append(makeCard(product));
+      });
+    }
+
+    async function loadProducts() {
+      $("summary").textContent = "در حال بارگذاری محصولات...";
+
+      try {
+        const response = await fetch("./data.json", { cache: "no-store" });
+
+        if (!response.ok) {
+          throw new Error("data.json could not be loaded");
+        }
+
+        const data = await response.json();
+
+        if (!Array.isArray(data.products)) {
+          throw new Error("Invalid product data");
+        }
+
+        allProducts = data.products;
+        renderProducts();
+      } catch (_) {
+        $("products").replaceChildren();
+        $("summary").textContent = "";
+
+        const error = document.createElement("div");
+        error.className = "empty-state";
+
+        const title = document.createElement("h2");
+        title.textContent = "بارگذاری محصولات ناموفق بود";
+
+        const message = document.createElement("p");
+        message.textContent =
+          "فایل data.json یا اتصال اینترنت را بررسی کن و دوباره تلاش کن.";
+
+        const retry = document.createElement("button");
+        retry.className = "button retry-button";
+        retry.type = "button";
+        retry.textContent = "تلاش دوباره";
+        retry.addEventListener("click", loadProducts);
+
+        error.append(title, message, retry);
+        $("products").append(error);
+      }
+    }
+
+    $("search-form").addEventListener("submit", event => {
+      event.preventDefault();
+      updateAddress();
+      renderProducts();
+    });
+
+    $("category").addEventListener("change", () => {
+      updateAddress();
+      renderProducts();
+    });
+
+    $("sort").addEventListener("change", renderProducts);
+
+    loadProducts();
+  </script>
 </body>
 </html>
