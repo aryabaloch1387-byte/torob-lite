@@ -1,160 +1,685 @@
+
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TorobLite VIP</title>
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="در TorobLite محصولات را پیدا کنید و قیمت فروشگاه‌ها را مقایسه کنید.">
+<title>TorobLite | هوشمندانه‌تر خرید کن</title>
 
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/iransansx@v1.0.0/dist/font-face.css" rel="stylesheet">
 
 <style>
+:root {
+  --primary: #ed3545;
+  --primary-dark: #cf2636;
+  --ink: #20232b;
+  --muted: #747986;
+  --line: #e9ebf0;
+  --surface: #ffffff;
+  --background: #f7f8fb;
+  --radius: 18px;
+  --shadow: 0 8px 30px rgba(28, 35, 52, .055);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
-  background: #f5f5f5;
-  font-family: 'IRANSansX', sans-serif;
-  color: #333;
+  font-family: IRANSansX, Tahoma, sans-serif;
+  background: var(--background);
+  color: var(--ink);
+  line-height: 1.8;
 }
 
-/* هدر */
-header {
-  background: #ffffff;
-  border-bottom: 1px solid #e0e0e0;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+
+.container {
+  width: min(1160px, calc(100% - 36px));
+  margin-inline: auto;
+}
+
+/* Header */
+.header {
+  background: rgba(255,255,255,.96);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
   top: 0;
-  width: 100%;
-  z-index: 1000;
+  z-index: 100;
+  backdrop-filter: blur(14px);
 }
 
-header .logo {
+.header-inner {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-size: 22px;
+  font-weight: 900;
+  white-space: nowrap;
+  letter-spacing: -.7px;
+}
+
+.brand-mark {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  color: white;
+  background: var(--primary);
+  border-radius: 14px;
+  font-size: 24px;
+  box-shadow: 0 6px 15px #ed35452b;
+}
+
+.brand span:last-child { color: var(--primary); }
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #5b606d;
+}
+
+.nav a:hover { color: var(--primary); }
+
+.header-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border: 1px solid #f3cbd0;
+  border-radius: 12px;
+  color: var(--primary);
+  font-size: 13px;
   font-weight: 700;
-  color: #444;
+  white-space: nowrap;
 }
 
-header nav a {
-  margin-left: 15px;
-  text-decoration: none;
-  color: #444;
-  font-size: 15px;
-  font-weight: 500;
+.menu-toggle {
+  display: none;
+  border: 1px solid var(--line);
+  background: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 22px;
 }
 
-/* هیرو */
+/* Hero */
+.hero-wrap {
+  padding: 38px 0 20px;
+}
+
 .hero {
-  margin-top: 80px;
-  background: #fff;
-  padding: 30px 20px;
-  text-align: center;
-  border-bottom: 1px solid #e0e0e0;
+  position: relative;
+  overflow: hidden;
+  padding: 56px 48px;
+  border-radius: 28px;
+  color: white;
+  background:
+    radial-gradient(ellipse at 8% 10%, #ff879055 0, transparent 38%),
+    linear-gradient(125deg, #a91f35 0%, #e93446 55%, #f05b58 100%);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  left: -100px;
+  bottom: -200px;
+  border: 1px solid #ffffff35;
+  border-radius: 50%;
+  box-shadow: 0 0 0 35px #ffffff0b, 0 0 0 70px #ffffff0b;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  padding: 5px 12px;
+  border: 1px solid #ffffff50;
+  background: #ffffff18;
+  border-radius: 100px;
+  font-size: 12px;
+  margin-bottom: 12px;
 }
 
 .hero h1 {
-  font-size: 26px;
-  font-weight: 700;
-  margin-bottom: 10px;
+  margin: 0 0 12px;
+  font-size: clamp(28px, 4vw, 43px);
+  line-height: 1.5;
+  font-weight: 900;
+  letter-spacing: -.9px;
 }
 
 .hero p {
+  margin: 0;
+  max-width: 580px;
+  color: #fff1f2;
   font-size: 15px;
-  color: #666;
 }
 
-.btn-main {
-  background: #ff3b3b;
-  color: #fff;
-  padding: 12px 20px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-size: 15px;
-  display: inline-block;
-  margin-top: 15px;
+.search-box {
+  display: flex;
+  gap: 10px;
+  max-width: 650px;
+  margin-top: 28px;
+  padding: 7px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 12px 35px #7c142c30;
 }
 
-/* دسته‌بندی‌ها */
-.categories {
-  padding: 20px;
+.search-icon {
+  align-self: center;
+  padding-inline: 10px 2px;
+  color: #8b909a;
+  font-size: 22px;
 }
 
-.cat-title {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 15px;
-}
-
-.cat-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-}
-
-.cat-item {
-  background: #fff;
-  border-radius: 12px;
-  padding: 20px;
-  border: 1px solid #e6e6e6;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  text-align: center;
-  font-size: 15px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.cat-item:hover {
-  background: #f0f0f0;
-}
-
-/* فوتر */
-footer {
-  margin-top: 40px;
-  background: #fff;
-  padding: 20px;
-  text-align: center;
-  border-top: 1px solid #e0e0e0;
-  color: #777;
+.search-box input {
+  flex: 1;
+  width: 0;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  color: var(--ink);
+  background: transparent;
   font-size: 14px;
+}
+
+.search-box input::placeholder { color: #a0a4ad; }
+
+.search-box button {
+  border: 0;
+  padding: 12px 21px;
+  border-radius: 11px;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.search-box button:hover { background: var(--primary-dark); }
+
+.hero-note {
+  margin-top: 13px;
+  color: #ffe7e9;
+  font-size: 11px;
+}
+
+/* Trust / benefits */
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.benefit {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 17px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 16px;
+}
+
+.benefit-icon {
+  flex: 0 0 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: #fff0f1;
+  font-size: 22px;
+}
+
+.benefit strong {
+  display: block;
+  font-size: 13px;
+}
+
+.benefit small {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* Sections */
+.section { padding: 35px 0 10px; }
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.section-heading p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.section-link {
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Categories */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.category {
+  min-width: 0;
+  padding: 22px 10px 18px;
+  text-align: center;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: transform .2s, border-color .2s, box-shadow .2s;
+}
+
+.category:hover {
+  transform: translateY(-4px);
+  border-color: #f4a5ad;
+  box-shadow: var(--shadow);
+}
+
+.category-icon {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 12px;
+  border-radius: 18px;
+  background: #fff0f1;
+  font-size: 28px;
+}
+
+.category:nth-child(2) .category-icon { background: #eef3ff; }
+.category:nth-child(3) .category-icon { background: #eaf9f0; }
+.category:nth-child(4) .category-icon { background: #fff4e5; }
+.category:nth-child(5) .category-icon { background: #f3edff; }
+.category:nth-child(6) .category-icon { background: #e9f8fc; }
+
+.category strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.category small {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+/* Product discovery panel */
+.discovery {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 32px;
+  padding: 28px 30px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: white;
+}
+
+.discovery h2 {
+  margin: 0 0 6px;
+  font-size: 19px;
+}
+
+.discovery p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.primary-link {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 12px 18px;
+  color: white;
+  background: var(--primary);
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.primary-link:hover { background: var(--primary-dark); }
+
+/* Footer */
+.footer {
+  margin-top: 55px;
+  padding: 32px 0 22px;
+  background: #20232b;
+  color: #d7d9df;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 25px;
+  padding-bottom: 24px;
+}
+
+.footer .brand { color: white; }
+.footer .brand span:last-child { color: #ff6876; }
+
+.footer-description {
+  max-width: 440px;
+  color: #b6bac4;
+  font-size: 12px;
+  margin: 12px 0 0;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 12px;
+}
+
+.footer-links a:hover { color: white; }
+
+.footer-bottom {
+  padding-top: 16px;
+  border-top: 1px solid #ffffff1a;
+  color: #9ca1ad;
+  font-size: 11px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .category-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .nav { gap: 14px; }
+  .benefits { grid-template-columns: 1fr; }
+  .benefit { padding: 12px 15px; }
+}
+
+@media (max-width: 640px) {
+  .container { width: calc(100% - 28px); }
+  .header-inner { min-height: 66px; gap: 10px; }
+  .brand { font-size: 19px; gap: 8px; }
+  .brand-mark { width: 38px; height: 38px; border-radius: 12px; }
+  .menu-toggle { display: block; }
+  .header-action { display: none; }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 66px;
+    inset-inline: 0;
+    padding: 12px 20px 18px;
+    background: white;
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 12px 20px #1d25300b;
+  }
+
+  .nav.open { display: grid; gap: 0; }
+  .nav a { padding: 11px 4px; }
+  .hero-wrap { padding-top: 20px; }
+  .hero { padding: 34px 20px; border-radius: 22px; }
+  .hero h1 { font-size: 29px; }
+  .hero p { font-size: 13px; }
+  .search-box { gap: 4px; }
+  .search-icon { font-size: 18px; padding-inline: 7px 0; }
+  .search-box input { font-size: 12px; }
+  .search-box button { padding: 10px 12px; font-size: 12px; }
+  .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .category { padding: 18px 8px 15px; }
+  .section { padding-top: 28px; }
+  .section-heading h2 { font-size: 19px; }
+  .section-heading p { font-size: 11px; }
+  .discovery { align-items: stretch; flex-direction: column; padding: 22px 18px; }
+  .primary-link { width: 100%; }
+  .footer-top { flex-direction: column; }
+  .footer-links { gap: 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">TorobLite VIP</div>
-  <nav>
-    <a href="category.html">دسته‌بندی‌ها</a>
-    <a href="products.html">محصولات</a>
-    <a href="order.html">سفارش</a>
-    <a href="seller.html">داشبورد فروشنده</a>
-  </nav>
+<header class="header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="صفحه اصلی TorobLite">
+      <span class="brand-mark">ت</span>
+      <span>Torob<span>Lite</span></span>
+    </a>
+
+    <nav class="nav" id="mainNav" aria-label="منوی اصلی">
+      <a href="index.html">صفحه اصلی</a>
+      <a href="category.html">دسته‌بندی‌ها</a>
+      <a href="products.html">محصولات</a>
+      <a href="order.html">سفارش</a>
+      <a href="seller.html">پنل فروشنده</a>
+    </nav>
+
+    <a class="header-action" href="products.html">جست‌وجوی محصولات ←</a>
+    <button class="menu-toggle" id="menuToggle" type="button"
+      aria-label="باز کردن منو" aria-expanded="false" aria-controls="mainNav">☰</button>
+  </div>
 </header>
 
-<div class="hero">
-  <h1>TorobLite VIP</h1>
-  <p>سایت معتبر، تمیز، حرفه‌ای با دسته‌بندی و ظاهر استاندارد فروشگاهی</p>
-  <a class="btn-main" href="products.html">مشاهده محصولات</a>
-</div>
+<main>
+  <section class="hero-wrap">
+    <div class="container">
+      <div class="hero">
+        <div class="hero-content">
+          <span class="eyebrow">انتخاب بهتر، خرید هوشمندانه‌تر</span>
+          <h1>قبل از خرید،<br>قیمت‌ها رو مقایسه کن.</h1>
+          <p>
+            محصول موردنظرت رو پیدا کن، گزینه‌ها رو بررسی کن
+            و با اطلاعات بیشتر برای خرید تصمیم بگیر.
+          </p>
 
-<div class="categories">
-  <div class="cat-title">دسته‌بندی‌ها</div>
+          <form class="search-box" id="searchForm" action="products.html" method="get">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input
+              type="search"
+              id="productSearch"
+              name="q"
+              placeholder="مثلاً گوشی سامسونگ، لپ‌تاپ..."
+              aria-label="نام محصول موردنظر"
+              required>
+            <button type="submit">جست‌وجو</button>
+          </form>
 
-  <div class="cat-grid">
-    <a class="cat-item" href="products.html?cat=mobile">موبایل و تبلت</a>
-    <a class="cat-item" href="products.html?cat=laptop">لپ‌تاپ و کامپیوتر</a>
-    <a class="cat-item" href="products.html?cat=home">لوازم خانگی</a>
-    <a class="cat-item" href="products.html?cat=fashion">پوشاک و مد</a>
-    <a class="cat-item" href="products.html?cat=beauty">زیبایی و سلامت</a>
-    <a class="cat-item" href="products.html?cat=sport">ورزشی و سرگرمی</a>
+          <div class="hero-note">نام محصول رو وارد کن و جست‌وجو رو شروع کن.</div>
+        </div>
+      </div>
+
+      <div class="benefits">
+        <div class="benefit">
+          <span class="benefit-icon" aria-hidden="true">⌕</span>
+          <div>
+            <strong>جست‌وجوی آسان</strong>
+            <small>محصول موردنظرت رو سریع‌تر پیدا کن</small>
+          </div>
+        </div>
+        <div class="benefit">
+          <span class="benefit-icon" aria-hidden="true">⇄</span>
+          <div>
+            <strong>مقایسه قیمت</strong>
+            <small>قیمت فروشگاه‌ها رو کنار هم ببین</small>
+          </div>
+        </div>
+        <div class="benefit">
+          <span class="benefit-icon" aria-hidden="true">✓</span>
+          <div>
+            <strong>انتخاب آگاهانه</strong>
+            <small>قبل از خرید، اطلاعات رو بررسی کن</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <h2>دسته‌بندی محصولات</h2>
+          <p>از دسته موردنظرت شروع کن</p>
+        </div>
+        <a class="section-link" href="category.html">همه دسته‌بندی‌ها ←</a>
+      </div>
+
+      <div class="category-grid">
+        <a class="category" href="products.html?cat=mobile">
+          <span class="category-icon" aria-hidden="true">📱</span>
+          <strong>موبایل و تبلت</strong>
+          <small>گوشی و لوازم جانبی</small>
+        </a>
+
+        <a class="category" href="products.html?cat=laptop">
+          <span class="category-icon" aria-hidden="true">💻</span>
+          <strong>لپ‌تاپ و کامپیوتر</strong>
+          <small>تجهیزات دیجیتال</small>
+        </a>
+
+        <a class="category" href="products.html?cat=home">
+          <span class="category-icon" aria-hidden="true">🏠</span>
+          <strong>لوازم خانگی</strong>
+          <small>وسایل خانه</small>
+        </a>
+
+        <a class="category" href="products.html?cat=fashion">
+          <span class="category-icon" aria-hidden="true">👕</span>
+          <strong>پوشاک و مد</strong>
+          <small>استایل و پوشاک</small>
+        </a>
+
+        <a class="category" href="products.html?cat=beauty">
+          <span class="category-icon" aria-hidden="true">✨</span>
+          <strong>زیبایی و سلامت</strong>
+          <small>مراقبت و زیبایی</small>
+        </a>
+
+        <a class="category" href="products.html?cat=sport">
+          <span class="category-icon" aria-hidden="true">⚽</span>
+          <strong>ورزش و سرگرمی</strong>
+          <small>تفریح و فعالیت</small>
+        </a>
+      </div>
+
+      <div class="discovery">
+        <div>
+          <h2>دنبال محصول خاصی هستی؟</h2>
+          <p>وارد صفحه محصولات شو و گزینه‌های موجود رو بررسی کن.</p>
+        </div>
+        <a class="primary-link" href="products.html">مشاهده محصولات <span>←</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">ت</span>
+          <span>Torob<span>Lite</span></span>
+        </a>
+        <p class="footer-description">
+          فضایی ساده برای پیدا کردن محصولات و بررسی گزینه‌های خرید.
+          اطلاعات قیمت و موجودی باید از فروشگاه‌ها یا سامانه واقعی دریافت شوند.
+        </p>
+      </div>
+
+      <nav class="footer-links" aria-label="پیوندهای پایین صفحه">
+        <a href="index.html">صفحه اصلی</a>
+        <a href="products.html">محصولات</a>
+        <a href="order.html">سفارش</a>
+        <a href="seller.html">پنل فروشنده</a>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 TorobLite — تمامی حقوق محفوظ است.
+    </div>
   </div>
-</div>
-
-<footer>
-  © 2026 TorobLite — All Rights Reserved
 </footer>
+
+<script>
+const menuToggle = document.getElementById('menuToggle');
+const mainNav = document.getElementById('mainNav');
+
+menuToggle.addEventListener('click', () => {
+  const isOpen = mainNav.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded', String(isOpen));
+  menuToggle.setAttribute(
+    'aria-label',
+    isOpen ? 'بستن منو' : 'باز کردن منو'
+  );
+  menuToggle.textContent = isOpen ? '✕' : '☰';
+});
+
+mainNav.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mainNav.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'باز کردن منو');
+    menuToggle.textContent = '☰';
+  });
+});
+</script>
 
 </body>
 </html>
