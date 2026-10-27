@@ -1,175 +1,224 @@
+
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>محصولات | TorobLite VIP</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="ترب لایت؛ مقایسه قیمت و پیدا کردن محصولات با قیمت‌های معتبر">
+  <title>محصولات | ترب لایت</title>
 
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/iransansx@v1.0.0/dist/font-face.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/iransansx@v1.0.0/dist/font-face.css" rel="stylesheet">
 
-<style>
-body {
-  margin: 0;
-  background: #f5f5f5;
-  font-family: 'IRANSansX', sans-serif;
-  color: #333;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-/* هدر */
-header {
-  background: #ffffff;
-  border-bottom: 1px solid #e0e0e0;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #f5f7fa;
+      font-family: IRANSansX, Tahoma, sans-serif;
+      color: #172033;
+    }
 
-header .logo {
-  font-size: 20px;
-  font-weight: 700;
-  color: #444;
-}
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e8edf3;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
 
-header a {
-  text-decoration: none;
-  color: #444;
-  font-size: 15px;
-  font-weight: 500;
-}
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      color: #087f72;
+    }
 
-/* محتوا */
-.container {
-  padding: 100px 20px 40px;
-}
+    header a {
+      text-decoration: none;
+      color: #334155;
+      font-size: 14px;
+      font-weight: 600;
+    }
 
-.title {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 35px 18px 45px;
+    }
 
-.subtitle {
-  font-size: 14px;
-  color: #777;
-  margin-bottom: 20px;
-}
+    .title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
 
-/* کارت محصول */
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-}
+    .subtitle {
+      color: #64748b;
+      font-size: 14px;
+      line-height: 2;
+      margin-bottom: 24px;
+    }
 
-.product-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 15px;
-  border: 1px solid #e6e6e6;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  text-align: center;
-  font-size: 14px;
-  cursor: pointer;
-  transition: 0.2s;
-}
+    .empty-state {
+      background: #fff;
+      border: 1px solid #e5eaf0;
+      border-radius: 22px;
+      padding: 38px 22px;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+    }
 
-.product-card:hover {
-  background: #f0f0f0;
-}
+    .icon-wrap {
+      width: 82px;
+      height: 82px;
+      border-radius: 24px;
+      background: #e8f8f4;
+      color: #078575;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 39px;
+      margin: 0 auto 22px;
+    }
 
-.product-card img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
+    .empty-state h2 {
+      font-size: 21px;
+      line-height: 1.9;
+      margin: 0 0 12px;
+      color: #152238;
+    }
 
-.product-card .name {
-  font-weight: 600;
-  margin-bottom: 5px;
-}
+    .empty-state p {
+      max-width: 480px;
+      margin: 0 auto 22px;
+      color: #64748b;
+      font-size: 14px;
+      line-height: 2.2;
+    }
 
-.product-card .price {
-  color: #ff3b3b;
-  font-weight: 700;
-  margin-top: 5px;
-}
+    .status {
+      display: inline-block;
+      background: #e8f8f4;
+      color: #087f72;
+      border-radius: 30px;
+      padding: 8px 15px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
 
-/* فوتر */
-footer {
-  margin-top: 40px;
-  background: #fff;
-  padding: 20px;
-  text-align: center;
-  border-top: 1px solid #e0e0e0;
-  color: #777;
-  font-size: 14px;
-}
-</style>
+    .home-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #087f72, #10b9a0);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 12px;
+      padding: 13px 25px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: opacity 0.2s;
+    }
+
+    .home-btn:hover {
+      opacity: 0.9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 22px 15px;
+      color: #8490a1;
+      font-size: 12px;
+      border-top: 1px solid #e5eaf0;
+      background: #fff;
+      line-height: 2;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 25px 14px 35px;
+      }
+
+      .title {
+        font-size: 21px;
+      }
+
+      .empty-state {
+        padding: 30px 17px;
+      }
+
+      .empty-state h2 {
+        font-size: 19px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <header>
+    <div class="logo">ترب لایت</div>
+    <a href="index.html">بازگشت به صفحه اصلی ←</a>
+  </header>
 
-<header>
-  <div class="logo">TorobLite VIP</div>
-  <a href="index.html">بازگشت</a>
-</header>
-
-<div class="container">
-
-  <div class="title">محصولات</div>
-  <div class="subtitle" id="catName">در حال بارگذاری دسته…</div>
-
-  <div class="product-grid" id="productList">
-    <!-- محصولات اینجا قرار می‌گیرند -->
-  </div>
-
-</div>
-
-<footer>
-  © 2026 TorobLite — All Rights Reserved
-</footer>
-
-<script>
-const params = new URLSearchParams(window.location.search);
-const cat = params.get("cat");
-
-const catNames = {
-  mobile: "موبایل و تبلت",
-  laptop: "لپ‌تاپ و کامپیوتر",
-  home: "لوازم خانگی",
-  fashion: "پوشاک و مد",
-  beauty: "زیبایی و سلامت",
-  sport: "ورزشی و سرگرمی"
-};
-
-document.getElementById("catName").textContent = catNames[cat] || "همه محصولات";
-
-const products = [
-  {name: "گوشی سامسونگ A14", price: "7,800,000", img: "https://via.placeholder.com/300"},
-  {name: "لپ‌تاپ لنوو i5", price: "22,500,000", img: "https://via.placeholder.com/300"},
-  {name: "جاروبرقی پاناسونیک", price: "4,200,000", img: "https://via.placeholder.com/300"},
-  {name: "کفش اسپرت نایک", price: "1,300,000", img: "https://via.placeholder.com/300"},
-  {name: "کرم آبرسان نیوا", price: "180,000", img: "https://via.placeholder.com/300"},
-  {name: "توپ فوتبال آدیداس", price: "350,000", img: "https://via.placeholder.com/300"}
-];
-
-const list = document.getElementById("productList");
-
-products.forEach(p => {
-  list.innerHTML += `
-    <div class="product-card">
-      <img src="${p.img}">
-      <div class="name">${p.name}</div>
-      <div class="price">${p.price} تومان</div>
+  <main class="container">
+    <div class="title" id="pageTitle">محصولات</div>
+    <div class="subtitle" id="catName">
+      محصولات و قیمت‌های معتبر را در ترب لایت دنبال کنید.
     </div>
-  `;
-});
-</script>
 
+    <section class="empty-state">
+      <div class="icon-wrap" aria-hidden="true">🛍️</div>
+
+      <h2>به‌زودی محصولات واقعی اضافه می‌شوند</h2>
+
+      <p>
+        در حال آماده‌سازی بستری مطمئن برای معرفی محصولات
+        و نمایش قیمت‌های معتبر هستیم.
+        تلاش می‌کنیم اطلاعات محصولات با دقت بررسی شوند
+        تا خرید و مقایسه برای شما آسان‌تر شود.
+      </p>
+
+      <div class="status">در حال آماده‌سازی</div>
+      <br>
+
+      <a class="home-btn" href="index.html">
+        بازگشت به صفحه اصلی
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 ترب لایت — همراه شما برای انتخاب آگاهانه‌تر
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get("cat");
+
+    const catNames = {
+      mobile: "موبایل و تبلت",
+      laptop: "لپ‌تاپ و کامپیوتر",
+      home: "لوازم خانگی",
+      fashion: "پوشاک و مد",
+      beauty: "زیبایی و سلامت",
+      sport: "ورزشی و سرگرمی"
+    };
+
+    if (cat && catNames[cat]) {
+      document.getElementById("pageTitle").textContent =
+        catNames[cat];
+
+      document.getElementById("catName").textContent =
+        "برای این دسته هنوز محصول تأییدشده‌ای ثبت نشده است.";
+    }
+  </script>
 </body>
 </html>
