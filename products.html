@@ -5,9 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f6f8fc">
-  <meta name="description" content="محصولات را جست‌وجو کنید و قیمت فروشگاه‌ها را در ترب لایت مقایسه کنید.">
-  <title>محصولات و مقایسه قیمت | TorobLite</title>
-
+  <meta name="description" content="جست‌وجوی محصولات واقعی دیجی‌کالا در TorobLite">
+  <title>جست‌وجو و مقایسه محصولات | TorobLite</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -73,8 +72,6 @@
       font-weight: 600;
     }
 
-    .nav-link:hover { color: var(--primary); }
-
     main {
       max-width: 1150px;
       margin: auto;
@@ -87,7 +84,6 @@
       margin: 0 0 6px;
       font-size: clamp(25px, 3vw, 32px);
       font-weight: 800;
-      letter-spacing: -.5px;
     }
 
     .subtitle {
@@ -106,10 +102,7 @@
       box-shadow: 0 8px 28px rgba(24,34,48,.035);
     }
 
-    .search-form {
-      display: flex;
-      gap: 10px;
-    }
+    .search-form { display: flex; gap: 10px; }
 
     .search-input {
       min-width: 0;
@@ -121,7 +114,6 @@
       outline: none;
       background: #fafbfc;
       color: var(--text);
-      font-size: 14px;
     }
 
     .search-input:focus,
@@ -134,7 +126,6 @@
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      gap: 7px;
       min-height: 45px;
       border: 0;
       border-radius: 12px;
@@ -147,10 +138,8 @@
       transition: .2s ease;
     }
 
-    .button:hover {
-      background: var(--primary-dark);
-      transform: translateY(-1px);
-    }
+    .button:hover { background: var(--primary-dark); }
+    .button:disabled { opacity: .65; cursor: wait; }
 
     .filters {
       display: flex;
@@ -168,13 +157,9 @@
       background: white;
       color: var(--text);
       outline: none;
-      font-size: 13px;
     }
 
     .notice {
-      display: flex;
-      align-items: flex-start;
-      gap: 11px;
       background: #fff8e8;
       color: #805b12;
       border: 1px solid #f4e8c8;
@@ -185,11 +170,6 @@
       line-height: 2.1;
     }
 
-    .notice-icon {
-      font-size: 19px;
-      flex-shrink: 0;
-    }
-
     .results-bar {
       display: flex;
       justify-content: space-between;
@@ -198,16 +178,8 @@
       margin-bottom: 15px;
     }
 
-    .results-title {
-      margin: 0;
-      font-size: 19px;
-      font-weight: 800;
-    }
-
-    .results-count {
-      color: var(--muted);
-      font-size: 12px;
-    }
+    .results-title { margin: 0; font-size: 19px; font-weight: 800; }
+    .results-count { color: var(--muted); font-size: 12px; }
 
     .grid {
       display: grid;
@@ -257,9 +229,7 @@
       object-fit: contain;
     }
 
-    .image-fallback {
-      font-size: 42px;
-    }
+    .image-fallback { font-size: 42px; }
 
     .category-tag {
       display: inline-block;
@@ -273,7 +243,7 @@
 
     .product-name {
       margin: 8px 0 5px;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 800;
       line-height: 1.9;
       overflow-wrap: anywhere;
@@ -281,10 +251,7 @@
 
     .product-name a:hover { color: var(--primary); }
 
-    .product-meta {
-      color: var(--muted);
-      font-size: 12px;
-    }
+    .product-meta { color: var(--muted); font-size: 12px; }
 
     .offer-area {
       border-top: 1px solid var(--line);
@@ -301,10 +268,7 @@
       font-weight: 700;
     }
 
-    .offer-count {
-      color: var(--muted);
-      font-weight: 500;
-    }
+    .offer-count { color: var(--muted); font-weight: 500; }
 
     .offer-row {
       display: flex;
@@ -312,47 +276,21 @@
       align-items: center;
       gap: 10px;
       padding: 11px 0;
-      border-bottom: 1px solid #f0f2f6;
     }
 
-    .offer-row:last-of-type { border-bottom: 0; }
-
-    .shop-name {
-      font-size: 12px;
-      font-weight: 600;
-      overflow-wrap: anywhere;
-    }
+    .shop-name { font-size: 12px; font-weight: 600; }
 
     .price {
       margin-top: 3px;
       color: var(--green);
       font-size: 14px;
       font-weight: 800;
-      white-space: nowrap;
+      overflow-wrap: anywhere;
     }
 
-    .lowest {
-      display: inline-block;
-      color: var(--green);
-      background: #eaf8ef;
-      border-radius: 6px;
-      padding: 1px 6px;
-      margin-right: 4px;
-      font-size: 10px;
-      font-weight: 700;
-    }
+    .price-note { color: var(--muted); font-size: 11px; }
 
-    .no-price {
-      color: var(--muted);
-      font-size: 12px;
-      padding: 8px 0;
-    }
-
-    .card-actions {
-      display: flex;
-      gap: 9px;
-      margin-top: 13px;
-    }
+    .card-actions { display: flex; gap: 9px; margin-top: 13px; }
 
     .detail-button,
     .store-button {
@@ -369,18 +307,9 @@
       transition: .2s ease;
     }
 
-    .detail-button {
-      background: #fff0ec;
-      color: var(--primary);
-    }
-
+    .detail-button { background: #fff0ec; color: var(--primary); }
     .detail-button:hover { background: #ffe2db; }
-
-    .store-button {
-      background: var(--primary);
-      color: white;
-    }
-
+    .store-button { background: var(--primary); color: white; }
     .store-button:hover { background: var(--primary-dark); }
 
     .empty-state {
@@ -393,23 +322,8 @@
     }
 
     .empty-icon { font-size: 40px; }
-
-    .empty-state h2 {
-      margin: 10px 0 5px;
-      font-size: 20px;
-    }
-
-    .empty-state p {
-      margin: 0 0 18px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .retry-button {
-      cursor: pointer;
-      font-family: inherit;
-    }
-
+    .empty-state h2 { margin: 10px 0 5px; font-size: 20px; }
+    .empty-state p { margin: 0 0 18px; color: var(--muted); font-size: 13px; }
     .hidden { display: none !important; }
 
     footer {
@@ -421,10 +335,7 @@
       font-size: 12px;
     }
 
-    .footer-logo {
-      color: var(--primary);
-      font-weight: 800;
-    }
+    .footer-logo { color: var(--primary); font-weight: 800; }
 
     @media (max-width: 760px) {
       main { padding: 24px 14px 38px; }
@@ -445,7 +356,7 @@
       .filter { flex: none; width: 100%; }
       .product-main { grid-template-columns: 85px minmax(0,1fr); gap: 12px; padding: 15px; }
       .image-box { width: 85px; height: 95px; }
-      .product-name { font-size: 15px; }
+      .product-name { font-size: 14px; }
       .offer-area { padding: 13px 15px 15px; }
       .price { font-size: 12px; }
       .card-actions { gap: 7px; }
@@ -453,7 +364,6 @@
     }
   </style>
 </head>
-
 <body>
   <header class="topbar">
     <nav class="nav">
@@ -464,20 +374,16 @@
 
   <main>
     <section class="intro">
-      <h1 id="page-heading">محصولات</h1>
-      <p class="subtitle">محصول موردنظرت را پیدا کن و قیمت‌های ثبت‌شده فروشگاه‌ها را مقایسه کن.</p>
+      <h1 id="page-heading">جست‌وجوی محصولات</h1>
+      <p class="subtitle">محصول موردنظرت را جست‌وجو کن و مشخصات و قیمت ثبت‌شده آن را ببین.</p>
     </section>
 
     <section class="search-panel">
       <form class="search-form" id="search-form">
-        <input
-          class="search-input"
-          id="query"
-          type="search"
+        <input class="search-input" id="query" type="search"
           placeholder="مثلاً گوشی سامسونگ یا لپ‌تاپ لنوو..."
-          aria-label="جست‌وجوی نام محصول"
-        >
-        <button class="button" type="submit">جست‌وجو</button>
+          aria-label="جست‌وجوی نام محصول">
+        <button class="button" id="search-button" type="submit">جست‌وجو</button>
       </form>
 
       <div class="filters">
@@ -493,26 +399,24 @@
 
         <select class="filter" id="sort" aria-label="مرتب‌سازی محصولات">
           <option value="default">مرتب‌سازی پیش‌فرض</option>
-          <option value="price">ارزان‌ترین قیمت</option>
+          <option value="price">قیمت ثبت‌شده: کم به زیاد</option>
           <option value="name">نام محصول</option>
         </select>
       </div>
     </section>
 
     <div class="notice">
-      <span class="notice-icon">ⓘ</span>
-      <div>
-        <strong>توجه به قیمت‌ها</strong>
-        اطلاعات فعلی نمونه است و قیمت‌ها به‌صورت زنده تأیید نمی‌شوند. قبل از خرید، قیمت و موجودی را در وب‌سایت فروشنده بررسی کن.
-      </div>
+      <strong>توجه به قیمت‌ها:</strong>
+      محصولات از API دیجی‌کالا دریافت می‌شوند. واحد مبلغ دریافتی هنوز تأیید نشده است؛
+      بنابراین مبلغ‌ها با واحد نامشخص نمایش داده می‌شوند. قبل از خرید، قیمت و موجودی
+      نهایی را در سایت دیجی‌کالا بررسی کن.
     </div>
 
     <section>
       <div class="results-bar">
-        <h2 class="results-title" id="results-title">همه محصولات</h2>
-        <span class="results-count" id="summary">در حال بارگذاری...</span>
+        <h2 class="results-title" id="results-title">نتایج جست‌وجو</h2>
+        <span class="results-count" id="summary">عبارت محصول را وارد کن.</span>
       </div>
-
       <div class="grid" id="products" aria-live="polite"></div>
     </section>
   </main>
@@ -523,7 +427,11 @@
   </footer>
 
   <script>
+    "use strict";
+
     const $ = id => document.getElementById(id);
+
+    const API_URL = "https://torob-lite-api.amyrryysy084.workers.dev/api/search";
 
     const categoryNames = {
       mobile: "موبایل و تبلت",
@@ -534,15 +442,10 @@
       sport: "ورزش و سرگرمی"
     };
 
-    const params = new URLSearchParams(location.search);
-
-    $("query").value = params.get("q") || "";
-
-    if (categoryNames[params.get("cat")]) {
-      $("category").value = params.get("cat");
-    }
-
     let allProducts = [];
+    let totalItems = 0;
+    let currentQuery = "";
+    let isLoading = false;
 
     function normalize(value) {
       return String(value || "")
@@ -553,61 +456,13 @@
         .trim();
     }
 
-    function categoryMatches(product, selected) {
-      if (!selected) return true;
-
-      const value = normalize(product.category);
-
-      if (selected === "mobile") {
-        return value.includes("موبایل") ||
-          value.includes("تبلت") ||
-          value.includes("گوشی");
-      }
-
-      if (selected === "laptop") {
-        return value.includes("لپ تاپ") ||
-          value.includes("لپتاپ") ||
-          value.includes("کامپیوتر");
-      }
-
-      if (selected === "home") {
-        return value.includes("خانگی") ||
-          value.includes("لوازم خانه");
-      }
-
-      if (selected === "fashion") {
-        return value.includes("پوشاک") ||
-          value.includes("مد");
-      }
-
-      if (selected === "beauty") {
-        return value.includes("زیبایی") ||
-          value.includes("سلامت");
-      }
-
-      if (selected === "sport") {
-        return value.includes("ورزش") ||
-          value.includes("سرگرمی");
-      }
-
-      return false;
-    }
-
-    function formatPrice(value) {
-      const price = Number(value);
-
-      if (!Number.isFinite(price) || price <= 0) {
-        return "قیمت ثبت نشده";
-      }
-
-      return price.toLocaleString("fa-IR") + " تومان";
-    }
-
     function safeUrl(value) {
       try {
-        const url = new URL(value);
+        const url = new URL(value, "https://www.digikala.com");
 
-        if (url.protocol === "https:" || url.protocol === "http:") {
+        if (url.protocol === "https:" &&
+            (url.hostname === "www.digikala.com" ||
+             url.hostname === "digikala.com")) {
           return url.href;
         }
       } catch (_) {}
@@ -615,30 +470,124 @@
       return null;
     }
 
-    function makeLink(text, className, href) {
+    function formatNumber(value) {
+      const number = Number(value);
+
+      if (!Number.isFinite(number) || number <= 0) {
+        return "قیمت ثبت نشده";
+      }
+
+      return number.toLocaleString("fa-IR");
+    }
+
+    function detectCategory(title) {
+      const text = normalize(title);
+
+      if (/گوشی|موبایل|تبلت|iphone|سامسونگ گلکسی/.test(text)) {
+        return "موبایل و تبلت";
+      }
+
+      if (/لپ.?تاپ|کامپیوتر|مانیتور|کیبورد|ماوس|پردازنده/.test(text)) {
+        return "لپ‌تاپ و کامپیوتر";
+      }
+
+      if (/یخچال|لباسشویی|جاروبرقی|مایکروویو|آبمیوه.?گیری/.test(text)) {
+        return "لوازم خانگی";
+      }
+
+      if (/کرم|عطر|ادکلن|شامپو|آرایش|پوست|موبر/.test(text)) {
+        return "زیبایی و سلامت";
+      }
+
+      if (/کفش|لباس|پیراهن|شلوار|مانتو|کیف|ساعت/.test(text)) {
+        return "پوشاک و مد";
+      }
+
+      if (/توپ|ورزشی|دوچرخه|دمبل|کوهنوردی/.test(text)) {
+        return "ورزش و سرگرمی";
+      }
+
+      return "محصول";
+    }
+
+    function categoryMatches(product, selected) {
+      if (!selected) return true;
+
+      const text = normalize(
+        (product.name || "") + " " + (product.category || "")
+      );
+
+      const patterns = {
+        mobile: /گوشی|موبایل|تبلت|iphone|سامسونگ گلکسی/,
+        laptop: /لپ.?تاپ|کامپیوتر|مانیتور|کیبورد|ماوس|پردازنده/,
+        home: /یخچال|لباسشویی|جاروبرقی|مایکروویو|لوازم خانگی/,
+        fashion: /کفش|لباس|پیراهن|شلوار|مانتو|کیف|ساعت/,
+        beauty: /کرم|عطر|ادکلن|شامپو|آرایش|پوست|زیبایی|سلامت/,
+        sport: /توپ|ورزشی|دوچرخه|دمبل|کوهنوردی|سرگرمی/
+      };
+
+      return patterns[selected] ? patterns[selected].test(text) : true;
+    }
+
+    function makeLink(label, className, href, newTab = false) {
       const link = document.createElement("a");
       link.className = className;
-      link.textContent = text;
+      link.textContent = label;
       link.href = href;
+
+      if (newTab) {
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+      }
+
       return link;
+    }
+
+    function showMessage(titleText, messageText, retry = false) {
+      const container = $("products");
+      container.replaceChildren();
+
+      const box = document.createElement("div");
+      box.className = "empty-state";
+
+      const icon = document.createElement("div");
+      icon.className = "empty-icon";
+      icon.textContent = "🔎";
+
+      const title = document.createElement("h2");
+      title.textContent = titleText;
+
+      const message = document.createElement("p");
+      message.textContent = messageText;
+
+      box.append(icon, title, message);
+
+      if (retry) {
+        const button = document.createElement("button");
+        button.className = "button";
+        button.type = "button";
+        button.textContent = "تلاش دوباره";
+        button.addEventListener("click", () => searchProducts(currentQuery));
+        box.append(button);
+      }
+
+      container.append(box);
     }
 
     function makeCard(product) {
       const card = document.createElement("article");
       card.className = "product-card";
 
-      const productUrl = "product.html?id=" +
-        encodeURIComponent(String(product.id));
-
+      const productUrl = safeUrl(product.url);
       const main = document.createElement("div");
       main.className = "product-main";
 
       const imageBox = document.createElement("div");
       imageBox.className = "image-box";
 
-      const imageUrl = safeUrl(product.image || "");
+      const imageUrl = safeImageUrl(product.image);
 
-      if (imageUrl && !imageUrl.includes("via.placeholder.com")) {
+      if (imageUrl) {
         const img = document.createElement("img");
         img.className = "product-image";
         img.src = imageUrl;
@@ -670,25 +619,15 @@
       const name = document.createElement("h3");
       name.className = "product-name";
 
-      const nameLink = makeLink(
-        product.name || "محصول بدون نام",
-        "",
-        productUrl
-      );
-
-      name.append(nameLink);
+      if (productUrl) {
+        name.append(makeLink(product.name || "محصول بدون نام", "", productUrl, true));
+      } else {
+        name.textContent = product.name || "محصول بدون نام";
+      }
 
       const meta = document.createElement("div");
       meta.className = "product-meta";
-
-      const offers = Array.isArray(product.offers)
-        ? product.offers.filter(offer =>
-            Number.isFinite(Number(offer.price)) && Number(offer.price) > 0
-          )
-        : [];
-
-      meta.textContent = offers.length.toLocaleString("fa-IR") +
-        " فروشگاه دارای قیمت ثبت‌شده";
+      meta.textContent = "منبع: دیجی‌کالا";
 
       details.append(category, name, meta);
       main.append(imageBox, details);
@@ -701,70 +640,53 @@
       offerHeading.className = "offer-heading";
 
       const heading = document.createElement("span");
-      heading.textContent = "قیمت فروشگاه‌ها";
+      heading.textContent = "قیمت ثبت‌شده";
 
       const count = document.createElement("span");
       count.className = "offer-count";
-      count.textContent = offers.length.toLocaleString("fa-IR") + " پیشنهاد";
+      count.textContent = product.discountPercent > 0
+        ? "تخفیف ثبت‌شده: " +
+          Number(product.discountPercent).toLocaleString("fa-IR") + "٪"
+        : "اطلاعات دریافتی API";
 
       offerHeading.append(heading, count);
       offerArea.append(offerHeading);
 
-      offers.sort((a, b) => Number(a.price) - Number(b.price));
+      const row = document.createElement("div");
+      row.className = "offer-row";
 
-      if (offers.length === 0) {
-        const noPrice = document.createElement("div");
-        noPrice.className = "no-price";
-        noPrice.textContent = "هنوز قیمت فروشگاهی برای این محصول ثبت نشده است.";
-        offerArea.append(noPrice);
-      } else {
-        offers.slice(0, 2).forEach((offer, index) => {
-          const row = document.createElement("div");
-          row.className = "offer-row";
+      const info = document.createElement("div");
 
-          const info = document.createElement("div");
+      const shop = document.createElement("div");
+      shop.className = "shop-name";
+      shop.textContent = "دیجی‌کالا";
 
-          const shop = document.createElement("div");
-          shop.className = "shop-name";
-          shop.textContent = offer.shop || "فروشگاه";
+      const price = document.createElement("div");
+      price.className = "price";
+      price.textContent = formatNumber(product.price);
 
-          if (index === 0 && offers.length > 1) {
-            const badge = document.createElement("span");
-            badge.className = "lowest";
-            badge.textContent = "کمترین قیمت ثبت‌شده";
-            shop.append(" ", badge);
-          }
+      const priceNote = document.createElement("div");
+      priceNote.className = "price-note";
+      priceNote.textContent = Number(product.price) > 0
+        ? "واحد مبلغ تأیید نشده"
+        : "قیمت در پاسخ API موجود نیست";
 
-          const price = document.createElement("div");
-          price.className = "price";
-          price.textContent = formatPrice(offer.price);
-
-          info.append(shop, price);
-          row.append(info);
-          offerArea.append(row);
-        });
-      }
+      info.append(shop, price, priceNote);
+      row.append(info);
+      offerArea.append(row);
 
       const actions = document.createElement("div");
       actions.className = "card-actions";
 
-      actions.append(
-        makeLink("جزئیات محصول ←", "detail-button", productUrl)
-      );
-
-      if (offers.length > 0) {
-        const firstUrl = safeUrl(offers[0].url || "");
-
-        if (firstUrl) {
-          const store = makeLink(
-            "مشاهده فروشگاه ↗",
-            "store-button",
-            firstUrl
-          );
-          store.target = "_blank";
-          store.rel = "noopener noreferrer";
-          actions.append(store);
-        }
+      if (productUrl) {
+        actions.append(
+          makeLink("مشاهده محصول در دیجی‌کالا ↗", "store-button", productUrl, true)
+        );
+      } else {
+        const unavailable = document.createElement("span");
+        unavailable.className = "detail-button";
+        unavailable.textContent = "لینک محصول موجود نیست";
+        actions.append(unavailable);
       }
 
       offerArea.append(actions);
@@ -773,42 +695,28 @@
       return card;
     }
 
-    function updateAddress() {
-      const next = new URLSearchParams();
+    function safeImageUrl(value) {
+      try {
+        const url = new URL(value);
 
-      if ($("query").value.trim()) {
-        next.set("q", $("query").value.trim());
-      }
+        if (url.protocol === "https:") {
+          return url.href;
+        }
+      } catch (_) {}
 
-      if ($("category").value) {
-        next.set("cat", $("category").value);
-      }
-
-      const queryString = next.toString();
-
-      history.replaceState(
-        null,
-        "",
-        location.pathname + (queryString ? "?" + queryString : "")
-      );
+      return null;
     }
 
     function renderProducts() {
       const container = $("products");
       container.replaceChildren();
 
-      const query = normalize($("query").value);
       const selectedCategory = $("category").value;
       const sort = $("sort").value;
 
-      let results = allProducts.filter(product => {
-        const searchable = normalize(
-          (product.name || "") + " " + (product.category || "")
-        );
-
-        return searchable.includes(query) &&
-          categoryMatches(product, selectedCategory);
-      });
+      let results = allProducts.filter(product =>
+        categoryMatches(product, selectedCategory)
+      );
 
       if (sort === "name") {
         results.sort((a, b) =>
@@ -818,120 +726,164 @@
 
       if (sort === "price") {
         results.sort((a, b) => {
-          const getLowest = product => {
-            const prices = (Array.isArray(product.offers) ? product.offers : [])
-              .map(offer => Number(offer.price))
-              .filter(price => Number.isFinite(price) && price > 0);
+          const priceA = Number(a.price);
+          const priceB = Number(b.price);
+          const validA = Number.isFinite(priceA) && priceA > 0;
+          const validB = Number.isFinite(priceB) && priceB > 0;
 
-            return prices.length ? Math.min(...prices) : Infinity;
-          };
+          if (!validA && !validB) return 0;
+          if (!validA) return 1;
+          if (!validB) return -1;
 
-          return getLowest(a) - getLowest(b);
+          return priceA - priceB;
         });
       }
 
-      $("results-title").textContent = selectedCategory
-        ? categoryNames[selectedCategory] || "محصولات"
-        : query ? "نتایج جست‌وجو" : "همه محصولات";
+      $("results-title").textContent = currentQuery
+        ? "نتایج جست‌وجو: " + currentQuery
+        : "نتایج محصولات";
 
       $("summary").textContent =
-        results.length.toLocaleString("fa-IR") + " محصول";
+        results.length.toLocaleString("fa-IR") + " محصول از " +
+        totalItems.toLocaleString("fa-IR") + " نتیجه API";
 
       if (!results.length) {
-        const empty = document.createElement("div");
-        empty.className = "empty-state";
-
-        const icon = document.createElement("div");
-        icon.className = "empty-icon";
-        icon.textContent = "🔎";
-
-        const title = document.createElement("h2");
-        title.textContent = "محصولی پیدا نشد";
-
-        const description = document.createElement("p");
-        description.textContent =
-          "عبارت جست‌وجو یا دسته‌بندی را تغییر بده. ممکن است هنوز محصولی برای این دسته ثبت نشده باشد.";
-
-        const clear = document.createElement("button");
-        clear.className = "button";
-        clear.type = "button";
-        clear.textContent = "نمایش همه محصولات";
-
-        clear.addEventListener("click", () => {
-          $("query").value = "";
-          $("category").value = "";
-          $("sort").value = "default";
-          updateAddress();
-          renderProducts();
-        });
-
-        empty.append(icon, title, description, clear);
-        container.append(empty);
+        showMessage(
+          "محصولی در این دسته پیدا نشد",
+          "عبارت جست‌وجو یا دسته‌بندی را تغییر بده."
+        );
         return;
       }
 
-      results.forEach(product => {
-        container.append(makeCard(product));
-      });
+      results.forEach(product => container.append(makeCard(product)));
     }
 
-    async function loadProducts() {
-      $("summary").textContent = "در حال بارگذاری محصولات...";
+    async function searchProducts(query) {
+      const cleanedQuery = String(query || "").trim();
+
+      if (!cleanedQuery) {
+        currentQuery = "";
+        allProducts = [];
+        totalItems = 0;
+        $("summary").textContent = "عبارت محصول را وارد کن.";
+        $("products").replaceChildren();
+        $("results-title").textContent = "جست‌وجوی محصولات";
+        showMessage(
+          "چه محصولی می‌خواهی پیدا کنی؟",
+          "مثلاً گوشی سامسونگ، آیفون یا لپ‌تاپ لنوو را جست‌وجو کن."
+        );
+        return;
+      }
+
+      currentQuery = cleanedQuery;
+      isLoading = true;
+      $("search-button").disabled = true;
+      $("search-button").textContent = "در حال جست‌وجو...";
+      $("summary").textContent = "در حال دریافت محصولات واقعی...";
+      $("products").replaceChildren();
+
+      const params = new URLSearchParams({ q: cleanedQuery });
 
       try {
-        const response = await fetch("./data.json", { cache: "no-store" });
+        const response = await fetch(API_URL + "?" + params.toString(), {
+          method: "GET",
+          headers: { "Accept": "application/json" },
+          cache: "no-store"
+        });
 
         if (!response.ok) {
-          throw new Error("data.json could not be loaded");
+          throw new Error("پاسخ سرور ناموفق بود: " + response.status);
         }
 
         const data = await response.json();
 
-        if (!Array.isArray(data.products)) {
-          throw new Error("Invalid product data");
+        if (data.ok !== true || !Array.isArray(data.products)) {
+          throw new Error("ساختار پاسخ API معتبر نیست.");
         }
 
-        allProducts = data.products;
+        allProducts = data.products.map(item => ({
+          id: item.id,
+          name: String(item.title || item.name || "محصول بدون نام"),
+          image: item.image || "",
+          url: item.url || "",
+          price: item.price,
+          discountPercent: Number(item.discountPercent) || 0,
+          category: detectCategory(item.title || item.name || "")
+        }));
+
+        totalItems = Number(data.totalItems) || allProducts.length;
+
+        if (!allProducts.length) {
+          $("summary").textContent = "محصولی پیدا نشد.";
+          showMessage(
+            "نتیجه‌ای پیدا نشد",
+            "عبارت دیگری را امتحان کن."
+          );
+          return;
+        }
+
         renderProducts();
-      } catch (_) {
-        $("products").replaceChildren();
+        updateAddress(cleanedQuery);
+      } catch (error) {
+        console.error("TorobLite API error:", error);
         $("summary").textContent = "";
-
-        const error = document.createElement("div");
-        error.className = "empty-state";
-
-        const title = document.createElement("h2");
-        title.textContent = "بارگذاری محصولات ناموفق بود";
-
-        const message = document.createElement("p");
-        message.textContent =
-          "فایل data.json یا اتصال اینترنت را بررسی کن و دوباره تلاش کن.";
-
-        const retry = document.createElement("button");
-        retry.className = "button retry-button";
-        retry.type = "button";
-        retry.textContent = "تلاش دوباره";
-        retry.addEventListener("click", loadProducts);
-
-        error.append(title, message, retry);
-        $("products").append(error);
+        showMessage(
+          "دریافت محصولات ناموفق بود",
+          "اتصال Worker و اینترنت را بررسی کن و دوباره تلاش کن.",
+          true
+        );
+      } finally {
+        isLoading = false;
+        $("search-button").disabled = false;
+        $("search-button").textContent = "جست‌وجو";
       }
+    }
+
+    function updateAddress(query) {
+      const params = new URLSearchParams();
+
+      if (query) params.set("q", query);
+      if ($("category").value) params.set("cat", $("category").value);
+
+      const queryString = params.toString();
+
+      history.replaceState(
+        null,
+        "",
+        location.pathname + (queryString ? "?" + queryString : "")
+      );
     }
 
     $("search-form").addEventListener("submit", event => {
       event.preventDefault();
-      updateAddress();
-      renderProducts();
+      searchProducts($("query").value);
     });
 
     $("category").addEventListener("change", () => {
-      updateAddress();
+      updateAddress(currentQuery);
       renderProducts();
     });
 
     $("sort").addEventListener("change", renderProducts);
 
-    loadProducts();
+    const initialParams = new URLSearchParams(location.search);
+    const initialQuery = initialParams.get("q") || "";
+
+    if (initialParams.has("cat") && categoryNames[initialParams.get("cat")]) {
+      $("category").value = initialParams.get("cat");
+    }
+
+    $("query").value = initialQuery;
+
+    if (initialQuery) {
+      searchProducts(initialQuery);
+    } else {
+      showMessage(
+        "محصول موردنظرت را جست‌وجو کن",
+        "برای دریافت نتایج واقعی، نام محصول را در کادر بالا بنویس."
+      );
+      $("summary").textContent = "آماده جست‌وجو";
+    }
   </script>
 </body>
 </html>
