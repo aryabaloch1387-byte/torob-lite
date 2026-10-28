@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -5,166 +6,684 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#080B12">
 <title>پنل فروشنده | TorobLite</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-:root{color-scheme:dark;--bg:#080b12;--panel:#101621;--panel2:#0c111b;--line:#263247;--blue:#168bff;--cyan:#29d7ff;--text:#f4f8ff;--muted:#a8b5c9;--danger:#ff647c;--good:#39dca5}
-*{box-sizing:border-box}html{min-height:100%;background:var(--bg)}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% -20%,#102d52 0,transparent 55%),var(--bg);font-family:'Vazirmatn',Tahoma,sans-serif;color:var(--text);line-height:1.8}
-a{color:inherit;text-decoration:none}header{position:sticky;top:0;z-index:1000;background:rgba(8,11,18,.94);border-bottom:1px solid #17365a;box-shadow:0 5px 24px #0004;backdrop-filter:blur(14px)}.nav{width:min(1100px,100%);margin:auto;padding:10px 18px;min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{display:flex;align-items:center;gap:10px;min-width:0}.brand img{width:48px;height:48px;object-fit:cover;border-radius:12px;border:1px solid #174d83}.brand-name{font-family:Arial,sans-serif;font-size:20px;font-weight:800;direction:ltr;white-space:nowrap}.brand-name span{color:var(--cyan)}.brand-sub{font-size:11px;color:var(--muted);line-height:1.5}.back-link{flex-shrink:0;padding:8px 13px;border:1px solid #2a405d;border-radius:12px;color:#dbeaff;font-size:13px}.back-link:hover{border-color:var(--cyan);color:var(--cyan)}.container{width:min(760px,100%);margin:0 auto;padding:32px 18px 56px}.page-intro{text-align:center;margin:4px 0 25px}.page-intro h1{font-size:clamp(23px,5vw,30px);margin:0 0 4px}.page-intro p{color:var(--muted);font-size:14px;margin:0}.box{background:linear-gradient(150deg,#121a28,#0c111a);border:1px solid var(--line);border-radius:22px;padding:clamp(20px,5vw,32px);box-shadow:0 16px 45px #0003;margin-bottom:20px;overflow:hidden}.box h2{font-size:22px;margin:0 0 10px}.box p{color:#c1cde0}.field-label{display:block;margin-top:18px;font-size:14px;color:#d8e4f7}input,textarea{display:block;width:100%;max-width:100%;min-width:0;padding:14px 15px;margin-top:8px;border-radius:13px;border:1px solid #34445c;background:#080d16;color:var(--text);font-family:inherit;font-size:15px;outline:none;direction:rtl}input::placeholder,textarea::placeholder{color:#77869d}input:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #168bff20}textarea{min-height:110px;resize:vertical}.btn{display:block;width:100%;padding:13px 16px;margin-top:13px;background:linear-gradient(100deg,#0876ed,#12b6f4);border:1px solid #38baff;border-radius:13px;cursor:pointer;color:#fff;font:inherit;font-size:15px;font-weight:700;box-shadow:0 8px 22px #0876ed25;transition:transform .15s,filter .15s}.btn:hover{filter:brightness(1.08)}.btn:active{transform:scale(.99)}.btn-secondary{background:#151f2d;border-color:#33445c;box-shadow:none;color:#e0ebfa}.status{font-size:13px;overflow-wrap:anywhere;color:var(--muted);margin:12px 0 0}.product-card{background:var(--panel2);border:1px solid var(--line);padding:15px;border-radius:14px;margin-bottom:10px;overflow-wrap:anywhere}.product-card strong{color:#fff}.empty-note{color:var(--muted);font-size:14px}#recaptcha-container{margin:10px 0}.note{border-right:3px solid var(--blue);padding:8px 12px;background:#0b1b2d;border-radius:8px;color:#bfdcff;font-size:12px;margin-top:16px}
-@media(max-width:480px){.nav{padding:9px 12px;min-height:68px;gap:8px}.brand{gap:8px}.brand img{width:42px;height:42px}.brand-name{font-size:18px}.brand-sub{font-size:10px}.back-link{padding:7px 9px;font-size:12px}.container{padding:24px 13px 40px}.box{border-radius:18px;padding:21px 17px}.box h2{font-size:20px}.page-intro{margin-bottom:20px}}
+:root {
+  color-scheme: dark;
+  --bg: #080b12;
+  --panel: #101621;
+  --line: #263247;
+  --blue: #168bff;
+  --cyan: #29d7ff;
+  --text: #f4f8ff;
+  --muted: #a8b5c9;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 50% -20%, #102d52 0, transparent 55%), var(--bg);
+  font-family: 'Vazirmatn', Tahoma, sans-serif;
+  color: var(--text);
+  line-height: 1.8;
+}
+
+a { color: inherit; text-decoration: none; }
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(8,11,18,.96);
+  border-bottom: 1px solid #17365a;
+  box-shadow: 0 5px 24px #0004;
+  backdrop-filter: blur(14px);
+}
+
+.nav {
+  width: min(1100px, 100%);
+  margin: auto;
+  padding: 10px 18px;
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.brand img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #174d83;
+}
+
+.brand-name {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  direction: ltr;
+  white-space: nowrap;
+}
+
+.brand-name span { color: var(--cyan); }
+
+.brand-sub {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.back-link {
+  flex-shrink: 0;
+  padding: 8px 13px;
+  border: 1px solid #2a405d;
+  border-radius: 12px;
+  color: #dbeaff;
+  font-size: 13px;
+}
+
+.back-link:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.container {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  padding: 32px 18px 56px;
+}
+
+.page-intro {
+  text-align: center;
+  margin: 4px 0 25px;
+}
+
+.page-intro h1 {
+  font-size: clamp(23px, 5vw, 30px);
+  margin: 0 0 4px;
+}
+
+.page-intro p {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+.box {
+  background: linear-gradient(150deg, #121a28, #0c111a);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: clamp(20px, 5vw, 32px);
+  box-shadow: 0 16px 45px #0003;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.box h2 {
+  font-size: 22px;
+  margin: 0 0 10px;
+}
+
+.box p { color: #c1cde0; }
+
+.field-label {
+  display: block;
+  margin-top: 18px;
+  font-size: 14px;
+  color: #d8e4f7;
+}
+
+input, textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 14px 15px;
+  margin-top: 8px;
+  border-radius: 13px;
+  border: 1px solid #34445c;
+  background: #080d16;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 15px;
+  outline: none;
+  direction: rtl;
+}
+
+#sellerPhone, #otpCode {
+  direction: ltr !important;
+  unicode-bidi: isolate;
+  text-align: left;
+  font-family: Arial, sans-serif;
+  letter-spacing: .2px;
+}
+
+input::placeholder, textarea::placeholder { color: #77869d; }
+
+input:focus, textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px #168bff20;
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 13px 16px;
+  margin-top: 13px;
+  background: linear-gradient(100deg, #0876ed, #12b6f4);
+  border: 1px solid #38baff;
+  border-radius: 13px;
+  cursor: pointer;
+  color: #fff;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 0 8px 22px #0876ed25;
+}
+
+.btn-secondary {
+  background: #151f2d;
+  border-color: #33445c;
+  box-shadow: none;
+  color: #e0ebfa;
+}
+
+.status {
+  font-size: 13px;
+  overflow-wrap: anywhere;
+  color: var(--muted);
+  margin: 12px 0 0;
+}
+
+.product-card {
+  background: #0c111b;
+  border: 1px solid var(--line);
+  padding: 15px;
+  border-radius: 14px;
+  margin-bottom: 10px;
+  overflow-wrap: anywhere;
+}
+
+.product-card strong { color: #fff; }
+
+.empty-note { color: var(--muted); font-size: 14px; }
+
+#recaptcha-container { margin: 10px 0; }
+
+.note {
+  border-right: 3px solid var(--blue);
+  padding: 8px 12px;
+  background: #0b1b2d;
+  border-radius: 8px;
+  color: #bfdcff;
+  font-size: 12px;
+  margin-top: 16px;
+}
+
+@media (max-width: 480px) {
+  .nav { padding: 9px 12px; min-height: 68px; gap: 8px; }
+  .brand { gap: 8px; }
+  .brand img { width: 42px; height: 42px; }
+  .brand-name { font-size: 18px; }
+  .brand-sub { font-size: 10px; }
+  .back-link { padding: 7px 9px; font-size: 12px; }
+  .container { padding: 24px 13px 40px; }
+  .box { border-radius: 18px; padding: 21px 17px; }
+  .box h2 { font-size: 20px; }
+  .page-intro { margin-bottom: 20px; }
+}
 </style>
 </head>
+
 <body>
-<header><nav class="nav" aria-label="ناوبری اصلی">
-  <a class="brand" href="index.html" aria-label="TorobLite صفحه اصلی">
-    <img src="toroblite-logo.png" alt="لوگوی TorobLite">
-    <span><span class="brand-name">Torob<span>Lite</span></span><span class="brand-sub" style="display:block">پنل اختصاصی فروشندگان</span></span>
-  </a>
-  <a class="back-link" href="index.html">بازگشت به سایت ←</a>
-</nav></header>
+<header>
+  <nav class="nav" aria-label="ناوبری اصلی">
+    <a class="brand" href="index.html" aria-label="صفحه اصلی TorobLite">
+      <img src="toroblite-logo.png" alt="لوگوی TorobLite">
+      <span>
+        <span class="brand-name">Torob<span>Lite</span></span>
+        <span class="brand-sub">پنل اختصاصی فروشندگان</span>
+      </span>
+    </a>
+    <a class="back-link" href="index.html">بازگشت به سایت ←</a>
+  </nav>
+</header>
+
 <main class="container">
-  <div class="page-intro"><h1>پنل فروشنده</h1><p>مدیریت محصولات و اطلاعات فروشگاه در TorobLite</p></div>
+  <div class="page-intro">
+    <h1>پنل فروشنده</h1>
+    <p>مدیریت محصولات و اطلاعات فروشگاه در TorobLite</p>
+  </div>
+
   <section class="box" id="loginBox">
     <h2>ورود فروشنده</h2>
     <p>برای ورود، شماره موبایل خود را وارد کنید.</p>
+
     <label class="field-label" for="sellerPhone">شماره موبایل</label>
-    <input id="sellerPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="مثلاً 09123456789 یا 9123456789" dir="ltr">
-    <button class="btn" onclick="loginSeller()">ارسال کد تأیید</button>
+    <input
+      id="sellerPhone"
+      type="tel"
+      inputmode="tel"
+      autocomplete="tel"
+      placeholder="مثلاً 09123456789 یا 9123456789"
+      dir="ltr"
+    >
+
+    <button class="btn" id="sendCodeBtn" onclick="loginSeller()">ارسال کد تأیید</button>
     <p id="loginStatus" class="status" role="status" aria-live="polite"></p>
     <div class="note">شماره را با ۰۹ یا ۹ وارد کنید؛ کد کشور +98 خودکار اضافه می‌شود.</div>
   </section>
+
   <div id="recaptcha-container"></div>
+
   <section class="box" id="dashboard" style="display:none">
     <h2>داشبورد فروشنده</h2>
     <p>از گزینه‌های زیر برای مدیریت فروشگاه استفاده کنید.</p>
     <button class="btn" onclick="showAddProduct()">افزودن محصول جدید</button>
     <button class="btn btn-secondary" onclick="showProducts()">مشاهده محصولات</button>
     <button class="btn btn-secondary" onclick="showSettings()">تنظیمات فروشگاه</button>
+    <button class="btn btn-secondary" onclick="logoutSeller()">خروج از حساب</button>
   </section>
+
   <section class="box" id="addProduct" style="display:none">
     <h2>افزودن محصول</h2>
-    <label class="field-label" for="pName">نام محصول</label><input id="pName" placeholder="نام محصول">
-    <label class="field-label" for="pPrice">قیمت (تومان)</label><input id="pPrice" type="number" min="0" inputmode="numeric" placeholder="قیمت به تومان">
-    <label class="field-label" for="pDesc">توضیحات</label><textarea id="pDesc" placeholder="توضیحات محصول"></textarea>
-    <button class="btn" onclick="saveProduct()">ثبت محصول</button><button class="btn btn-secondary" onclick="backDashboard()">بازگشت</button>
+    <label class="field-label" for="pName">نام محصول</label>
+    <input id="pName" placeholder="نام محصول">
+
+    <label class="field-label" for="pPrice">قیمت (تومان)</label>
+    <input id="pPrice" type="number" min="0" inputmode="numeric" placeholder="قیمت به تومان">
+
+    <label class="field-label" for="pDesc">توضیحات</label>
+    <textarea id="pDesc" placeholder="توضیحات محصول"></textarea>
+
+    <button class="btn" onclick="saveProduct()">ثبت محصول</button>
+    <button class="btn btn-secondary" onclick="backDashboard()">بازگشت</button>
     <p id="addStatus" class="status" role="status"></p>
   </section>
+
   <section class="box" id="productList" style="display:none">
-    <h2>محصولات من</h2><div id="productsContainer"></div>
+    <h2>محصولات من</h2>
+    <div id="productsContainer"></div>
     <button class="btn btn-secondary" onclick="backDashboard()">بازگشت</button>
   </section>
+
   <section class="box" id="settings" style="display:none">
     <h2>تنظیمات فروشگاه</h2>
-    <label class="field-label" for="sName">نام فروشگاه</label><input id="sName" placeholder="نام فروشگاه">
-    <label class="field-label" for="sAddress">آدرس</label><input id="sAddress" placeholder="آدرس فروشگاه">
-    <label class="field-label" for="sPhone">شماره تماس</label><input id="sPhone" type="tel" placeholder="شماره تماس">
-    <label class="field-label" for="sWhatsApp">واتساپ</label><input id="sWhatsApp" type="tel" placeholder="شماره واتساپ">
-    <label class="field-label" for="sInsta">اینستاگرام</label><input id="sInsta" placeholder="نام کاربری اینستاگرام">
-    <button class="btn" onclick="saveSettings()">ذخیره تنظیمات</button><button class="btn btn-secondary" onclick="backDashboard()">بازگشت</button>
+
+    <label class="field-label" for="sName">نام فروشگاه</label>
+    <input id="sName" placeholder="نام فروشگاه">
+
+    <label class="field-label" for="sAddress">آدرس</label>
+    <input id="sAddress" placeholder="آدرس فروشگاه">
+
+    <label class="field-label" for="sPhone">شماره تماس</label>
+    <input id="sPhone" type="tel" placeholder="شماره تماس">
+
+    <label class="field-label" for="sWhatsApp">واتساپ</label>
+    <input id="sWhatsApp" type="tel" placeholder="شماره واتساپ">
+
+    <label class="field-label" for="sInsta">اینستاگرام</label>
+    <input id="sInsta" placeholder="نام کاربری اینستاگرام">
+
+    <button class="btn" onclick="saveSettings()">ذخیره تنظیمات</button>
+    <button class="btn btn-secondary" onclick="backDashboard()">بازگشت</button>
     <p id="setStatus" class="status" role="status"></p>
   </section>
 </main>
-<!-- نسخه compat برای سازگاری با firebase.auth() و firebase.firestore() در کد زیر -->
+
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 <script src="firebase-config.js"></script>
+
 <script>
+let auth;
+let db;
+
 try {
-  if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
+  auth = firebase.auth();
+  db = firebase.firestore();
+
+  auth.onAuthStateChanged(user => {
+    if (user) {
+      document.getElementById('loginBox').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+    }
+  });
 } catch (error) {
-  const status = document.getElementById('loginStatus');
-  status.textContent = 'راه‌اندازی ورود ناموفق بود. فایل firebase-config.js و تنظیمات Firebase را بررسی کنید.';
   console.error(error);
+  document.getElementById('loginStatus').textContent =
+    'راه‌اندازی Firebase ناموفق بود. فایل firebase-config.js و تنظیمات را بررسی کنید.';
 }
-const auth = firebase.auth();
-const db = firebase.firestore();
+
+function normalizeDigits(value) {
+  return value
+    .replace(/[۰-۹]/g, d => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d)))
+    .replace(/[٠-٩]/g, d => String('٠١٢٣٤٥٦٧٨٩'.indexOf(d)));
+}
+
+function normalizeIranPhone(raw) {
+  let phone = normalizeDigits(raw).replace(/[\s()-]/g, '');
+
+  if (phone.startsWith('0098')) {
+    phone = '+98' + phone.slice(4);
+  } else if (phone.startsWith('+98')) {
+    // شماره از قبل با کد کشور وارد شده است.
+  } else if (phone.startsWith('98')) {
+    phone = '+' + phone;
+  } else if (phone.startsWith('0')) {
+    phone = '+98' + phone.slice(1);
+  } else if (phone.startsWith('9') && phone.length === 10) {
+    phone = '+98' + phone;
+  }
+
+  if (!/^\+989\d{9}$/.test(phone)) {
+    return null;
+  }
+  return phone;
+}
 
 function loginSeller() {
-  const rawPhone = document.getElementById('sellerPhone').value.trim();
+  const input = document.getElementById('sellerPhone');
   const status = document.getElementById('loginStatus');
-  // تبدیل ارقام فارسی/عربی به انگلیسی و حذف فاصله و خط تیره
-  let phone = rawPhone
-    .replace(/[۰-۹]/g, d => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d)))
-    .replace(/[٠-٩]/g, d => String('٠١٢٣٤٥٦٧٨٩'.indexOf(d)))
-    .replace(/[\\s()-]/g, '');
-  // پذیرش 0912...، 912...، 0098912... و +98912...
-  if (phone.startsWith('0098')) phone = '+' + phone.slice(2);
-  else if (phone.startsWith('0')) phone = '+98' + phone.slice(1);
-  else if (phone.startsWith('98')) phone = '+' + phone;
-  else if (phone.startsWith('9') && phone.length === 10) phone = '+98' + phone;
-  if (!/^\+[1-9]\d{7,14}$/.test(phone)) {
-    status.textContent = 'شماره معتبر نیست. شماره ایران را مثل 09123456789 یا 9123456789 وارد کنید.';
+  const button = document.getElementById('sendCodeBtn');
+
+  if (!auth || !db) {
+    status.textContent = 'Firebase راه‌اندازی نشده است؛ تنظیمات فایل firebase-config.js را بررسی کنید.';
     return;
   }
-  document.getElementById('sellerPhone').value = phone;
 
-  status.textContent = 'در حال ارسال کد تأیید…';
-  if (window.recaptchaVerifier) { try { window.recaptchaVerifier.clear(); } catch (_) {} }
-  window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', { size: 'invisible' });
-  window.recaptchaVerifier.render().then(() => auth.signInWithPhoneNumber(phone, window.recaptchaVerifier))
-    .then(confirmationResult => {
-      window.confirmationResult = confirmationResult;
-      status.innerHTML = 'کد تأیید ارسال شد.';
-      const old = document.getElementById('otpArea'); if (old) old.remove();
-      const area = document.createElement('div'); area.id = 'otpArea';
-      const input = document.createElement('input'); input.id = 'otpCode'; input.inputMode = 'numeric'; input.autocomplete = 'one-time-code'; input.placeholder = 'کد تأیید پیامک‌شده'; input.setAttribute('aria-label','کد تأیید');
-      const button = document.createElement('button'); button.className = 'btn'; button.textContent = 'تأیید کد و ورود'; button.onclick = verifyOTP;
-      area.append(input, button); status.appendChild(area);
-    }).catch(err => { status.textContent = 'ارسال کد ناموفق بود: ' + (err.message || 'خطای نامشخص'); console.error(err); });
+  const phone = normalizeIranPhone(input.value);
+
+  if (!phone) {
+    status.textContent = 'شماره معتبر نیست. نمونه: 09123456789 یا 9123456789';
+    input.focus();
+    return;
+  }
+
+  // نمایش شماره به شکل صحیح و چپ‌به‌راست؛ علامت + در ابتدا می‌ماند.
+  input.value = phone;
+  input.style.direction = 'ltr';
+  input.style.unicodeBidi = 'isolate';
+  input.style.textAlign = 'left';
+
+  button.disabled = true;
+  button.textContent = 'در حال ارسال…';
+  status.textContent = '';
+
+  if (window.recaptchaVerifier) {
+    try { window.recaptchaVerifier.clear(); } catch (e) {}
+  }
+
+  try {
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+      'recaptcha-container',
+      { size: 'invisible' }
+    );
+
+    window.recaptchaVerifier.render()
+      .then(() => auth.signInWithPhoneNumber(phone, window.recaptchaVerifier))
+      .then(confirmationResult => {
+        window.confirmationResult = confirmationResult;
+        status.textContent = 'کد تأیید ارسال شد. کد پیامک‌شده را وارد کنید.';
+
+        let area = document.getElementById('otpArea');
+        if (!area) {
+          area = document.createElement('div');
+          area.id = 'otpArea';
+
+          const otp = document.createElement('input');
+          otp.id = 'otpCode';
+          otp.type = 'tel';
+          otp.inputMode = 'numeric';
+          otp.autocomplete = 'one-time-code';
+          otp.placeholder = 'کد تأیید پیامک‌شده';
+          otp.setAttribute('aria-label', 'کد تأیید');
+
+          const verify = document.createElement('button');
+          verify.className = 'btn';
+          verify.type = 'button';
+          verify.textContent = 'تأیید کد و ورود';
+          verify.onclick = verifyOTP;
+
+          area.append(otp, verify);
+          status.appendChild(area);
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        status.textContent = firebaseErrorMessage(err);
+      })
+      .finally(() => {
+        button.disabled = false;
+        button.textContent = 'ارسال کد تأیید';
+      });
+  } catch (err) {
+    console.error(err);
+    status.textContent = firebaseErrorMessage(err);
+    button.disabled = false;
+    button.textContent = 'ارسال کد تأیید';
+  }
 }
+
+function firebaseErrorMessage(err) {
+  const code = err && err.code ? err.code : '';
+
+  if (code.includes('network-request-failed')) {
+    return 'اتصال به Firebase برقرار نشد. اینترنت، فیلترشکن و اتصال به سرور را بررسی کنید و دوباره امتحان کنید.';
+  }
+  if (code.includes('captcha')) {
+    return 'تأیید امنیتی انجام نشد. دامنه سایت و تنظیمات reCAPTCHA در Firebase را بررسی کنید.';
+  }
+  if (code.includes('too-many-requests')) {
+    return 'درخواست‌های زیادی ارسال شده است. کمی صبر کنید و بعد دوباره امتحان کنید.';
+  }
+  if (code.includes('invalid-phone-number')) {
+    return 'شماره موبایل معتبر نیست. شماره را بررسی کنید.';
+  }
+  if (code.includes('operation-not-allowed')) {
+    return 'ورود با شماره تلفن در Firebase فعال نیست.';
+  }
+
+  return 'ارسال کد ناموفق بود. تنظیمات Firebase و اتصال اینترنت را بررسی کنید. کد خطا: ' + (code || 'نامشخص');
+}
+
 function verifyOTP() {
-  const code = document.getElementById('otpCode').value.trim();
+  const otpInput = document.getElementById('otpCode');
   const status = document.getElementById('loginStatus');
-  if (!code) { status.textContent = 'کد پیامک‌شده را وارد کنید.'; return; }
-  window.confirmationResult.confirm(code).then(result => {
-    status.textContent = 'ورود موفق بود.';
-    document.getElementById('loginBox').style.display = 'none';
-    document.getElementById('dashboard').style.display = 'block';
-  }).catch(err => { status.textContent = 'کد نادرست است یا منقضی شده؛ دوباره بررسی کنید.'; console.error(err); });
+  const code = normalizeDigits(otpInput.value.trim());
+
+  if (!window.confirmationResult) {
+    status.textContent = 'ابتدا درخواست ارسال کد تأیید را انجام دهید.';
+    return;
+  }
+
+  if (!code) {
+    status.textContent = 'کد پیامک‌شده را وارد کنید.';
+    otpInput.focus();
+    return;
+  }
+
+  status.textContent = 'در حال بررسی کد…';
+
+  window.confirmationResult.confirm(code)
+    .then(() => {
+      status.textContent = 'ورود موفق بود.';
+      document.getElementById('loginBox').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+    })
+    .catch(err => {
+      console.error(err);
+      status.textContent = 'کد نادرست یا منقضی شده است؛ کد را بررسی کنید.';
+    });
 }
+
+function logoutSeller() {
+  if (!auth) return;
+  auth.signOut().then(() => {
+    document.getElementById('dashboard').style.display = 'none';
+    document.getElementById('loginBox').style.display = 'block';
+    document.getElementById('loginStatus').textContent = 'از حساب خارج شدید.';
+  }).catch(console.error);
+}
+
 function saveProduct() {
   const name = document.getElementById('pName').value.trim();
   const price = document.getElementById('pPrice').value.trim();
   const desc = document.getElementById('pDesc').value.trim();
   const status = document.getElementById('addStatus');
-  if (!name || !price || Number(price) < 0) { status.textContent = 'نام محصول و قیمت معتبر لازم است.'; return; }
-  if (!auth.currentUser) { status.textContent = 'برای ثبت محصول ابتدا وارد شوید.'; return; }
+
+  if (!auth || !auth.currentUser) {
+    status.textContent = 'برای ثبت محصول ابتدا وارد شوید.';
+    return;
+  }
+
+  if (!name || !price || Number(price) < 0) {
+    status.textContent = 'نام محصول و قیمت معتبر لازم است.';
+    return;
+  }
+
   status.textContent = 'در حال ثبت محصول…';
-  db.collection('products').add({ name, price, desc, seller: auth.currentUser.phoneNumber, createdAt: Date.now() })
-    .then(() => { status.textContent = 'محصول با موفقیت ثبت شد.'; document.getElementById('pName').value=''; document.getElementById('pPrice').value=''; document.getElementById('pDesc').value=''; })
-    .catch(err => { status.textContent = 'ثبت محصول انجام نشد. تنظیمات و دسترسی Firebase را بررسی کنید.'; console.error(err); });
+
+  db.collection('products').add({
+    name,
+    price,
+    desc,
+    seller: auth.currentUser.phoneNumber,
+    createdAt: Date.now()
+  }).then(() => {
+    status.textContent = 'محصول با موفقیت ثبت شد.';
+    document.getElementById('pName').value = '';
+    document.getElementById('pPrice').value = '';
+    document.getElementById('pDesc').value = '';
+  }).catch(err => {
+    console.error(err);
+    status.textContent = 'ثبت محصول ناموفق بود؛ دسترسی Firestore را بررسی کنید.';
+  });
 }
+
 function showProducts() {
-  if (!auth.currentUser) return;
-  hideAll(); document.getElementById('productList').style.display = 'block';
-  const container = document.getElementById('productsContainer'); container.textContent = 'در حال بارگذاری…';
-  db.collection('products').where('seller','==',auth.currentUser.phoneNumber).get().then(snapshot => {
-    container.replaceChildren();
-    if (snapshot.empty) { const p=document.createElement('p'); p.className='empty-note'; p.textContent='هنوز محصولی ثبت نشده است.'; container.appendChild(p); return; }
-    snapshot.forEach(doc => {
-      const data=doc.data(), card=document.createElement('div'); card.className='product-card';
-      const title=document.createElement('strong'); title.textContent=data.name || 'محصول بدون نام';
-      const price=document.createElement('p'); price.textContent='قیمت: '+(data.price ?? 'ثبت نشده')+' تومان';
-      const desc=document.createElement('p'); desc.textContent=data.desc || '';
-      card.append(title,price,desc); container.appendChild(card);
+  if (!auth || !auth.currentUser) return;
+
+  hideAll();
+  document.getElementById('productList').style.display = 'block';
+
+  const container = document.getElementById('productsContainer');
+  container.textContent = 'در حال بارگذاری…';
+
+  db.collection('products')
+    .where('seller', '==', auth.currentUser.phoneNumber)
+    .get()
+    .then(snapshot => {
+      container.replaceChildren();
+
+      if (snapshot.empty) {
+        const p = document.createElement('p');
+        p.className = 'empty-note';
+        p.textContent = 'هنوز محصولی ثبت نشده است.';
+        container.appendChild(p);
+        return;
+      }
+
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        const card = document.createElement('div');
+        card.className = 'product-card';
+
+        const title = document.createElement('strong');
+        title.textContent = data.name || 'محصول بدون نام';
+
+        const price = document.createElement('p');
+        price.textContent = 'قیمت: ' + (data.price ?? 'ثبت نشده') + ' تومان';
+
+        const desc = document.createElement('p');
+        desc.textContent = data.desc || '';
+
+        card.append(title, price, desc);
+        container.appendChild(card);
+      });
+    })
+    .catch(err => {
+      console.error(err);
+      container.textContent = 'بارگذاری محصولات ناموفق بود. دسترسی Firestore را بررسی کنید.';
     });
-  }).catch(err => { container.textContent='بارگذاری محصولات ناموفق بود. دسترسی Firestore را بررسی کنید.'; console.error(err); });
 }
+
 function saveSettings() {
-  const status=document.getElementById('setStatus');
-  if (!auth.currentUser) { status.textContent='برای ذخیره تنظیمات ابتدا وارد شوید.'; return; }
-  status.textContent='در حال ذخیره…';
+  const status = document.getElementById('setStatus');
+
+  if (!auth || !auth.currentUser) {
+    status.textContent = 'برای ذخیره تنظیمات ابتدا وارد شوید.';
+    return;
+  }
+
+  status.textContent = 'در حال ذخیره…';
+
   db.collection('stores').doc(auth.currentUser.phoneNumber).set({
-    name:document.getElementById('sName').value.trim(), address:document.getElementById('sAddress').value.trim(),
-    phone:document.getElementById('sPhone').value.trim(), whatsapp:document.getElementById('sWhatsApp').value.trim(), insta:document.getElementById('sInsta').value.trim()
-  }, {merge:true}).then(()=>{status.textContent='تنظیمات ذخیره شد.';}).catch(err=>{status.textContent='ذخیره تنظیمات ناموفق بود؛ دسترسی Firestore را بررسی کنید.';console.error(err);});
+    name: document.getElementById('sName').value.trim(),
+    address: document.getElementById('sAddress').value.trim(),
+    phone: document.getElementById('sPhone').value.trim(),
+    whatsapp: document.getElementById('sWhatsApp').value.trim(),
+    insta: document.getElementById('sInsta').value.trim()
+  }, { merge: true })
+    .then(() => {
+      status.textContent = 'تنظیمات ذخیره شد.';
+    })
+    .catch(err => {
+      console.error(err);
+      status.textContent = 'ذخیره تنظیمات ناموفق بود؛ دسترسی Firestore را بررسی کنید.';
+    });
 }
-function hideAll() { ['addProduct','productList','settings'].forEach(id=>document.getElementById(id).style.display='none'); }
-function showAddProduct() { hideAll(); document.getElementById('addProduct').style.display='block'; }
-function showSettings() { hideAll(); document.getElementById('settings').style.display='block'; }
-function backDashboard() { hideAll(); document.getElementById('dashboard').style.display='block'; }
+
+function hideAll() {
+  ['addProduct', 'productList', 'settings'].forEach(id => {
+    document.getElementById(id).style.display = 'none';
+  });
+}
+
+function showAddProduct() {
+  hideAll();
+  document.getElementById('addProduct').style.display = 'block';
+}
+
+function showSettings() {
+  hideAll();
+  document.getElementById('settings').style.display = 'block';
+}
+
+function backDashboard() {
+  hideAll();
+  document.getElementById('dashboard').style.display = 'block';
+}
 </script>
 </body>
 </html>
