@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080B12">
+<title>TorobLite | جست‌وجو و مقایسه قیمت محصولات</title>
+<meta name="description" content="در TorobLite محصولات را جست‌وجو کنید و قیمت‌ها را مقایسه کنید تا انتخاب آگاهانه‌تری داشته باشید.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --red:#168bff;
+  --dark:#182230;
+  --muted:#667085;
+  --bg:#f7f8fa;
+  --border:#eaecf0;
+  --green:#079455;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:"Vazirmatn",Tahoma,sans-serif;
+  background:var(--bg);
+  color:var(--dark);
+  line-height:1.8
+}
+a{text-decoration:none;color:inherit}
+button,input{font:inherit}
+.container{width:min(1160px,calc(100% - 28px));margin:auto}
+.topbar{
+  position:sticky;top:0;z-index:10;
+  background:#ffffffed;
+  border-bottom:1px solid var(--border)
+}
+
+/* TorobLite dark header */
+.tl-header{
+  position:sticky;top:0;z-index:20;
+  width:100%;background:#0D0D0D;color:#fff;
+  border-bottom:3px solid #0057FF;
+}
+.tl-header-inner{
+  min-height:82px;display:flex;align-items:center;
+  justify-content:space-between;gap:18px;padding:14px 0;
+}
+.tl-brand{
+  display:inline-flex;align-items:center;gap:12px;
+  color:#fff;font-size:24px;font-weight:900;
+  letter-spacing:.4px;white-space:nowrap;
+}
+.tl-brand-icon{
+  display:block;width:58px;height:58px;flex:0 0 58px;
+  object-fit:contain;border-radius:10px;background:#0D0D0D;
+}
+.tl-nav-links{
+  display:flex;align-items:center;gap:20px;
+  font-size:14px;font-weight:700;color:#fff;
+}
+.tl-nav-links a{color:#fff;white-space:nowrap;transition:opacity .2s}
+.tl-nav-links a:hover{opacity:.78}
+.tl-nav-links .tl-contact{
+  background:#0057FF;padding:8px 15px;border-radius:8px;
+  color:#fff;font-weight:800;
+}
+.tl-menu-toggle{
+  display:none;background:transparent;border:1px solid #444;
+  border-radius:10px;padding:5px 12px;color:#fff;font-size:22px;
+  cursor:pointer;
+}
+
+.nav{
+  min-height:70px;display:flex;
+  align-items:center;justify-content:space-between;
+  gap:15px;flex-wrap:wrap;padding:10px 0
+}
+.brand{font-size:22px;font-weight:900;color:var(--red)}
+.brand-icon{
+  display:inline-grid;place-items:center;
+  width:40px;height:40px;border-radius:13px;
+  background:var(--red);color:white;margin-left:7px
+}
+.nav-links{display:flex;gap:18px;font-size:14px;font-weight:700}
+.menu-toggle{
+  display:none;background:white;border:1px solid var(--border);
+  border-radius:10px;padding:5px 12px;font-size:22px
+}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:11px 18px;border:0;border-radius:12px;
+  background:var(--red);color:white;font-weight:800;cursor:pointer
+}
+.hero{
+  padding:65px 0 55px;text-align:center;color:white;
+  background:linear-gradient(125deg,#c92828,#ed4439,#ff6b55)
+}
+.hero h1{font-size:clamp(28px,5vw,45px);margin:15px 0}
+.hero p{max-width:650px;margin:0 auto 25px;color:#fff}
+.eyebrow{font-size:14px}
+.search-form{
+  display:flex;gap:8px;padding:7px;
+  max-width:650px;margin:auto;background:white;border-radius:15px
+}
+.search-form input{
+  flex:1;min-width:0;border:0;outline:0;padding:10px;
+  background:white;color:var(--dark)
+}
+.hero-note{font-size:12px;margin-top:12px;color:#fff}
+.benefits{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:14px;margin-top:-22px;position:relative
+}
+.benefit{
+  padding:17px;background:white;border:1px solid var(--border);
+  border-radius:16px;box-shadow:0 6px 25px #1018280d
+}
+.benefit h3{font-size:15px;margin:0}
+.benefit p{font-size:12px;color:var(--muted);margin:3px 0 0}
+.section{padding-top:55px}
+.section-heading{
+  display:flex;justify-content:space-between;
+  align-items:center;gap:12px;margin-bottom:20px
+}
+.section-heading h2{font-size:25px;margin:0;font-weight:900}
+.section-heading p{font-size:13px;color:var(--muted);margin:4px 0 0}
+.text-link{color:var(--red);font-weight:800;font-size:13px;white-space:nowrap}
+.category-grid{
+  display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px
+}
+.category-card{
+  background:white;text-align:center;padding:17px 8px;
+  border:1px solid var(--border);border-radius:16px
+}
+.category-icon{font-size:30px}
+.category-card h3{font-size:13px;margin:4px 0}
+.category-card p{font-size:11px;color:var(--muted);margin:0}
+.products-grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px
+}
+.product-card{
+  min-width:0;overflow:hidden;display:flex;flex-direction:column;
+  background:white;border:1px solid var(--border);border-radius:17px
+}
+.product-image-wrap{
+  height:180px;display:grid;place-items:center;
+  background:#f1f4f7;overflow:hidden
+}
+.product-image{width:100%;height:100%;padding:14px;object-fit:contain}
+.product-placeholder{font-size:55px}
+.product-info{padding:14px;display:flex;flex-direction:column;flex:1}
+.product-name{font-size:14px;line-height:1.9;margin:0 0 12px;overflow-wrap:anywhere}
+.product-price-row{margin-top:auto}
+.price-label{font-size:12px;color:var(--muted);display:block}
+.product-price{font-size:17px;font-weight:900;color:var(--green)}
+.price-unit{font-size:12px}
+.product-button{width:100%;margin-top:14px;font-size:13px}
+.status-message{
+  grid-column:1/-1;text-align:center;background:white;
+  border:1px solid var(--border);border-radius:16px;
+  padding:25px;color:var(--muted)
+}
+.notice{
+  margin-top:16px;padding:13px;border-radius:12px;
+  background:#fffaeb;border:1px solid #fedf89;
+  color:#93370d;font-size:12px
+}
+.discovery{
+  margin-top:55px;padding:25px;background:white;
+  border:1px solid var(--border);border-radius:20px
+}
+.discovery h2{font-size:22px;margin:0}
+.discovery p{color:var(--muted);font-size:14px}
+.footer{margin-top:60px;padding:35px 0;background:#182230;color:#d0d5dd}
+.footer p{color:#98a2b3;font-size:13px}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap;font-size:13px}
+@media(max-width:900px){
+  .category-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .products-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:650px){
+  .tl-header-inner{gap:10px;flex-wrap:wrap}
+  .tl-brand{font-size:21px}
+  .tl-brand-icon{width:48px;height:48px;flex-basis:48px}
+  .tl-menu-toggle{display:block}
+  .tl-nav-links{
+    display:none;order:3;width:100%;flex-direction:column;
+    align-items:stretch;gap:0;border-top:1px solid #333;padding-top:8px
+  }
+  .tl-nav-links.open{display:flex}
+  .tl-nav-links a{padding:8px 4px}
+  .tl-nav-links .tl-contact{align-self:flex-start;margin-top:5px}
+  .tl-header-inner>.tl-products-cta{display:none}
+  .hero{padding:45px 0}
+  .hero h1{font-size:29px}
+  .hero p{font-size:13px}
+  .search-form{gap:4px}
+  .search-form input{font-size:12px;padding:8px}
+  .search-form .btn{padding:9px;font-size:12px}
+  .benefits{grid-template-columns:1fr;gap:8px}
+  .benefit{padding:12px}
+  .section{padding-top:40px}
+  .category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .products-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .product-image-wrap{height:130px}
+  .product-info{padding:10px}
+  .product-name{font-size:12px}
+  .product-price{font-size:14px}
+  .product-button{font-size:11px;padding:9px 5px}
+  .section-heading h2{font-size:20px}
+  .section-heading p{font-size:11px}
+}
+@media(max-width:360px){
+  .products-grid{grid-template-columns:1fr}
+  .product-image-wrap{height:175px}
+}
+
+/* TorobLite unified black + electric-blue theme */
+body { background:#080b12; color:#f4f8ff; }
+:root {
+  --dark:#f4f8ff;
+  --muted:#a8b5c9;
+  --bg:#080b12;
+  --border:#263247;
+  --green:#29d7ff;
+}
+.hero {
+  background: radial-gradient(ellipse at 50% 0%, #12345b 0%, #0b1423 55%, #080b12 100%);
+  border-bottom:1px solid #183a60;
+}
+.hero p, .hero-note { color:#c4d3e8; }
+.search-form { background:#101621; border:1px solid #2a405d; }
+.search-form input { background:transparent; color:#f4f8ff; }
+.search-form input::placeholder { color:#91a0b6; }
+.btn { background:linear-gradient(100deg,#0876ed,#12b6f4); color:#fff; }
+.benefit, .category-card, .product-card, .status-message, .discovery {
+  background:#101621; border-color:#263247; color:#f4f8ff;
+}
+.benefit p, .category-card p, .section-heading p, .product-price-row .price-label,
+.discovery p { color:#a8b5c9; }
+.category-card:hover, .product-card:hover { border-color:#168bff; }
+.product-image-wrap { background:#0b111c; }
+.product-price { color:#29d7ff; }
+.text-link { color:#29d7ff; }
+.notice { background:#101f31; border-color:#214b76; color:#c5e3ff; }
+.footer { background:#05070c; border-top:1px solid #1c3552; color:#dbe8fa; }
+.footer p { color:#91a0b6; }
+.footer .brand { color:#fff !important; }
+
+</style>
+</head>
+
+<body>
+
+<header class="tl-header">
+  <div class="container tl-header-inner">
+    <a class="tl-brand" href="index.html" aria-label="TorobLite - خانه">
+      <img class="tl-brand-icon" src="toroblite-logo.png" alt="" width="58" height="58" fetchpriority="high">
+      <span>TorobLite</span>
+    </a>
+
+    <button class="tl-menu-toggle" id="menuToggle"
+      type="button" aria-label="باز کردن منو"
+      aria-expanded="false" aria-controls="navLinks">☰</button>
+
+    <nav class="tl-nav-links" id="navLinks" aria-label="منوی اصلی">
+      <a href="index.html">خانه</a>
+      <a href="products.html">محصولات</a>
+      <a href="category.html">دسته‌بندی‌ها</a>
+      <a href="seller.html">فروشگاه‌ها</a>
+      <a class="tl-contact" href="#contact">ارتباط با ما</a>
+    </nav>
+
+    <a class="btn tl-products-cta" href="products.html">مشاهده محصولات ←</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">✦ خرید هوشمندانه‌تر</div>
+    <h1>قبل از خرید، قیمت‌ها رو مقایسه کن!</h1>
+    <p>محصول موردنظرت رو پیدا کن، قیمت‌های ثبت‌شده رو ببین و آگاهانه‌تر خرید کن.</p>
+
+    <form class="search-form" action="products.html" method="get">
+      <input type="search" name="q" placeholder="مثلاً گوشی سامسونگ، لپ‌تاپ..." aria-label="جست‌وجوی محصول">
+      <button class="btn" type="submit">⌕ جست‌وجو</button>
+    </form>
+
+    <div class="hero-note">قیمت و موجودی را پیش از خرید بررسی کنید.</div>
+  </div>
+</section>
+
+<div class="container">
+
+<section class="benefits">
+  <article class="benefit"><h3>🔎 جست‌وجوی آسان</h3><p>محصول موردنظرت رو پیدا کن.</p></article>
+  <article class="benefit"><h3>💰 مقایسه قیمت‌ها</h3><p>قیمت‌های ثبت‌شده رو ببین.</p></article>
+  <article class="benefit"><h3>🛍️ انتخاب آگاهانه</h3><p>قبل از خرید اطلاعات رو بررسی کن.</p></article>
+</section>
+
+<section class="section" id="categories">
+  <div class="section-heading">
+    <div><h2>دسته‌بندی محصولات</h2><p>از دسته موردعلاقه‌ات شروع کن.</p></div>
+    <a class="text-link" href="category.html">همه دسته‌ها ←</a>
+  </div>
+
+  <div class="category-grid">
+    <a class="category-card" href="products.html?cat=mobile"><div class="category-icon">📱</div><h3>موبایل</h3><p>گوشی و لوازم جانبی</p></a>
+    <a class="category-card" href="products.html?cat=laptop"><div class="category-icon">💻</div><h3>لپ‌تاپ</h3><p>کامپیوتر و تجهیزات</p></a>
+    <a class="category-card" href="products.html?cat=home"><div class="category-icon">🏠</div><h3>خانه و آشپزخانه</h3><p>لوازم کاربردی</p></a>
+    <a class="category-card" href="products.html?cat=fashion"><div class="category-icon">👕</div><h3>مد و پوشاک</h3><p>لباس و استایل</p></a>
+    <a class="category-card" href="products.html?cat=beauty"><div class="category-icon">✨</div><h3>زیبایی</h3><p>محصولات مراقبتی</p></a>
+    <a class="category-card" href="products.html?cat=sport"><div class="category-icon">⚽</div><h3>ورزشی</h3><p>تجهیزات و لوازم</p></a>
+  </div>
+</section>
+
+<section class="section" id="featured">
+  <div class="section-heading">
+    <div><h2>محصولات پیشنهادی</h2><p>محصولات به‌صورت خودکار بارگذاری می‌شوند.</p></div>
+    <a class="text-link" href="products.html">مشاهده همه ←</a>
+  </div>
+
+  <div class="products-grid" id="featuredProducts" aria-live="polite">
+    <div class="status-message">در حال دریافت محصولات...</div>
+  </div>
+
+  <div class="notice">
+    توجه: قیمت‌ها ممکن است تغییر کنند. پیش از خرید، قیمت و موجودی را در فروشگاه بررسی کنید.
+  </div>
+</section>
+
+<section class="discovery">
+  <h2>محصول دیگه‌ای مدنظرته؟</h2>
+  <p>نام محصول رو جست‌وجو کن و نتایج بیشتری ببین.</p>
+  <a class="btn" href="products.html">رفتن به فهرست محصولات ←</a>
+</section>
+
+</div>
+</main>
+
+<footer class="footer" id="contact">
+  <div class="container">
+    <a class="brand" href="index.html" style="color:white">توروب‌لایت</a>
+    <p>محصولات را جست‌وجو کنید و اطلاعات قیمت را پیش از خرید بررسی کنید.</p>
+    <div class="footer-links">
+      <a href="index.html">صفحه اصلی</a>
+      <a href="products.html">همه محصولات</a>
+      <a href="category.html">دسته‌بندی‌ها</a>
+      <a href="seller.html">پنل فروشنده</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const menuButton = document.getElementById("menuToggle");
+  const nav = document.getElementById("navLinks");
+
+  menuButton.addEventListener("click", () => {
+    const isOpen = nav.classList.toggle("open");
+    menuButton.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  const container = document.getElementById("featuredProducts");
+  const API = "https://torob-lite-api.amyrryysy084.workers.dev/api/search";
+
+  function valueOf(item, keys) {
+    for (const key of keys) {
+      if (item[key] !== undefined && item[key] !== null && item[key] !== "") {
+        return item[key];
+      }
+    }
+    return "";
+  }
+
+  function makeCard(item) {
+    const card = document.createElement("article");
+    card.className = "product-card";
+
+    const imageWrap = document.createElement("div");
+    imageWrap.className = "product-image-wrap";
+
+    const imageUrl = valueOf(item, ["image", "imageUrl", "image_url", "thumbnail", "img"]);
+
+    if (typeof imageUrl === "string" && /^https:\/\//i.test(imageUrl)) {
+      const img = document.createElement("img");
+      img.className = "product-image";
+      img.src = imageUrl;
+      img.alt = valueOf(item, ["title", "name"]) || "تصویر محصول";
+      img.loading = "lazy";
+      img.onerror = () => {
+        img.remove();
+        imageWrap.textContent = "📦";
+        imageWrap.classList.add("product-placeholder");
+      };
+      imageWrap.appendChild(img);
+    } else {
+      imageWrap.textContent = "📦";
+      imageWrap.classList.add("product-placeholder");
+    }
+
+    const info = document.createElement("div");
+    info.className = "product-info";
+
+    const title = document.createElement("h3");
+    title.className = "product-name";
+    title.textContent = valueOf(item, ["title", "name", "productName", "product_name"]) || "محصول بدون نام";
+
+    const row = document.createElement("div");
+    row.className = "product-price-row";
+
+    const label = document.createElement("span");
+    label.className = "price-label";
+    label.textContent = "قیمت ثبت‌شده";
+
+    const price = document.createElement("div");
+    price.className = "product-price";
+
+    const rawPrice = valueOf(item, ["price", "priceValue", "price_value", "amount"]);
+    const amount = Number(String(rawPrice).replace(/[٬,،\s]/g, ""));
+
+    if (rawPrice !== "" && Number.isFinite(amount) && amount > 0) {
+      price.textContent = amount.toLocaleString("fa-IR") + " ";
+      const unit = document.createElement("span");
+      unit.className = "price-unit";
+      unit.textContent = "تومان";
+      price.appendChild(unit);
+    } else {
+      price.textContent = "قیمت موجود نیست";
+    }
+
+    row.append(label, price);
+
+    const button = document.createElement("a");
+    button.className = "btn product-button";
+    button.textContent = "مشاهده محصول ←";
+
+    const url = valueOf(item, ["url", "link", "productUrl", "product_url"]);
+
+    if (typeof url === "string" && /^https:\/\//i.test(url)) {
+      button.href = url;
+      button.target = "_blank";
+      button.rel = "noopener noreferrer";
+    } else {
+      button.href = "products.html?q=" + encodeURIComponent(title.textContent);
+    }
+
+    info.append(title, row, button);
+    card.append(imageWrap, info);
+    return card;
+  }
+
+  async function loadProducts() {
+    try {
+      const url = API + "?q=" + encodeURIComponent("گوشی موبایل") + "&page=1";
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error("API status: " + response.status);
+      }
+
+      const data = await response.json();
+
+      if (!data.ok || !Array.isArray(data.products) || data.products.length === 0) {
+        throw new Error("محصولی در پاسخ API پیدا نشد");
+      }
+
+      container.replaceChildren();
+
+      data.products.slice(0, 6).forEach(item => {
+        container.appendChild(makeCard(item));
+      });
+
+    } catch (error) {
+      console.error("خطا در دریافت محصولات:", error);
+      container.replaceChildren();
+
+      const message = document.createElement("div");
+      message.className = "status-message";
+      message.textContent = "محصولات بارگذاری نشدند. لطفاً اتصال API را بررسی کنید.";
+      container.appendChild(message);
+    }
+  }
+
+  loadProducts();
+})();
+</script>
+
+</body>
+</html>
