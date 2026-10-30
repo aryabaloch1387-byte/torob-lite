@@ -1,82 +1,92 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080B12">
-  <meta name="description" content="دسته‌بندی محصولات در TorobLite">
-  <title>دسته‌بندی‌ها | TorobLite</title>
-  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
-  <link rel="shortcut icon" href="favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    :root{--bg:#080b12;--panel:#101621;--line:#263247;--blue:#168bff;--cyan:#29d7ff;--text:#f4f8ff;--muted:#a8b5c9}
-    *{box-sizing:border-box}
-    html,body{margin:0;min-height:100%;font-family:"Vazirmatn",Tahoma,sans-serif}
-    body{background:radial-gradient(ellipse at 50% -15%,#12345b 0,transparent 48%),var(--bg);color:var(--text);line-height:1.9}
-    a{color:inherit;text-decoration:none}
-    .header{position:sticky;top:0;z-index:10;background:rgba(8,11,18,.96);backdrop-filter:blur(12px);border-bottom:2px solid #0057ff}
-    .nav{width:min(1160px,calc(100% - 32px));min-height:78px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:center;gap:11px;font-size:23px;font-weight:900;direction:ltr}
-    .brand img{width:50px;height:50px;object-fit:contain;border-radius:10px}
-    .brand span span{color:var(--cyan)}
-    .navlinks{display:flex;align-items:center;gap:22px;font-size:13px;font-weight:700}
-    .navlinks a:hover{color:var(--cyan)}
-    .navlinks .active{color:var(--cyan)}
-    .wrap{width:min(1100px,calc(100% - 32px));margin:0 auto;padding:48px 0 70px}
-    .intro{text-align:center;margin:0 auto 30px}
-    .eyebrow{color:var(--cyan);font-size:12px;font-weight:800}
-    h1{font-size:clamp(26px,4vw,36px);margin:6px 0 8px;font-weight:900}
-    .intro p{margin:0;color:var(--muted);font-size:14px}
-    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-    .item{min-height:150px;display:flex;align-items:center;gap:16px;padding:22px;background:linear-gradient(145deg,#121c2b,#0d131e);border:1px solid var(--line);border-radius:18px;transition:.2s}
-    .item:hover{transform:translateY(-3px);border-color:var(--blue);box-shadow:0 12px 30px #0057ff20}
-    .symbol{width:58px;height:58px;flex:0 0 58px;display:grid;place-items:center;border-radius:16px;background:#0c2745;border:1px solid #174d83;font-size:28px}
-    .item h2{font-size:16px;margin:0 0 4px;font-weight:800}
-    .item p{font-size:12px;color:var(--muted);margin:0}
-    .arrow{margin-right:auto;color:var(--cyan);font-size:20px}
-    .footer{border-top:1px solid #1c3552;background:#05070c;text-align:center;padding:25px 15px;color:var(--muted);font-size:12px}
-    .footer strong{color:#fff}
-    @media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.nav{min-height:68px}.navlinks{gap:12px;font-size:11px}.brand{font-size:20px}.brand img{width:43px;height:43px}.wrap{padding-top:35px}}
-    @media(max-width:480px){.nav{width:calc(100% - 24px);flex-wrap:wrap;padding:9px 0}.navlinks{width:100%;justify-content:space-between;padding:0 2px 9px}.grid{gap:10px}.item{min-height:128px;padding:14px 11px;gap:10px;flex-wrap:wrap}.symbol{width:43px;height:43px;flex-basis:43px;font-size:22px;border-radius:12px}.item h2{font-size:13px}.item p{font-size:10px}.arrow{font-size:16px}.wrap{width:calc(100% - 24px)}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080B12">
+<title>دسته‌بندی کالاها | TorobLite</title>
+<meta name="description" content="انتخاب دقیق دسته‌بندی و جست‌وجوی کالا در TorobLite">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080b12;--panel:#101621;--panel2:#0c1420;--line:#263247;--blue:#168bff;--cyan:#29d7ff;--txt:#f4f8ff;--muted:#a8b5c9}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#12345b 0,transparent 48%),var(--bg);color:var(--txt);font-family:"Vazirmatn",Tahoma,sans-serif;line-height:1.8}
+a{color:inherit;text-decoration:none}.header{position:sticky;top:0;z-index:5;background:#080b12f2;border-bottom:2px solid #0057ff;backdrop-filter:blur(10px)}
+.nav{width:min(1160px,calc(100% - 28px));min-height:76px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.brand{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:900;direction:ltr}.brand img{width:48px;height:48px;object-fit:contain;border-radius:9px}.brand em{font-style:normal;color:var(--cyan)}
+.links{display:flex;gap:20px;font-size:13px;font-weight:700}.links a:hover,.links .active{color:var(--cyan)}
+main{width:min(1160px,calc(100% - 28px));margin:auto;padding:34px 0 65px}
+.hero{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:24px}.eyebrow{color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:1px}
+h1{font-size:clamp(24px,4vw,33px);margin:3px 0 5px}.sub{color:var(--muted);font-size:13px;margin:0}
+.search{display:flex;gap:8px;width:min(390px,100%);background:#101621;border:1px solid #2a405d;border-radius:13px;padding:6px}
+.search input{min-width:0;flex:1;background:transparent;border:0;outline:0;color:white;padding:8px;font:inherit;font-size:13px}.search input::placeholder{color:#91a0b6}
+.search button,.go{border:0;border-radius:9px;background:linear-gradient(100deg,#0876ed,#12b6f4);color:white;padding:9px 15px;font:inherit;font-size:12px;font-weight:800;cursor:pointer}
+.layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:17px;align-items:start}
+.sidebar,.content{background:#0c121d;border:1px solid var(--line);border-radius:17px;overflow:hidden}
+.side-title{padding:14px 16px;border-bottom:1px solid var(--line);font-size:14px;font-weight:800}
+.cat-list{padding:8px}
+.cat-btn{width:100%;display:flex;align-items:center;gap:10px;text-align:right;border:0;background:transparent;color:var(--txt);padding:11px 10px;border-radius:10px;font:inherit;font-size:13px;cursor:pointer}
+.cat-btn:hover,.cat-btn.selected{background:#102b49;color:var(--cyan)}
+.cat-btn .ico{width:27px;text-align:center;font-size:18px}.cat-btn .count{margin-right:auto;color:var(--muted);font-size:11px}
+.content-head{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.content-head strong{font-size:16px}.hint{font-size:11px;color:var(--muted)}
+.subgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:15px}
+.subcat{min-height:67px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:linear-gradient(145deg,#121e2d,#0e1520);border:1px solid #263b55;border-radius:12px;padding:12px;font-size:12px;font-weight:700;transition:.18s}
+.subcat:hover{border-color:var(--blue);background:#10243b;transform:translateY(-2px)}
+.subcat span:last-child{color:var(--cyan);font-size:17px}
+.empty{padding:30px;text-align:center;color:var(--muted);font-size:13px}
+.note{margin-top:15px;padding:12px 14px;border:1px solid #214b76;background:#101f31;color:#c5e3ff;border-radius:12px;font-size:11px}
+.footer{text-align:center;border-top:1px solid #1c3552;background:#05070c;padding:22px;color:var(--muted);font-size:12px}
+@media(max-width:800px){.layout{grid-template-columns:205px minmax(0,1fr)}.subgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{align-items:stretch;flex-direction:column}.search{width:100%}}
+@media(max-width:560px){.nav{flex-wrap:wrap;padding:8px 0}.brand{font-size:20px}.brand img{width:42px;height:42px}.links{width:100%;justify-content:space-between;gap:8px;padding-bottom:9px;font-size:11px}main{padding-top:25px}.layout{grid-template-columns:1fr}.sidebar{overflow:visible}.cat-list{display:flex;gap:6px;overflow-x:auto;padding:8px}.cat-btn{width:auto;white-space:nowrap;flex:0 0 auto;padding:9px 11px}.cat-btn .count{display:none}.subgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:10px}.subcat{font-size:11px;min-height:62px;padding:9px}.content-head{padding:12px}.hint{display:none}}
+</style>
 </head>
 <body>
-  <header class="header">
-    <nav class="nav" aria-label="منوی اصلی">
-      <a class="brand" href="index.html" aria-label="TorobLite - خانه">
-        <img src="toroblite-logo.png" alt="لوگوی TorobLite">
-        <span>Torob<span>Lite</span></span>
-      </a>
-      <div class="navlinks">
-        <a href="index.html">خانه</a>
-        <a href="products.html">محصولات</a>
-        <a class="active" href="category.html">دسته‌بندی‌ها</a>
-        <a href="seller.html">پنل فروشندگان</a>
-      </div>
-    </nav>
-  </header>
-
-  <main class="wrap">
-    <section class="intro">
-      <div class="eyebrow">TOROBLITE CATEGORIES</div>
-      <h1>دسته‌بندی محصولات</h1>
-      <p>دسته موردنظرت را انتخاب کن و محصولات را ببین.</p>
-    </section>
-
-    <section class="grid" aria-label="دسته‌بندی محصولات">
-      <a class="item" href="products.html?cat=mobile"><span class="symbol">📱</span><span><h2>موبایل و تبلت</h2><p>گوشی، تبلت و لوازم جانبی</p></span><span class="arrow">←</span></a>
-      <a class="item" href="products.html?cat=laptop"><span class="symbol">💻</span><span><h2>لپ‌تاپ و کامپیوتر</h2><p>لپ‌تاپ، قطعات و تجهیزات</p></span><span class="arrow">←</span></a>
-      <a class="item" href="products.html?cat=home"><span class="symbol">🏠</span><span><h2>لوازم خانگی</h2><p>وسایل خانه و آشپزخانه</p></span><span class="arrow">←</span></a>
-      <a class="item" href="products.html?cat=fashion"><span class="symbol">👕</span><span><h2>پوشاک و مد</h2><p>لباس، کفش و اکسسوری</p></span><span class="arrow">←</span></a>
-      <a class="item" href="products.html?cat=beauty"><span class="symbol">✨</span><span><h2>زیبایی و سلامت</h2><p>مراقبت شخصی و زیبایی</p></span><span class="arrow">←</span></a>
-      <a class="item" href="products.html?cat=sport"><span class="symbol">⚽</span><span><h2>ورزشی و سرگرمی</h2><p>ورزش، بازی و سرگرمی</p></span><span class="arrow">←</span></a>
-    </section>
-  </main>
-
-  <footer class="footer">© 2026 <strong>TorobLite</strong> — انتخاب آگاهانه‌تر</footer>
+<header class="header"><nav class="nav">
+<a class="brand" href="index.html"><img src="toroblite-logo.png" alt="TorobLite"><span>Torob<em>Lite</em></span></a>
+<div class="links"><a href="index.html">خانه</a><a href="products.html">همه محصولات</a><a class="active" href="category.html">دسته‌بندی کالاها</a><a href="seller.html">فروشگاه‌ها</a></div>
+</nav></header>
+<main>
+<section class="hero">
+<div><div class="eyebrow">SMART SHOPPING · TOROBLITE</div><h1>دسته‌بندی دقیق کالاها</h1><p class="sub">اول گروه کالا را انتخاب کن، بعد زیر‌دسته موردنظرت را بزن.</p></div>
+<form class="search" id="searchForm"><input id="searchInput" placeholder="مثلاً هدفون بی‌سیم، گوشی سامسونگ..." aria-label="جست‌وجوی کالا"><button>جست‌وجو</button></form>
+</section>
+<div class="layout">
+<aside class="sidebar"><div class="side-title">گروه‌های اصلی</div><div class="cat-list" id="catList"></div></aside>
+<section class="content"><div class="content-head"><strong id="selectedTitle">کالای دیجیتال</strong><span class="hint">برای دیدن کالاها، زیر‌دسته را انتخاب کن</span></div><div class="subgrid" id="subGrid"></div></section>
+</div>
+<div class="note">با انتخاب هر زیر‌دسته، عبارت دقیق آن برای جست‌وجوی محصولات به صفحه نتایج فرستاده می‌شود. موجودی و نتایج به اطلاعات دریافتی از سرویس جست‌وجو وابسته است.</div>
+</main>
+<footer class="footer">© 2026 TorobLite — انتخاب آگاهانه‌تر</footer>
+<script>
+const groups=[
+{n:"کالای دیجیتال",i:"🎧",s:["هدفون، هدست و هندزفری","اسپیکر","لوازم جانبی موبایل","ساعت هوشمند","دوربین عکاسی","مانیتور","لوازم جانبی کامپیوتر","حافظه و هارد"]},
+{n:"موبایل و تبلت",i:"📱",s:["گوشی موبایل سامسونگ","گوشی موبایل شیائومی","گوشی موبایل اپل","گوشی موبایل اقتصادی","تبلت","قاب و کاور گوشی","محافظ صفحه نمایش","شارژر و کابل","پاوربانک"]},
+{n:"لپ‌تاپ و کامپیوتر",i:"💻",s:["لپ‌تاپ","لپ‌تاپ گیمینگ","کامپیوتر دسکتاپ","کیبورد","ماوس","قطعات کامپیوتر","پرینتر","مودم و تجهیزات شبکه"]},
+{n:"خانه و آشپزخانه",i:"🏠",s:["یخچال و فریزر","ماشین لباسشویی","ظرفشویی","جاروبرقی","تلویزیون","لوازم پخت‌وپز","قهوه‌ساز و اسپرسوساز","ظروف آشپزخانه","مبلمان و دکوراسیون"]},
+{n:"مد و پوشاک",i:"👕",s:["لباس مردانه","لباس زنانه","لباس بچگانه","کفش مردانه","کفش زنانه","کیف و کوله‌پشتی","ساعت و اکسسوری","لباس ورزشی"]},
+{n:"زیبایی و سلامت",i:"✨",s:["لوازم آرایشی","مراقبت پوست","مراقبت مو","عطر و ادکلن","ماشین اصلاح","مسواک برقی","بهداشت شخصی","تجهیزات سلامت"]},
+{n:"ورزش و سفر",i:"⚽",s:["لوازم بدنسازی","دوچرخه","کفش ورزشی","پوشاک ورزشی","کمپینگ و کوهنوردی","چمدان و ساک","لوازم شنا"]},
+{n:"کتاب و لوازم تحریر",i:"📚",s:["کتاب عمومی","کتاب کودک","دفتر و کاغذ","نوشت‌افزار","لوازم هنری","ابزار آموزشی"]},
+{n:"اسباب‌بازی، کودک و نوزاد",i:"🧸",s:["اسباب‌بازی","لگو و ساختنی","عروسک","کالسکه","صندلی خودرو کودک","لوازم نوزاد"]},
+{n:"خودرو و ابزار",i:"🛠️",s:["لوازم جانبی خودرو","روغن و مکمل خودرو","ابزار دستی","ابزار برقی","تجهیزات ایمنی","لوازم موتورسیکلت"]},
+{n:"سوپرمارکتی و خوراکی",i:"🛒",s:["مواد غذایی","قهوه و چای","تنقلات","نوشیدنی","مواد شوینده","محصولات بهداشتی"]},
+{n:"طلا، هدیه و صنایع دستی",i:"🎁",s:["زیورآلات","ساعت","کارت هدیه","صنایع دستی","هدیه و کادو"]}
+];
+const list=document.getElementById("catList"),grid=document.getElementById("subGrid"),title=document.getElementById("selectedTitle");
+let active=0;
+function render(){
+ list.innerHTML=groups.map((g,i)=>`<button class="cat-btn ${i===active?"selected":""}" data-i="${i}"><span class="ico">${g.i}</span><span>${g.n}</span><span class="count">${g.s.length}</span></button>`).join("");
+ title.textContent=groups[active].n;
+ grid.innerHTML=groups[active].s.map(s=>`<a class="subcat" href="products.html?q=${encodeURIComponent(s)}"><span>${s}</span><span>←</span></a>`).join("");
+ list.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{active=Number(b.dataset.i);render()}));
+}
+document.getElementById("searchForm").addEventListener("submit",e=>{e.preventDefault();const q=document.getElementById("searchInput").value.trim();if(q)location.href="products.html?q="+encodeURIComponent(q)});
+render();
+</script>
 </body>
 </html>
