@@ -1,0 +1,705 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="مشاهده جزئیات محصول و مقایسه قیمت فروشگاه‌ها در TorobLite">
+  <title>جزئیات محصول | TorobLite</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #e84b36;
+      --primary-dark: #ce3827;
+      --text: #182230;
+      --muted: #667085;
+      --border: #e8edf3;
+      --background: #f5f7fb;
+      --green: #16834a;
+      --green-bg: #eaf8ef;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Vazirmatn", Tahoma, Arial, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, .96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      max-width: 1100px;
+      min-height: 76px;
+      margin: auto;
+      padding: 12px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 27px;
+      font-weight: 800;
+      letter-spacing: -.8px;
+    }
+
+    .brand span {
+      color: var(--text);
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .back:hover {
+      color: var(--primary);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 30px auto 55px;
+      padding: 0 20px;
+    }
+
+    .breadcrumb {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .breadcrumb a {
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--primary);
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px;
+      margin-bottom: 22px;
+      box-shadow: 0 8px 30px rgba(24, 34, 48, .035);
+    }
+
+    .product-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 330px) minmax(0, 1fr);
+      align-items: center;
+      gap: 35px;
+    }
+
+    .image-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      border: 1px solid #f0f2f6;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #fbfcfe, #f4f6fa);
+      padding: 18px;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 245px;
+      object-fit: contain;
+    }
+
+    .category {
+      display: inline-flex;
+      align-items: center;
+      background: #fff0ec;
+      color: #c63c29;
+      border-radius: 30px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .product-title {
+      font-size: clamp(24px, 3vw, 32px);
+      line-height: 1.8;
+      font-weight: 800;
+      letter-spacing: -.5px;
+      margin: 13px 0 10px;
+      overflow-wrap: anywhere;
+    }
+
+    .product-description {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 20px;
+      line-height: 2.2;
+    }
+
+    .summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .summary-item {
+      background: #f7f8fb;
+      border: 1px solid #edf0f5;
+      border-radius: 12px;
+      padding: 9px 13px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .summary-item strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 21px;
+      font-weight: 800;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 4px 0 18px;
+    }
+
+    .offer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 21px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .offer-info {
+      min-width: 0;
+    }
+
+    .shop-name {
+      font-size: 16px;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+      margin-bottom: 5px;
+    }
+
+    .price-label {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .price {
+      color: var(--green);
+      font-size: 21px;
+      font-weight: 800;
+      line-height: 1.8;
+    }
+
+    .offer-actions {
+      flex-shrink: 0;
+    }
+
+    .buy-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-height: 44px;
+      background: var(--primary);
+      color: white;
+      border: 0;
+      border-radius: 12px;
+      padding: 10px 17px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background .2s, transform .2s;
+    }
+
+    .buy-button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .notice {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      background: #fff8e8;
+      color: #805b12;
+      border: 1px solid #f6e9c7;
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-top: 18px;
+      font-size: 12px;
+      line-height: 2.1;
+    }
+
+    .notice strong {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .state-card {
+      text-align: center;
+      padding: 50px 22px;
+    }
+
+    .state-icon {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .state-title {
+      font-size: 20px;
+      font-weight: 800;
+      margin: 0 0 8px;
+    }
+
+    .state-text {
+      color: var(--muted);
+      margin: 0 0 20px;
+      font-size: 14px;
+    }
+
+    .retry {
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      background: white;
+      padding: 26px 18px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-brand {
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    @media (max-width: 650px) {
+      body {
+        font-size: 14px;
+      }
+
+      .nav {
+        min-height: 65px;
+        padding: 10px 16px;
+      }
+
+      .brand {
+        font-size: 23px;
+      }
+
+      .back {
+        font-size: 12px;
+      }
+
+      .container {
+        margin: 20px auto 35px;
+        padding: 0 13px;
+      }
+
+      .card {
+        padding: 18px;
+        border-radius: 18px;
+        margin-bottom: 16px;
+      }
+
+      .product-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .image-wrap {
+        min-height: 210px;
+      }
+
+      .product-image {
+        height: 205px;
+      }
+
+      .product-title {
+        font-size: 24px;
+      }
+
+      .section-title {
+        font-size: 19px;
+      }
+
+      .offer {
+        align-items: flex-start;
+        gap: 12px;
+        padding: 18px 0;
+      }
+
+      .shop-name {
+        font-size: 14px;
+      }
+
+      .price {
+        font-size: 18px;
+      }
+
+      .buy-button {
+        padding: 9px 12px;
+        min-height: 41px;
+        font-size: 12px;
+      }
+
+      .summary {
+        gap: 7px;
+      }
+
+      .summary-item {
+        padding: 7px 10px;
+      }
+    }
+
+    @media (max-width: 370px) {
+      .offer {
+        flex-direction: column;
+      }
+
+      .offer-actions,
+      .buy-button {
+        width: 100%;
+      }
+
+      .back {
+        font-size: 11px;
+      }
+    }
+  </style>
+
+  <!-- TorobLite favicon -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+</head>
+
+<body>
+  <header class="topbar">
+    <nav class="nav">
+      <a class="brand" href="index.html">Torob<span>Lite</span></a>
+      <a class="back" href="products.html">← بازگشت به محصولات</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb">
+      <a href="index.html">خانه</a>
+      <span> / </span>
+      <a href="products.html">محصولات</a>
+      <span> / جزئیات محصول</span>
+    </div>
+
+    <section id="content" class="card state-card" aria-live="polite">
+      <div class="state-icon">⌛</div>
+      <h1 class="state-title">در حال بارگذاری محصول</h1>
+      <p class="state-text">لطفاً چند لحظه صبر کنید.</p>
+    </section>
+
+    <section id="offers-panel" class="card" hidden>
+      <div class="section-heading">
+        <h2 class="section-title">فروشگاه‌ها و قیمت‌ها</h2>
+      </div>
+      <p class="section-subtitle">قیمت‌های ثبت‌شده را مقایسه کنید و سپس وارد سایت فروشنده شوید.</p>
+      <div id="offers-list"></div>
+
+      <div class="notice">
+        <div>
+          <strong>نکته مهم درباره قیمت‌ها</strong>
+          قیمت‌ها و لینک‌های فعلی ممکن است نمونه یا قدیمی باشند. پیش از خرید، قیمت نهایی، موجودی و شرایط ارسال را در سایت فروشنده بررسی کنید.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div><span class="footer-brand">TorobLite</span> — مقایسه آسان قیمت‌ها</div>
+    <div>© 2026 TorobLite</div>
+  </footer>
+
+  <script>
+    const content = document.getElementById("content");
+    const offersPanel = document.getElementById("offers-panel");
+    const offersList = document.getElementById("offers-list");
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get("id");
+
+    function makeElement(tag, className, text) {
+      const node = document.createElement(tag);
+
+      if (className) {
+        node.className = className;
+      }
+
+      if (text !== undefined && text !== null) {
+        node.textContent = String(text);
+      }
+
+      return node;
+    }
+
+    function showState(title, message, icon = "⚠️") {
+      content.hidden = false;
+      content.className = "card state-card";
+      content.replaceChildren();
+
+      content.append(
+        makeElement("div", "state-icon", icon),
+        makeElement("h1", "state-title", title),
+        makeElement("p", "state-text", message)
+      );
+
+      const back = makeElement("a", "buy-button", "بازگشت به محصولات");
+      back.href = "products.html";
+      content.append(back);
+      offersPanel.hidden = true;
+    }
+
+    function formatPrice(value) {
+      const number = Number(value);
+
+      if (!Number.isFinite(number) || number < 0) {
+        return "قیمت نامشخص";
+      }
+
+      return number.toLocaleString("fa-IR") + " تومان";
+    }
+
+    function validHttpUrl(value) {
+      try {
+        const url = new URL(value);
+
+        if (url.protocol === "https:" || url.protocol === "http:") {
+          return url.href;
+        }
+      } catch (error) {
+        // لینک نامعتبر است.
+      }
+
+      return null;
+    }
+
+    function renderProduct(product) {
+      content.hidden = false;
+      content.className = "card";
+      content.replaceChildren();
+      offersList.replaceChildren();
+
+      const layout = makeElement("div", "product-layout");
+      const imageWrap = makeElement("div", "image-wrap");
+      const image = makeElement("img", "product-image");
+
+      image.alt = product.name || "تصویر محصول";
+      image.loading = "eager";
+
+      const imageUrl = validHttpUrl(product.image || "");
+
+      if (imageUrl) {
+        image.src = imageUrl;
+      } else {
+        imageWrap.append(
+          makeElement("div", "state-text", "تصویر محصول موجود نیست")
+        );
+      }
+
+      image.addEventListener("error", function () {
+        image.removeAttribute("src");
+        image.alt = "تصویر محصول موجود نیست";
+        imageWrap.replaceChildren(
+          makeElement("div", "state-text", "تصویر محصول موجود نیست")
+        );
+      });
+
+      if (imageUrl) {
+        imageWrap.append(image);
+      }
+
+      const details = makeElement("div", "");
+      details.append(
+        makeElement("span", "category", product.category || "محصول"),
+        makeElement("h1", "product-title", product.name || "محصول بدون نام"),
+        makeElement(
+          "p",
+          "product-description",
+          "قیمت فروشگاه‌ها را مقایسه کنید و قبل از خرید، شرایط فروش را بررسی کنید."
+        )
+      );
+
+      const summary = makeElement("div", "summary");
+      summary.append(
+        makeElement("div", "summary-item", "شناسه محصول: " + product.id),
+        makeElement("div", "summary-item", "فروشگاه‌های ثبت‌شده: " +
+          (Array.isArray(product.offers) ? product.offers.length : 0))
+      );
+
+      details.append(summary);
+      layout.append(imageWrap, details);
+      content.append(layout);
+
+      const offers = Array.isArray(product.offers)
+        ? [...product.offers]
+        : [];
+
+      offers.sort((a, b) => {
+        const priceA = Number(a.price);
+        const priceB = Number(b.price);
+
+        if (!Number.isFinite(priceA)) return 1;
+        if (!Number.isFinite(priceB)) return -1;
+
+        return priceA - priceB;
+      });
+
+      if (offers.length === 0) {
+        offersList.append(
+          makeElement("p", "state-text", "هنوز فروشگاهی برای این محصول ثبت نشده است.")
+        );
+      }
+
+      offers.forEach(function (offer) {
+        const row = makeElement("div", "offer");
+        const info = makeElement("div", "offer-info");
+
+        info.append(
+          makeElement("div", "shop-name", offer.shop || "فروشگاه"),
+          makeElement("div", "price-label", "قیمت ثبت‌شده"),
+          makeElement("div", "price", formatPrice(offer.price))
+        );
+
+        row.append(info);
+
+        const actions = makeElement("div", "offer-actions");
+        const safeUrl = validHttpUrl(offer.url || "");
+
+        if (safeUrl) {
+          const link = makeElement("a", "buy-button", "مشاهده در فروشگاه ↗");
+          link.href = safeUrl;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          actions.append(link);
+        } else {
+          actions.append(
+            makeElement("span", "price-label", "لینک فروشگاه موجود نیست")
+          );
+        }
+
+        row.append(actions);
+        offersList.append(row);
+      });
+
+      offersPanel.hidden = false;
+      document.title = (product.name || "جزئیات محصول") + " | TorobLite";
+    }
+
+    async function loadProduct() {
+      if (!productId) {
+        showState(
+          "محصول مشخص نشده است",
+          "برای مشاهده جزئیات، یک محصول را از صفحه محصولات انتخاب کنید."
+        );
+        return;
+      }
+
+      try {
+        const response = await fetch("./data.json", { cache: "no-store" });
+
+        if (!response.ok) {
+          throw new Error("دریافت اطلاعات محصول ناموفق بود.");
+        }
+
+        const data = await response.json();
+        const products = Array.isArray(data.products) ? data.products : [];
+
+        const product = products.find(function (item) {
+          return String(item.id) === String(productId);
+        });
+
+        if (!product) {
+          showState(
+            "محصول پیدا نشد",
+            "این محصول در فهرست فعلی موجود نیست. به صفحه محصولات برگردید."
+          );
+          return;
+        }
+
+        renderProduct(product);
+      } catch (error) {
+        showState(
+          "بارگذاری انجام نشد",
+          "اتصال اینترنت و فایل data.json را بررسی کنید و دوباره تلاش کنید."
+        );
+
+        const retry = makeElement("button", "buy-button retry", "تلاش دوباره");
+        retry.type = "button";
+        retry.addEventListener("click", loadProduct);
+        content.append(retry);
+      }
+    }
+
+    loadProduct();
+  </script>
+</body>
+</html>
